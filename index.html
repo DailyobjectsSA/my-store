@@ -6,7 +6,6 @@
   <title>Daily Objects SA</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Temporary CSS directly inside HTML for faster testing */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -26,13 +25,17 @@
     .logo-container {
       display: flex;
       align-items: center;
+      background: white; /* White background behind logo and name */
+      padding: 8px 15px;
+      border-radius: 10px; /* Slightly rounded */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     .logo-container img {
-      height: 80px; /* Increased logo size */
-      margin-right: 12px;
+      height: 120px; /* Bigger logo */
+      margin-right: 15px;
     }
     .logo-container span {
-      font-size: 28px; /* Bigger font for brand name */
+      font-size: 32px; /* Even bigger font */
       font-weight: bold;
       color: #333;
     }
@@ -46,7 +49,7 @@
     .banner {
       position: relative;
       overflow: hidden;
-      height: 400px; /* Fixed height for video banner */
+      height: 400px; /* Fixed height for banner */
     }
     .banner video {
       width: 100%;

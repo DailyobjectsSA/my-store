@@ -2,81 +2,239 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily Objects SA</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Basic Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; }
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 5px 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .logo-container img { height: 35px; margin-right: 10px; }
+    .logo-container span { font-size: 20px; font-weight: bold; color: #333; }
+    nav {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    nav a, nav img {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+      cursor: pointer;
+    }
+    nav a:hover { color: #007bff; }
+    nav img { height: 30px; width: auto; vertical-align: middle; }
+
+    /* Mega Menu */
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      z-index: 1000;
+    }
+    .mega-menu-content {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .mega-column {
+      width: 160px;
+      text-align: left;
+    }
+    .mega-column img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+    .mega-column h4 {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #222;
+      text-transform: uppercase;
+    }
+    .mega-column a {
+      display: block;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+      text-decoration: none;
+    }
+    .mega-column a:hover {
+      color: #007bff;
+    }
+    .view-all {
+      font-weight: bold;
+      color: green;
+    }
+
+    /* Banner */
+    .banner {
+      position: relative;
+      overflow: hidden;
+      height: 400px;
+    }
+    .banner video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <div class="header-container">
-    <div class="logo">
+  <div class="container">
+    <div class="logo-container">
       <img src="logo.png" alt="Daily Objects SA Logo">
-      <span class="logo-text">Daily Objects SA</span>
+      <span>Daily Objects SA</span>
     </div>
     <nav>
-      <ul class="nav-links">
-        <li class="dropdown">
-          <a href="#">TECH</a>
-          <div class="dropdown-content">
-            <div class="dropdown-grid">
-              <div class="dropdown-item">
-                <img src="phonecase1.jpg" alt="Phone Cases">
-                <h4>Phone Cases</h4>
-                <a href="#">Apple</a>
-                <a href="#">Samsung</a>
-                <a href="#">OnePlus</a>
-                <a href="#">Google</a>
-                <a href="#">View All +</a>
-              </div>
-              <div class="dropdown-item">
-                <img src="watchcover2.jpg" alt="Watch Accessories">
-                <h4>Watch Accessories</h4>
-                <a href="#">Watchbands</a>
-                <a href="#">Apple Watch Chargers</a>
-                <a href="#">Watch Organisers</a>
-                <a href="#">Apple Watch Cases</a>
-                <a href="#">View All +</a>
-              </div>
-              <div class="dropdown-item">
-                <img src="laptopbag.png" alt="Charging Solutions">
-                <h4>Charging Solutions</h4>
-                <a href="#">Powerbank</a>
-                <a href="#">Wireless Chargers</a>
-                <a href="#">Charging Cables</a>
-                <a href="#">Adapters</a>
-                <a href="#">View All +</a>
-              </div>
-              <!-- You can add more dropdown-item divs here if needed -->
-            </div>
+      <a id="techMenuBtn">TECH</a>
+      <div class="mega-menu" id="megaMenu">
+        <div class="mega-menu-content">
+          <div class="mega-column">
+            <img src="phonecase1.jpg" alt="Phone Cases">
+            <h4>PHONE CASES</h4>
+            <a href="#">Apple</a>
+            <a href="#">Samsung</a>
+            <a href="#">OnePlus</a>
+            <a href="#">Google</a>
+            <a href="#" class="view-all">View All +</a>
           </div>
-        </li>
-        <li><a href="#">BAGS & WALLETS</a></li>
-        <li><a href="#">WORK ESSENTIALS</a></li>
-        <li><a href="#">GIFTING</a></li>
-        <li><a href="#">COLLECTIONS</a></li>
-        <li><a href="#">SHOP BY APPLE</a></li>
-        <li><a href="#">NEW ARRIVALS</a></li>
-      </ul>
+          <div class="mega-column">
+            <img src="watchcover2.jpg" alt="Watch Accessories">
+            <h4>WATCH ACCESSORIES</h4>
+            <a href="#">Watchbands</a>
+            <a href="#">Apple Watch Chargers</a>
+            <a href="#">Watch Organisers</a>
+            <a href="#">Apple Watch Cases</a>
+            <a href="#" class="view-all">View All +</a>
+          </div>
+          <div class="mega-column">
+            <img src="charging.png" alt="Charging Solutions">
+            <h4>CHARGING SOLUTIONS</h4>
+            <a href="#">Powerbank</a>
+            <a href="#">Wireless Chargers</a>
+            <a href="#">Charging Cables</a>
+            <a href="#">Adapters</a>
+            <a href="#" class="view-all">View All +</a>
+          </div>
+          <div class="mega-column">
+            <img src="techaddons.png" alt="Tech Add-Ons">
+            <h4>TECH ADD-ONS</h4>
+            <a href="#">iPad Cases</a>
+            <a href="#">AirPods Covers</a>
+            <a href="#">Screen Guards</a>
+            <a href="#">Phone Wallets</a>
+            <a href="#" class="view-all">View All +</a>
+          </div>
+          <div class="mega-column">
+            <img src="laptopbag.png" alt="Laptop Sleeves">
+            <h4>LAPTOP BAGS</h4>
+            <a href="#">Zippered Sleeves</a>
+            <a href="#">Macbook Hardcases</a>
+            <a href="#">Messenger Bags</a>
+            <a href="#">Backpacks</a>
+            <a href="#" class="view-all">View All +</a>
+          </div>
+          <div class="mega-column">
+            <img src="stands.png" alt="Stands">
+            <h4>STANDS</h4>
+            <a href="#">Mobile</a>
+            <a href="#">Laptop</a>
+            <a href="#">Monitor</a>
+            <a href="#">iPad</a>
+            <a href="#" class="view-all">View All +</a>
+          </div>
+          <div class="mega-column">
+            <img src="organiser.png" alt="Organisers">
+            <h4>ORGANISERS</h4>
+            <a href="#">Tech Kit</a>
+            <a href="#">Folio</a>
+            <a href="#">Cables</a>
+            <a href="#">Pouches</a>
+            <a href="#" class="view-all">View All +</a>
+          </div>
+        </div>
+      </div>
+      <a href="#">BAGS & WALLETS</a>
+      <a href="#">WORK ESSENTIALS</a>
+      <img src="gifting-icon.png" alt="Gifting Icon">
+      <a href="#">GIFTING</a>
+      <a href="#">COLLECTIONS</a>
+      <a href="#">SHOP BY APPLE</a>
+      <a href="#">NEW ARRIVALS</a>
     </nav>
   </div>
 </header>
 
 <section class="banner">
-  <video autoplay muted loop id="banner-video">
+  <video autoplay muted loop playsinline>
     <source src="banner-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </section>
 
-<main>
-  <h1>Welcome to My Online Store!</h1>
-  <p>Find the best products here!</p>
-  <a href="#">View Products</a>
-</main>
-
 <footer>
-  <p>&copy; 2025 Daily Objects SA</p>
+  <p>&copy; 2025 Daily Objects SA. All rights reserved.</p>
 </footer>
+
+<script>
+  const techMenuBtn = document.getElementById('techMenuBtn');
+  const megaMenu = document.getElementById('megaMenu');
+
+  techMenuBtn.addEventListener('click', () => {
+    megaMenu.style.display = megaMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!techMenuBtn.contains(e.target) && !megaMenu.contains(e.target)) {
+      megaMenu.style.display = 'none';
+    }
+  });
+</script>
 
 </body>
 </html>

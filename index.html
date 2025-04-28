@@ -13,6 +13,9 @@
     header {
       background: #ffffff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
     .container {
       max-width: 1200px;
@@ -25,19 +28,23 @@
     .logo-container {
       display: flex;
       align-items: center;
-      background: white; /* White background behind logo and name */
-      padding: 8px 15px;
-      border-radius: 10px; /* Slightly rounded */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: white;
+      padding: 5px 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .logo-container img {
-      height: 120px; /* Bigger logo */
-      margin-right: 15px;
+      height: 35px; /* 👈 Correct small logo size */
+      margin-right: 10px;
     }
     .logo-container span {
-      font-size: 32px; /* Even bigger font */
+      font-size: 20px; /* 👈 Font size matching logo */
       font-weight: bold;
       color: #333;
+    }
+    nav {
+      display: flex;
+      align-items: center;
     }
     nav a {
       margin-left: 20px;
@@ -45,11 +52,15 @@
       color: #333;
       font-weight: 500;
       font-size: 18px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #007bff;
     }
     .banner {
       position: relative;
       overflow: hidden;
-      height: 400px; /* Fixed height for banner */
+      height: 400px;
     }
     .banner video {
       width: 100%;

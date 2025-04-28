@@ -92,6 +92,43 @@
       height: 100%;
       object-fit: cover;
     }
+
+    /* Products Section */
+    .products-section {
+      padding: 40px 20px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .product-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-links a {
+      display: block;
+      color: black;
+      text-decoration: none;
+      margin: 3px 0;
+      font-size: 14px;
+    }
+
+    .product-links a:hover {
+      color: green;
+    }
   </style>
 </head>
 <body>
@@ -129,6 +166,97 @@
     <source src="banner-video.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
+</div>
+
+<!-- Products Section -->
+<div class="products-section">
+  <div class="products-grid">
+    
+    <div class="product-card">
+      <img src="phonecase1.jpg" alt="Phone Cases">
+      <div class="product-title">PHONE CASES</div>
+      <div class="product-links">
+        <a href="#">Apple</a>
+        <a href="#">Samsung</a>
+        <a href="#">OnePlus</a>
+        <a href="#">Google</a>
+        <a href="#">View All +</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="watchcover2.jpg" alt="Watch Accessories">
+      <div class="product-title">WATCH ACCESSORIES</div>
+      <div class="product-links">
+        <a href="#">Watchbands</a>
+        <a href="#">Apple Watch Chargers</a>
+        <a href="#">Watch Organisers</a>
+        <a href="#">Apple Watch Cases</a>
+        <a href="#">View All +</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="laptopbag.png" alt="Charging Solutions">
+      <div class="product-title">CHARGING SOLUTIONS</div>
+      <div class="product-links">
+        <a href="#">Powerbanks</a>
+        <a href="#">Wireless Chargers</a>
+        <a href="#">Charging Cables</a>
+        <a href="#">Chargers and Adapters</a>
+        <a href="#">View All +</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="laptopbag.png" alt="Tech Add-Ons">
+      <div class="product-title">TECH ADD-ONS</div>
+      <div class="product-links">
+        <a href="#">iPad Cases</a>
+        <a href="#">AirPods Covers</a>
+        <a href="#">Screen Guards</a>
+        <a href="#">Phone Wallets</a>
+        <a href="#">View All +</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="laptopbag.png" alt="Laptop Sleeves and Bags">
+      <div class="product-title">LAPTOP SLEEVES & BAGS</div>
+      <div class="product-links">
+        <a href="#">Zippered Sleeves</a>
+        <a href="#">Macbook Hardcases</a>
+        <a href="#">Messenger Bags</a>
+        <a href="#">Backpacks</a>
+        <a href="#">View All +</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="laptopbag.png" alt="Stands">
+      <div class="product-title">STANDS</div>
+      <div class="product-links">
+        <a href="#">Mobile</a>
+        <a href="#">Laptop</a>
+        <a href="#">Monitor</a>
+        <a href="#">iPad</a>
+        <a href="#">View All +</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="laptopbag.png" alt="Organisers">
+      <div class="product-title">ORGANISERS</div>
+      <div class="product-links">
+        <a href="#">Tech Kit</a>
+        <a href="#">Folio</a>
+        <a href="#">Cables</a>
+        <a href="#">Pouches</a>
+        <a href="#">View All +</a>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 </body>

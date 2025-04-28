@@ -2,76 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Online Store</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DailyObjects - Premium Lifestyle Products</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+    header {
+      background: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1606813909227-5d16a3fae9e2?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      background: #fff;
+    }
+    .product-card {
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .product-card h3 {
+      margin-top: 15px;
+      font-size: 1.2rem;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <h1>My Store</h1>
-    </div>
-    <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Cases</a>
-      <a href="#">Accessories</a>
-      <a href="#">Sale</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <img src="https://via.placeholder.com/1200x400.png?text=Big+Sale+Banner" alt="Hero Banner">
-  </section>
+<header>
+  <div style="font-size: 1.8rem; font-weight: bold;">DailyObjects</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
 
-  <!-- Shop by Category -->
-  <section class="categories">
-    <h2>Shop by Category</h2>
-    <div class="category-grid">
-      <div class="category-item">
-        <img src="https://via.placeholder.com/300x300.png?text=Phone+Cases" alt="Phone Cases">
-        <p>Phone Cases</p>
-      </div>
-      <div class="category-item">
-        <img src="https://via.placeholder.com/300x300.png?text=Bags" alt="Bags">
-        <p>Bags</p>
-      </div>
-      <div class="category-item">
-        <img src="https://via.placeholder.com/300x300.png?text=Wallets" alt="Wallets">
-        <p>Wallets</p>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+  Discover Your Style
+</section>
 
-  <!-- Trending Products -->
-  <section class="products">
-    <h2>Trending Now</h2>
-    <div class="product-grid">
-      <div class="product-item">
-        <img src="https://via.placeholder.com/200x250.png?text=Product+1" alt="Product 1">
-        <h3>Product 1</h3>
-        <p>₹999</p>
-      </div>
-      <div class="product-item">
-        <img src="https://via.placeholder.com/200x250.png?text=Product+2" alt="Product 2">
-        <h3>Product 2</h3>
-        <p>₹799</p>
-      </div>
-      <div class="product-item">
-        <img src="https://via.placeholder.com/200x250.png?text=Product+3" alt="Product 3">
-        <h3>Product 3</h3>
-        <p>₹499</p>
-      </div>
-    </div>
-  </section>
+<section class="products">
+  <div class="product-card">
+    <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=500&q=80" alt="Phone Cases">
+    <h3>Phone Cases</h3>
+  </div>
+  <div class="product-card">
+    <img src="https://images.unsplash.com/photo-1610906593122-6fbd7c60dd1d?auto=format&fit=crop&w=500&q=80" alt="Laptop Sleeves">
+    <h3>Laptop Sleeves</h3>
+  </div>
+  <div class="product-card">
+    <img src="https://images.unsplash.com/photo-1606813909227-5d16a3fae9e2?auto=format&fit=crop&w=500&q=80" alt="Bags">
+    <h3>Bags & Backpacks</h3>
+  </div>
+  <div class="product-card">
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Wallets">
+    <h3>Wallets</h3>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 My Store | Follow us on 
-      <a href="#">Instagram</a> | <a href="#">Facebook</a>
-    </p>
-  </footer>
+<footer>
+  &copy; 2025 DailyObjects. All rights reserved.
+</footer>
 
 </body>
 </html>

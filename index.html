@@ -21,14 +21,67 @@
       z-index: 999;
     }
     .logo-area img { height: 40px; }
-    .menu { display: flex; align-items: center; gap: 25px; font-weight: bold; font-size: 16px; }
-    .menu a { text-decoration: none; color: #222; font-weight: 700; }
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-weight: bold;
+      font-size: 16px;
+      position: relative;
+    }
+    .menu a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 700;
+    }
     .menu a:hover { color: #007BFF; }
-    .icons { display: flex; gap: 20px; align-items: center; }
-    .icons img { height: 24px; width: 24px; cursor: pointer; }
+    .icons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .icons img {
+      height: 24px;
+      width: 24px;
+      cursor: pointer;
+    }
+
+    /* Dropdown for TECH */
+    .menu-item {
+      position: relative;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      min-width: 200px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      z-index: 99;
+    }
+    .dropdown a {
+      display: block;
+      padding: 10px;
+      color: #333;
+      text-decoration: none;
+      font-weight: normal;
+    }
+    .dropdown a:hover {
+      background: #f8f8f8;
+      color: #007BFF;
+    }
+    .menu-item:hover .dropdown {
+      display: block;
+    }
 
     /* Banner */
-    .banner video { width: 100%; height: 450px; object-fit: cover; }
+    .banner video {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
 
     /* Sections */
     section h2 {
@@ -43,26 +96,37 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
-      padding: 0 30px 40px;
+      gap: 0;
+      padding: 0;
+      margin-bottom: 40px;
     }
     .card {
-      width: 250px;
+      flex: 1 1 33%;
       text-align: center;
       background: #f9f9f9;
-      border-radius: 10px;
+      border: 1px solid #eee;
+      min-height: 350px;
       overflow: hidden;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .card img {
+      width: 80%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card:hover img {
+      transform: scale(1.05);
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
     .card h3 {
       padding: 15px 10px;
@@ -90,7 +154,16 @@
   </div>
 
   <nav class="menu">
-    <a href="#">TECH</a>
+    <div class="menu-item">
+      <a href="#">TECH</a>
+      <div class="dropdown">
+        <a href="#">Phone Cases</a>
+        <a href="#">Watch Accessories</a>
+        <a href="#">Charging Solutions</a>
+        <a href="#">Laptop Sleeves</a>
+        <a href="#">Organisers</a>
+      </div>
+    </div>
     <a href="#">BAGS & WALLETS</a>
     <a href="#">WORK ESSENTIALS</a>
     <a href="#">GIFTING</a>
@@ -130,7 +203,6 @@
       <img src="work1.jpg" alt="Work Essentials">
       <h3>WORK ESSENTIALS</h3>
     </div>
-    <!-- Gifting removed from Shop by Category grid -->
   </div>
 </section>
 

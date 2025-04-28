@@ -4,84 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daily Objects SA</title>
-  <link rel="stylesheet" href="style.css">
+
   <style>
-    body {
+    /* Reset */
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .navbar {
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+    }
+
+    /* Header/Navbar */
+    header {
       display: flex;
       align-items: center;
-      background-color: white;
-      padding: 10px 20px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar img {
-      height: 50px;
-      margin-right: 10px;
-    }
-
-    .logo-text {
-      font-size: 22px;
-      font-weight: bold;
-      margin-right: 30px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-item a {
-      text-decoration: none;
-      color: black;
-      font-weight: 500;
-      padding: 8px;
-      display: inline-block;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 35px;
-      left: 0;
-      background: white;
-      border: 1px solid #ccc;
-      min-width: 200px;
+      justify-content: space-between;
+      padding: 10px 30px;
+      background: #fff;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
       z-index: 999;
-      padding: 10px;
     }
 
-    .nav-item:hover .dropdown {
-      display: block;
+    .logo-area {
+      display: flex;
+      align-items: center;
     }
 
-    .dropdown-item {
-      padding: 8px 10px;
-      white-space: nowrap;
+    .logo-area img {
+      height: 40px;
     }
 
-    .dropdown-item a {
-      color: black;
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .menu a {
       text-decoration: none;
-      font-size: 14px;
+      color: #222;
+      font-weight: 700;
     }
 
-    .dropdown-item a:hover {
-      color: green;
+    .menu a:hover {
+      color: #007BFF;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .icons img {
+      height: 22px;
+      width: 22px;
+      cursor: pointer;
     }
 
     /* Banner Video */
     .banner {
-      position: relative;
       width: 100%;
       height: 400px;
       overflow: hidden;
@@ -93,171 +83,127 @@
       object-fit: cover;
     }
 
-    /* Products Section */
-    .products-section {
-      padding: 40px 20px;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
-      justify-items: center;
+    /* Categories Section */
+    .categories {
+      padding: 40px 30px;
+      background: #fff;
       text-align: center;
     }
 
-    .product-card img {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-
-    .product-title {
+    .section-title {
+      font-size: 24px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
     }
 
-    .product-links a {
-      display: block;
-      color: black;
-      text-decoration: none;
-      margin: 3px 0;
-      font-size: 14px;
+    .categories-grid {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .product-links a:hover {
-      color: green;
+    .category-card {
+      background: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      transition: transform 0.3s;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .category-card h3 {
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
   </style>
+
 </head>
 <body>
 
 <!-- Navbar -->
-<div class="navbar">
-  <img src="logo.png" alt="Logo">
-  <div class="logo-text">Daily Objects SA</div>
-  
-  <div class="nav-links">
-    <div class="nav-item">
-      <a href="#">TECH</a>
-      <div class="dropdown">
-        <div class="dropdown-item"><a href="#">Phone Cases</a></div>
-        <div class="dropdown-item"><a href="#">Watch Accessories</a></div>
-        <div class="dropdown-item"><a href="#">Charging Solutions</a></div>
-        <div class="dropdown-item"><a href="#">Tech Add-Ons</a></div>
-        <div class="dropdown-item"><a href="#">Laptop Sleeves and Bags</a></div>
-        <div class="dropdown-item"><a href="#">Stands</a></div>
-        <div class="dropdown-item"><a href="#">Organisers</a></div>
-      </div>
-    </div>
-    <div class="nav-item"><a href="#">BAGS & WALLETS</a></div>
-    <div class="nav-item"><a href="#">WORK ESSENTIALS</a></div>
-    <div class="nav-item"><a href="#">GIFTING</a></div>
-    <div class="nav-item"><a href="#">COLLECTIONS</a></div>
-    <div class="nav-item"><a href="#">SHOP BY APPLE</a></div>
-    <div class="nav-item"><a href="#">NEW ARRIVALS</a></div>
+<header>
+  <div class="logo-area">
+    <img src="logo.png" alt="Logo">
   </div>
-</div>
+
+  <nav class="menu">
+    <a href="#">TECH</a>
+    <a href="#">BAGS & WALLETS</a>
+    <a href="#">WORK ESSENTIALS</a>
+    <a href="#">GIFTING</a>
+    <a href="#">COLLECTIONS</a>
+    <a href="#">SHOP BY APPLE</a>
+    <a href="#">NEW ARRIVALS</a>
+  </nav>
+
+  <div class="icons">
+    <img src="cart.png" alt="Cart Icon">
+    <img src="user.png" alt="User Icon">
+    <img src="search.png" alt="Search Icon">
+  </div>
+</header>
 
 <!-- Banner -->
-<div class="banner">
+<section class="banner">
   <video autoplay muted loop>
     <source src="banner-video.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
-</div>
+</section>
 
-<!-- Products Section -->
-<div class="products-section">
-  <div class="products-grid">
-    
-    <div class="product-card">
-      <img src="phonecase1.jpg" alt="Phone Cases">
-      <div class="product-title">PHONE CASES</div>
-      <div class="product-links">
-        <a href="#">Apple</a>
-        <a href="#">Samsung</a>
-        <a href="#">OnePlus</a>
-        <a href="#">Google</a>
-        <a href="#">View All +</a>
-      </div>
+<!-- Categories Section -->
+<section class="categories">
+  <h2 class="section-title">SHOP BY CATEGORY</h2>
+  <div class="categories-grid">
+
+    <div class="category-card">
+      <img src="tech-accessories.jpg" alt="Tech Accessories">
+      <h3>TECH ACCESSORIES</h3>
     </div>
 
-    <div class="product-card">
-      <img src="watchcover2.jpg" alt="Watch Accessories">
-      <div class="product-title">WATCH ACCESSORIES</div>
-      <div class="product-links">
-        <a href="#">Watchbands</a>
-        <a href="#">Apple Watch Chargers</a>
-        <a href="#">Watch Organisers</a>
-        <a href="#">Apple Watch Cases</a>
-        <a href="#">View All +</a>
-      </div>
+    <div class="category-card">
+      <img src="bags-wallets.jpg" alt="Bags & Wallets">
+      <h3>BAGS & WALLETS</h3>
     </div>
 
-    <div class="product-card">
-      <img src="laptopbag.png" alt="Charging Solutions">
-      <div class="product-title">CHARGING SOLUTIONS</div>
-      <div class="product-links">
-        <a href="#">Powerbanks</a>
-        <a href="#">Wireless Chargers</a>
-        <a href="#">Charging Cables</a>
-        <a href="#">Chargers and Adapters</a>
-        <a href="#">View All +</a>
-      </div>
+    <div class="category-card">
+      <img src="work-essentials.jpg" alt="Work Essentials">
+      <h3>WORK ESSENTIALS</h3>
     </div>
 
-    <div class="product-card">
-      <img src="laptopbag.png" alt="Tech Add-Ons">
-      <div class="product-title">TECH ADD-ONS</div>
-      <div class="product-links">
-        <a href="#">iPad Cases</a>
-        <a href="#">AirPods Covers</a>
-        <a href="#">Screen Guards</a>
-        <a href="#">Phone Wallets</a>
-        <a href="#">View All +</a>
-      </div>
+    <div class="category-card">
+      <img src="gifting.jpg" alt="Gifting">
+      <h3>GIFTING</h3>
     </div>
 
-    <div class="product-card">
-      <img src="laptopbag.png" alt="Laptop Sleeves and Bags">
-      <div class="product-title">LAPTOP SLEEVES & BAGS</div>
-      <div class="product-links">
-        <a href="#">Zippered Sleeves</a>
-        <a href="#">Macbook Hardcases</a>
-        <a href="#">Messenger Bags</a>
-        <a href="#">Backpacks</a>
-        <a href="#">View All +</a>
-      </div>
+    <div class="category-card">
+      <img src="collections.jpg" alt="Collections">
+      <h3>COLLECTIONS</h3>
     </div>
 
-    <div class="product-card">
-      <img src="laptopbag.png" alt="Stands">
-      <div class="product-title">STANDS</div>
-      <div class="product-links">
-        <a href="#">Mobile</a>
-        <a href="#">Laptop</a>
-        <a href="#">Monitor</a>
-        <a href="#">iPad</a>
-        <a href="#">View All +</a>
-      </div>
+    <div class="category-card">
+      <img src="apple-accessories.jpg" alt="Shop By Apple">
+      <h3>SHOP BY APPLE</h3>
     </div>
 
-    <div class="product-card">
-      <img src="laptopbag.png" alt="Organisers">
-      <div class="product-title">ORGANISERS</div>
-      <div class="product-links">
-        <a href="#">Tech Kit</a>
-        <a href="#">Folio</a>
-        <a href="#">Cables</a>
-        <a href="#">Pouches</a>
-        <a href="#">View All +</a>
-      </div>
+    <div class="category-card">
+      <img src="new-arrivals.jpg" alt="New Arrivals">
+      <h3>NEW ARRIVALS</h3>
     </div>
 
   </div>
-</div>
+</section>
 
 </body>
 </html>

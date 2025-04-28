@@ -28,11 +28,11 @@
       align-items: center;
     }
     .logo-container img {
-      height: 60px;
-      margin-right: 10px;
+      height: 80px; /* Increased logo size */
+      margin-right: 12px;
     }
     .logo-container span {
-      font-size: 24px;
+      font-size: 28px; /* Bigger font for brand name */
       font-weight: bold;
       color: #333;
     }
@@ -41,11 +41,17 @@
       text-decoration: none;
       color: #333;
       font-weight: 500;
+      font-size: 18px;
+    }
+    .banner {
+      position: relative;
+      overflow: hidden;
+      height: 400px; /* Fixed height for video banner */
     }
     .banner video {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
+      object-fit: cover;
     }
     .products {
       padding: 40px 20px;

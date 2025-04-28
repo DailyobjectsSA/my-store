@@ -6,8 +6,13 @@
   <title>Daily Objects SA</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
+    /* Basic Reset */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
       font-family: Arial, sans-serif;
     }
     header {
@@ -18,7 +23,7 @@
       z-index: 999;
     }
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: auto;
       padding: 10px 20px;
       display: flex;
@@ -34,29 +39,83 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .logo-container img {
-      height: 35px; /* 👈 Correct small logo size */
+      height: 35px;
       margin-right: 10px;
     }
     .logo-container span {
-      font-size: 20px; /* 👈 Font size matching logo */
+      font-size: 20px;
       font-weight: bold;
       color: #333;
     }
     nav {
       display: flex;
       align-items: center;
+      position: relative;
     }
-    nav a {
+    nav a, nav img {
       margin-left: 20px;
       text-decoration: none;
       color: #333;
       font-weight: 500;
-      font-size: 18px;
+      font-size: 16px;
+      position: relative;
       transition: color 0.3s;
     }
     nav a:hover {
       color: #007bff;
     }
+    nav img {
+      height: 30px;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    /* Mega Menu */
+    .mega-menu {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      display: none;
+      z-index: 1000;
+    }
+    .mega-menu-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .mega-column {
+      width: 180px;
+      margin: 10px;
+      text-align: left;
+    }
+    .mega-column img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .mega-column h4 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .mega-column a {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .mega-column a:hover {
+      color: #007bff;
+    }
+    nav .has-mega:hover .mega-menu {
+      display: block;
+    }
+
     .banner {
       position: relative;
       overflow: hidden;
@@ -112,9 +171,74 @@
       <span>Daily Objects SA</span>
     </div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
+      <div class="has-mega">
+        <a href="#">TECH</a>
+        <div class="mega-menu">
+          <div class="mega-menu-content">
+            <div class="mega-column">
+              <img src="phonecase1.jpg" alt="Phone Cases">
+              <h4>PHONE CASES</h4>
+              <a href="#">Apple</a>
+              <a href="#">Samsung</a>
+              <a href="#">OnePlus</a>
+              <a href="#">Google</a>
+              <a href="#">View All +</a>
+            </div>
+            <div class="mega-column">
+              <img src="watchcover2.jpg" alt="Watch Accessories">
+              <h4>WATCH ACCESSORIES</h4>
+              <a href="#">Watchbands</a>
+              <a href="#">Watch Chargers</a>
+              <a href="#">Watch Organizers</a>
+              <a href="#">Watch Cases</a>
+              <a href="#">View All +</a>
+            </div>
+            <div class="mega-column">
+              <img src="charging.png" alt="Charging Solutions">
+              <h4>CHARGING SOLUTIONS</h4>
+              <a href="#">Powerbanks</a>
+              <a href="#">Wireless Chargers</a>
+              <a href="#">Cables</a>
+              <a href="#">Adapters</a>
+              <a href="#">View All +</a>
+            </div>
+            <div class="mega-column">
+              <img src="techaddons.png" alt="Tech Add-Ons">
+              <h4>TECH ADD-ONS</h4>
+              <a href="#">iPad Cases</a>
+              <a href="#">AirPods Covers</a>
+              <a href="#">Screen Guards</a>
+              <a href="#">Phone Wallets</a>
+              <a href="#">View All +</a>
+            </div>
+            <div class="mega-column">
+              <img src="laptopbag.png" alt="Laptop Bags">
+              <h4>LAPTOP SLEEVES</h4>
+              <a href="#">Zippered Sleeves</a>
+              <a href="#">Hardcases</a>
+              <a href="#">Messenger Bags</a>
+              <a href="#">Backpacks</a>
+              <a href="#">View All +</a>
+            </div>
+            <div class="mega-column">
+              <img src="stands.png" alt="Stands">
+              <h4>STANDS</h4>
+              <a href="#">Mobile</a>
+              <a href="#">Laptop</a>
+              <a href="#">Monitor</a>
+              <a href="#">iPad</a>
+              <a href="#">View All +</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#">BAGS & WALLETS</a>
+      <a href="#">WORK ESSENTIALS</a>
+      <img src="gifting-icon.png" alt="Gifting Icon">
+      <a href="#">GIFTING</a>
+      <a href="#">COLLECTIONS</a>
+      <a href="#">SHOP BY APPLE</a>
+      <a href="#">NEW ARRIVALS</a>
     </nav>
   </div>
 </header>

@@ -5,19 +5,10 @@
   <title>Daily Objects SA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Arial', sans-serif; background: #fff; }
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #fff;
-    }
-
-    /* Header/Navbar */
+    /* Navbar */
     header {
       display: flex;
       align-items: center;
@@ -29,54 +20,17 @@
       top: 0;
       z-index: 999;
     }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-area img {
-      height: 40px;
-    }
-
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .menu a {
-      text-decoration: none;
-      color: #222;
-      font-weight: 700;
-    }
-
-    .menu a:hover {
-      color: #007BFF;
-    }
-
-    .icons {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .icons img {
-      height: 24px;
-      width: 24px;
-      cursor: pointer;
-    }
+    .logo-area img { height: 40px; }
+    .menu { display: flex; align-items: center; gap: 25px; font-weight: bold; font-size: 16px; }
+    .menu a { text-decoration: none; color: #222; font-weight: 700; }
+    .menu a:hover { color: #007BFF; }
+    .icons { display: flex; gap: 20px; align-items: center; }
+    .icons img { height: 24px; width: 24px; cursor: pointer; }
 
     /* Banner */
-    .banner video {
-      width: 100%;
-      height: 450px;
-      object-fit: cover;
-    }
+    .banner video { width: 100%; height: 450px; object-fit: cover; }
 
-    /* Section Titles */
+    /* Sections */
     section h2 {
       font-size: 24px;
       font-weight: bold;
@@ -84,7 +38,7 @@
       margin: 40px 0 30px;
     }
 
-    /* Grids */
+    /* Product Grid */
     .grid {
       display: flex;
       gap: 20px;
@@ -92,7 +46,6 @@
       flex-wrap: wrap;
       padding: 0 30px 40px;
     }
-
     .card {
       width: 250px;
       text-align: center;
@@ -100,21 +53,19 @@
       border-radius: 10px;
       overflow: hidden;
       transition: transform 0.3s;
+      cursor: pointer;
     }
-
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
     .card img {
       width: 100%;
       height: 250px;
       object-fit: cover;
     }
-
     .card h3 {
-      padding: 15px 0;
+      padding: 15px 10px;
       font-size: 18px;
       color: #333;
     }
@@ -168,19 +119,19 @@
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
     <div class="card">
-      <img src="tech-accessories.jpg" alt="Tech Accessories">
+      <img src="tech1.jpg" alt="Tech Accessories">
       <h3>TECH ACCESSORIES</h3>
     </div>
     <div class="card">
-      <img src="bags-wallets.jpg" alt="Bags & Wallets">
+      <img src="bags1.jpg" alt="Bags & Wallets">
       <h3>BAGS & WALLETS</h3>
     </div>
     <div class="card">
-      <img src="work-essentials.jpg" alt="Work Essentials">
+      <img src="work1.jpg" alt="Work Essentials">
       <h3>WORK ESSENTIALS</h3>
     </div>
     <div class="card">
-      <img src="gifting.jpg" alt="Gifting">
+      <img src="gifting1.jpg" alt="Gifting">
       <h3>GIFTING</h3>
     </div>
   </div>
@@ -191,11 +142,11 @@
   <h2>SHOP BY COLLECTION</h2>
   <div class="grid">
     <div class="card">
-      <img src="collections1.jpg" alt="Collection 1">
+      <img src="collection1.jpg" alt="Collection 1">
       <h3>COLLECTION 1</h3>
     </div>
     <div class="card">
-      <img src="collections2.jpg" alt="Collection 2">
+      <img src="collection2.jpg" alt="Collection 2">
       <h3>COLLECTION 2</h3>
     </div>
   </div>
@@ -206,7 +157,7 @@
   <h2>SHOP BY DEVICE</h2>
   <div class="grid">
     <div class="card">
-      <img src="apple-accessories.jpg" alt="Shop by Apple">
+      <img src="apple1.jpg" alt="Apple Accessories">
       <h3>SHOP BY APPLE</h3>
     </div>
   </div>
@@ -217,11 +168,11 @@
   <h2>NEW ARRIVALS</h2>
   <div class="grid">
     <div class="card">
-      <img src="new-arrivals1.jpg" alt="New Arrival 1">
+      <img src="new1.jpg" alt="New Arrival 1">
       <h3>NEW ARRIVAL 1</h3>
     </div>
     <div class="card">
-      <img src="new-arrivals2.jpg" alt="New Arrival 2">
+      <img src="new2.jpg" alt="New Arrival 2">
       <h3>NEW ARRIVAL 2</h3>
     </div>
   </div>

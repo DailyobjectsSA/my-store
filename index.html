@@ -2,66 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Daily Objects SA - Premium Lifestyle Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Objects SA</title>
+  <link rel="stylesheet" href="style.css">
   <style>
+    /* Temporary CSS directly inside HTML for faster testing */
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f5f5f5;
+      font-family: Arial, sans-serif;
     }
     header {
-      background: #fff;
+      background: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
       padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    header img {
-      height: 50px;
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      height: 60px;
+      margin-right: 10px;
+    }
+    .logo-container span {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
     }
     nav a {
-      margin: 0 15px;
+      margin-left: 20px;
       text-decoration: none;
       color: #333;
-      font-weight: 600;
+      font-weight: 500;
     }
-    .hero {
-      position: relative;
+    .banner video {
       width: 100%;
-      height: 400px;
-      overflow: hidden;
-    }
-    .hero video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 2.5rem;
-      font-weight: bold;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      height: auto;
+      display: block;
     }
     .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .product-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
       gap: 20px;
-      padding: 40px;
-      background: #fff;
+      margin-top: 20px;
     }
     .product-card {
-      background: #fafafa;
+      background: #f9f9f9;
       padding: 20px;
-      border-radius: 10px;
+      width: 250px;
+      border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
       transition: transform 0.3s;
     }
     .product-card:hover {
@@ -69,73 +71,66 @@
     }
     .product-card img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    .product-card h3 {
-      margin-top: 15px;
-      font-size: 1.2rem;
-    }
-    .product-card p {
-      font-size: 1rem;
-      margin-top: 5px;
-      color: #555;
+      height: auto;
+      border-radius: 8px;
     }
     footer {
-      background: #222;
-      color: white;
       text-align: center;
       padding: 20px;
-      font-size: 0.9rem;
-      margin-top: 40px;
+      background: #333;
+      color: #fff;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="logo.png" alt="Daily Objects SA Logo">
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </nav>
+  <div class="container">
+    <div class="logo-container">
+      <img src="logo.png" alt="Daily Objects SA Logo">
+      <span>Daily Objects SA</span>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<section class="hero">
-  <video autoplay muted loop>
+<section class="banner">
+  <video autoplay muted loop playsinline>
     <source src="banner-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-  <div class="hero-text">
-    Discover Your Style
-  </div>
 </section>
 
-<section class="products">
-  <div class="product-card">
-    <img src="phonecase1.jpg" alt="Phone Case">
-    <h3>Stylish Phone Case</h3>
-    <p>₹499</p>
-  </div>
-
-  <div class="product-card">
-    <img src="laptopbag.png" alt="Laptop Bag">
-    <h3>Premium Laptop Bag</h3>
-    <p>₹1,299</p>
-  </div>
-
-  <div class="product-card">
-    <img src="watchcover2.jpg" alt="Watch Cover">
-    <h3>Elegant Watch Cover</h3>
-    <p>₹699</p>
-  </div>
-</section>
+<main>
+  <section id="products" class="products">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="phonecase1.jpg" alt="Phone Case">
+        <h3>Phone Case</h3>
+        <p>Stylish protection for your phone.</p>
+      </div>
+      <div class="product-card">
+        <img src="laptopbag.png" alt="Laptop Bag">
+        <h3>Laptop Bag</h3>
+        <p>Carry your laptop with style.</p>
+      </div>
+      <div class="product-card">
+        <img src="watchcover2.jpg" alt="Watch Cover">
+        <h3>Watch Cover</h3>
+        <p>Protect your watch in style.</p>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-  &copy; 2025 Daily Objects SA. All rights reserved.
+  <p>&copy; 2025 Daily Objects SA. All rights reserved.</p>
 </footer>
 
 </body>

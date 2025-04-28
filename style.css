@@ -1,18 +1,22 @@
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
-  padding: 0;
-  background: #f2f2f2;
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+  color: #333;
 }
 
-header {
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
   background: white;
-  padding: 10px;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
 }
 
-nav a {
+.nav-links a {
   margin: 0 10px;
   text-decoration: none;
   color: #333;
-}
+  font-weight:

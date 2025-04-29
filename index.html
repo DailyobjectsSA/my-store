@@ -31,20 +31,25 @@
       color: #222;
     }
     .menu a:hover { color: #007BFF; }
+    .menu-item {
+      position: relative;
+    }
     .dropdown {
       display: none;
       position: absolute;
       top: 35px;
+      left: 0;
       background: #fff;
       border: 1px solid #ddd;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      min-width: 200px;
-    }
-    .menu-item {
-      position: relative;
+      min-width: 500px;
+      padding: 15px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
     .menu-item:hover .dropdown {
-      display: block;
+      display: grid;
     }
     .dropdown a {
       display: block;
@@ -239,11 +244,62 @@
     <div class="menu-item">
       <a href="#">TECH</a>
       <div class="dropdown">
-        <a href="phone-cases.html">Phone Cases</a>
-        <a href="watch-accessories.html">Watch Accessories</a>
-        <a href="charging-solutions.html">Charging Solutions</a>
-        <a href="laptop-sleeves.html">Laptop Sleeves</a>
-        <a href="organizers.html">Organisers</a>
+        <div>
+          <h3>PHONE CASES</h3>
+          <a href="#">Apple</a>
+          <a href="#">Samsung</a>
+          <a href="#">OnePlus</a>
+          <a href="#">Google</a>
+          <a href="#">View All +</a>
+        </div>
+        <div>
+          <h3>WATCH ACCESSORIES</h3>
+          <a href="#">Watchbands</a>
+          <a href="#">Apple Watch Chargers</a>
+          <a href="#">Watch Organisers</a>
+          <a href="#">Apple Watch Cases</a>
+          <a href="#">View All +</a>
+        </div>
+        <div>
+          <h3>CHARGING SOLUTIONS</h3>
+          <a href="#">Powerbank</a>
+          <a href="#">Wireless Chargers</a>
+          <a href="#">Charging Cables</a>
+          <a href="#">Chargers and Adapters</a>
+          <a href="#">View All +</a>
+        </div>
+        <div>
+          <h3>TECH ADD-ONS</h3>
+          <a href="#">iPad Cases</a>
+          <a href="#">AirPods Cover</a>
+          <a href="#">Screen Guards</a>
+          <a href="#">Phone Wallets</a>
+          <a href="#">View All +</a>
+        </div>
+        <div>
+          <h3>LAPTOP SLEEVES AND BAGS</h3>
+          <a href="#">Zippered Sleeves</a>
+          <a href="#">Macbook Hardcases</a>
+          <a href="#">Messenger Bags</a>
+          <a href="#">Backpacks</a>
+          <a href="#">View All +</a>
+        </div>
+        <div>
+          <h3>STANDS</h3>
+          <a href="#">Mobile</a>
+          <a href="#">Laptop</a>
+          <a href="#">Monitor</a>
+          <a href="#">iPad</a>
+          <a href="#">View All +</a>
+        </div>
+        <div>
+          <h3>ORGANISERS</h3>
+          <a href="#">Tech Kit</a>
+          <a href="#">Folio</a>
+          <a href="#">Cables</a>
+          <a href="#">Pouches</a>
+          <a href="#">View All +</a>
+        </div>
       </div>
     </div>
     <a href="#">BAGS & WALLETS</a>
@@ -252,90 +308,44 @@
     <a href="#">COLLECTIONS</a>
     <a href="#">SHOP BY APPLE</a>
     <a href="#">NEW ARRIVALS</a>
+    <a href="#">SALE</a>
   </nav>
-  <div class="icons">
-    <img src="cart.png" alt="Cart">
-    <img src="user.png" alt="User">
-    <img src="search.png" alt="Search">
-  </div>
 </header>
 
-<section class="banner">
-  <video autoplay muted loop>
-    <source src="banner-video.mp4" type="video/mp4">
-  </video>
-</section>
-
-<section>
-  <h2>SHOP BY CATEGORY</h2>
-  <div class="grid">
-    <a href="tech.html" class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></a>
-    <a href="bags.html" class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></a>
-    <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a>
-  </div>
-</section>
-
-<section>
-  <div class="slideshow-container">
-    <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat4.jpg"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat5.jpg"><div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat6.jpg"><div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="dots">
-      <span class="dot" onclick="showSlide(0)"></span>
-      <span class="dot" onclick="showSlide(1)"></span>
-      <span class="dot" onclick="showSlide(2)"></span>
-      <span class="dot" onclick="showSlide(3)"></span>
-      <span class="dot" onclick="showSlide(4)"></span>
-      <span class="dot" onclick="showSlide(5)"></span>
+<!-- Slideshow Container -->
+<div class="slideshow-container">
+  <div class="slide">
+    <img src="slide1.jpg" alt="Slide 1">
+    <div class="slide-content">
+      <h1>Title for Slide 1</h1>
+      <p>Description for Slide 1</p>
+      <a href="#" class="shop-btn">SHOP NOW</a>
     </div>
   </div>
-</section>
+  <div class="slide">
+    <img src="slide2.jpg" alt="Slide 2">
+    <div class="slide-content">
+      <h1>Title for Slide 2</h1>
+      <p>Description for Slide 2</p>
+      <a href="#" class="shop-btn">SHOP NOW</a>
+    </div>
+  </div>
+  <!-- Additional slides can be added here -->
+</div>
 
-<section class="corporate-banner">
+<!-- Corporate Gifting Banner -->
+<div class="corporate-banner">
   <img src="cg1.jpg" alt="Corporate Gifting">
   <div class="overlay">
-    <h1>CORPORATE GIFTING</h1>
-    <p>It is the season to celebrate and nurture everlasting bonds. Build lasting relationships with our bespoke corporate solutions</p>
+    <h1>Corporate Gifting</h1>
+    <p>Gifting solutions for your business, personalized and branded to make an impression.</p>
   </div>
-</section>
+</div>
 
-<section>
-  <h2>TRENDING COLLECTION</h2>
-  <div class="zoom-grid">
-    <div class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>TIMELESS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-  </div>
-</section>
-
+<!-- Footer -->
 <footer>
-  <p>&copy; 2025 Daily Objects SA. All Rights Reserved.</p>
+  <p>&copy; 2025 Daily Objects SA. All rights reserved.</p>
 </footer>
-
-<script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-
-  function showSlide(index) {
-    slides[currentSlide].style.display = 'none';
-    dots[currentSlide].classList.remove('active');
-    currentSlide = index;
-    slides[currentSlide].style.display = 'block';
-    dots[currentSlide].classList.add('active');
-  }
-
-  function autoSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  setInterval(autoSlide, 10000);
-  showSlide(currentSlide);
-</script>
 
 </body>
 </html>

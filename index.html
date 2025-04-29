@@ -63,9 +63,7 @@
       cursor: pointer;
     }
 
-    .menu-item {
-      position: relative;
-    }
+    .menu-item { position: relative; }
 
     .dropdown {
       display: none;
@@ -123,31 +121,14 @@
       text-align: center;
       background: #f9f9f9;
       border: 1px solid #eee;
-      min-height: 350px;
       overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
     }
 
     .card img {
-      width: 80%;
-      height: 250px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.05);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
 
     .card h3 {
@@ -159,25 +140,21 @@
     /* Slideshow */
     .slideshow-container {
       position: relative;
-      max-width: 100%;
-      margin: auto;
-      background: #000;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
     }
 
     .slide {
       display: none;
-      animation: fade 1s ease-in-out;
-    }
-
-    @keyframes fade {
-      from { opacity: 0.4; }
-      to { opacity: 1; }
+      height: 100%;
+      width: 100%;
     }
 
     .slide img {
+      height: 100%;
       width: 100%;
-      height: 500px;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     .dots {
@@ -185,43 +162,23 @@
       bottom: 20px;
       left: 20px;
       display: flex;
-      gap: 8px;
+      gap: 10px;
+      z-index: 5;
     }
 
     .dot {
-      width: 12px;
       height: 12px;
-      background-color: #bbb;
+      width: 12px;
+      background-color: #ccc;
       border-radius: 50%;
-      position: relative;
-      overflow: hidden;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .dot.active {
-      width: 80px;
-      border-radius: 5px;
+      width: 60px;
+      border-radius: 6px;
       background-color: #444;
-    }
-
-    .dot .bar {
-      height: 100%;
-      width: 0%;
-      background-color: #007BFF;
-      position: absolute;
-      top: 0;
-      left: 0;
-      animation: none;
-    }
-
-    .dot.active .bar {
-      animation: progressBar 15s linear forwards;
-    }
-
-    @keyframes progressBar {
-      0% { width: 0%; }
-      100% { width: 100%; }
     }
 
     footer {
@@ -286,62 +243,40 @@
 <!-- Slideshow -->
 <section>
   <div class="slideshow-container">
-    <div class="slide"><img src="cat1.jpg" alt="cat1"></div>
-    <div class="slide"><img src="cat2.jpg" alt="cat2"></div>
-    <div class="slide"><img src="cat3.jpg" alt="cat3"></div>
-    <div class="slide"><img src="cat4.jpg" alt="cat4"></div>
-    <div class="slide"><img src="cat5.jpg" alt="cat5"></div>
-    <div class="slide"><img src="cat6.jpg" alt="cat6"></div>
+    <div class="slide"><img src="cat1.jpg"></div>
+    <div class="slide"><img src="cat2.jpg"></div>
+    <div class="slide"><img src="cat3.jpg"></div>
+    <div class="slide"><img src="cat4.jpg"></div>
+    <div class="slide"><img src="cat5.jpg"></div>
+    <div class="slide"><img src="cat6.jpg"></div>
 
     <div class="dots">
-      <span class="dot" onclick="currentSlide(1)"><div class="bar"></div></span>
-      <span class="dot" onclick="currentSlide(2)"><div class="bar"></div></span>
-      <span class="dot" onclick="currentSlide(3)"><div class="bar"></div></span>
-      <span class="dot" onclick="currentSlide(4)"><div class="bar"></div></span>
-      <span class="dot" onclick="currentSlide(5)"><div class="bar"></div></span>
-      <span class="dot" onclick="currentSlide(6)"><div class="bar"></div></span>
+      <span class="dot" onclick="showSlide(0)"></span>
+      <span class="dot" onclick="showSlide(1)"></span>
+      <span class="dot" onclick="showSlide(2)"></span>
+      <span class="dot" onclick="showSlide(3)"></span>
+      <span class="dot" onclick="showSlide(4)"></span>
+      <span class="dot" onclick="showSlide(5)"></span>
     </div>
   </div>
 </section>
 
-<!-- Additional Sections Below -->
-<section style="background:#f8f8f8;">
-  <h2>SHOP BY COLLECTION</h2>
-  <div class="grid">
-    <div class="card"><img src="collection1.jpg"><h3>COLLECTION 1</h3></div>
-    <div class="card"><img src="collection2.jpg"><h3>COLLECTION 2</h3></div>
-  </div>
-</section>
-
-<section>
-  <h2>SHOP BY DEVICE</h2>
-  <div class="grid">
-    <div class="card"><img src="apple1.jpg"><h3>SHOP BY APPLE</h3></div>
-  </div>
-</section>
-
-<section style="background:#f8f8f8;">
-  <h2>NEW ARRIVALS</h2>
-  <div class="grid">
-    <div class="card"><img src="new1.jpg"><h3>NEW ARRIVAL 1</h3></div>
-    <div class="card"><img src="new2.jpg"><h3>NEW ARRIVAL 2</h3></div>
-  </div>
-</section>
-
+<!-- Footer -->
 <footer>
   &copy; 2025 Daily Objects SA. All rights reserved.
 </footer>
 
 <script>
 let slideIndex = 0;
+let slides = document.getElementsByClassName("slide");
+let dots = document.getElementsByClassName("dot");
 let timeout;
 
-function showSlides(index = null) {
-  const slides = document.getElementsByClassName("slide");
-  const dots = document.getElementsByClassName("dot");
-
-  if (index !== null) slideIndex = index - 1;
-  else slideIndex = (slideIndex + 1) % slides.length;
+function showSlide(index = null) {
+  if (index !== null) {
+    slideIndex = index;
+    clearTimeout(timeout);
+  }
 
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
@@ -351,17 +286,11 @@ function showSlides(index = null) {
   slides[slideIndex].style.display = "block";
   dots[slideIndex].classList.add("active");
 
-  clearTimeout(timeout);
-  timeout = setTimeout(showSlides, 15000);
+  slideIndex = (slideIndex + 1) % slides.length;
+  timeout = setTimeout(() => showSlide(), 15000); // 15 seconds
 }
 
-function currentSlide(n) {
-  showSlides(n);
-}
-
-window.onload = function() {
-  showSlides();
-};
+window.onload = () => showSlide();
 </script>
 
 </body>

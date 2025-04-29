@@ -7,7 +7,6 @@
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {font-family: Arial, sans-serif; background: #fff;}
-
     header {
       display: flex;
       justify-content: space-between;
@@ -25,33 +24,59 @@
       gap: 25px;
       font-weight: bold;
       font-size: 16px;
+      position: relative;
     }
     .menu a {
       text-decoration: none;
       color: #222;
+      position: relative;
     }
     .menu a:hover { color: #007BFF; }
+
+    .menu-item {
+      position: relative;
+    }
+
     .dropdown {
       display: none;
       position: absolute;
       top: 35px;
+      left: 0;
       background: #fff;
       border: 1px solid #ddd;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      min-width: 200px;
+      padding: 10px;
+      z-index: 999;
+      min-width: 250px;
     }
-    .menu-item {
-      position: relative;
-    }
+
     .menu-item:hover .dropdown {
       display: block;
     }
-    .dropdown a {
+
+    .dropdown-group {
+      margin-bottom: 10px;
+    }
+
+    .dropdown-group strong {
       display: block;
-      padding: 10px;
-      text-decoration: none;
+      margin-bottom: 5px;
+      font-weight: bold;
       color: #333;
     }
+
+    .dropdown-group a {
+      display: block;
+      padding: 5px 10px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .dropdown-group a:hover {
+      background: #f0f0f0;
+    }
+
     .icons {
       display: flex;
       gap: 20px;
@@ -59,175 +84,6 @@
     .icons img {
       height: 24px;
       cursor: pointer;
-    }
-
-    section h2 {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin: 40px 0 30px;
-    }
-
-    .grid, .zoom-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 40px;
-    }
-
-    .card, .zoom-card {
-      flex: 1 1 33%;
-      text-align: center;
-      background: #f9f9f9;
-      border: 1px solid #eee;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .card img, .zoom-card img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .card:hover img, .zoom-card:hover img {
-      transform: scale(1.05);
-    }
-    .card h3 {
-      padding: 15px;
-      font-size: 18px;
-      color: #333;
-    }
-
-    .banner video {
-      width: 100%;
-      height: 450px;
-      object-fit: cover;
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      overflow: hidden;
-    }
-    .slide {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0; left: 0;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .slide-content {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      max-width: 45%;
-    }
-    .slide-content h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .slide-content p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-    .slide-content .shop-btn {
-      display: inline-block;
-      padding: 8px 16px;
-      font-size: 14px;
-      font-weight: bold;
-      color: black;
-      background: white;
-      border-radius: 5px;
-      text-decoration: none;
-      float: right;
-    }
-    .dots {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      display: flex;
-      gap: 10px;
-      z-index: 5;
-    }
-    .dot {
-      width: 12px;
-      height: 12px;
-      background-color: #ccc;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .dot.active {
-      width: 60px;
-      border-radius: 6px;
-      background-color: #444;
-    }
-
-    .overlay-text {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-    }
-    .overlay-text h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-    .overlay-text .shop-btn {
-      background: white;
-      color: black;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 4px;
-      text-decoration: none;
-    }
-
-    .corporate-banner {
-      position: relative;
-      height: 400px;
-      overflow: hidden;
-    }
-    .corporate-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .corporate-banner .overlay {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      max-width: 600px;
-    }
-    .corporate-banner .overlay h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .corporate-banner .overlay p {
-      font-size: 16px;
-    }
-
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
     }
   </style>
 </head>
@@ -239,11 +95,62 @@
     <div class="menu-item">
       <a href="#">TECH</a>
       <div class="dropdown">
-        <a href="phone-cases.html">Phone Cases</a>
-        <a href="watch-accessories.html">Watch Accessories</a>
-        <a href="charging-solutions.html">Charging Solutions</a>
-        <a href="laptop-sleeves.html">Laptop Sleeves</a>
-        <a href="organizers.html">Organisers</a>
+        <div class="dropdown-group">
+          <strong>PHONE CASES</strong>
+          <a href="apple.html">Apple</a>
+          <a href="#">Samsung</a>
+          <a href="#">OnePlus</a>
+          <a href="#">Google</a>
+          <a href="#">View All +</a>
+        </div>
+        <div class="dropdown-group">
+          <strong>WATCH ACCESSORIES</strong>
+          <a href="#">Watchbands</a>
+          <a href="#">Apple Watch Chargers</a>
+          <a href="#">Watch Organisers</a>
+          <a href="#">Apple Watch Cases</a>
+          <a href="#">View All +</a>
+        </div>
+        <div class="dropdown-group">
+          <strong>CHARGING SOLUTIONS</strong>
+          <a href="#">Powerbank</a>
+          <a href="#">Wireless Chargers</a>
+          <a href="#">Charging Cables</a>
+          <a href="#">Chargers and Adapters</a>
+          <a href="#">View All +</a>
+        </div>
+        <div class="dropdown-group">
+          <strong>TECH ADD-ONS</strong>
+          <a href="#">iPad Cases</a>
+          <a href="#">AirPods Cover</a>
+          <a href="#">Screen Guards</a>
+          <a href="#">Phone Wallets</a>
+          <a href="#">View All +</a>
+        </div>
+        <div class="dropdown-group">
+          <strong>LAPTOP SLEEVES AND BAGS</strong>
+          <a href="#">Zippered Sleeves</a>
+          <a href="#">Macbook Hardcases</a>
+          <a href="#">Messenger Bags</a>
+          <a href="#">Backpacks</a>
+          <a href="#">View All +</a>
+        </div>
+        <div class="dropdown-group">
+          <strong>STANDS</strong>
+          <a href="#">Mobile</a>
+          <a href="#">Laptop</a>
+          <a href="#">Monitor</a>
+          <a href="#">iPad</a>
+          <a href="#">View All +</a>
+        </div>
+        <div class="dropdown-group">
+          <strong>ORGANISERS</strong>
+          <a href="#">Tech Kit</a>
+          <a href="#">Folio</a>
+          <a href="#">Cables</a>
+          <a href="#">Pouches</a>
+          <a href="#">View All +</a>
+        </div>
       </div>
     </div>
     <a href="#">BAGS & WALLETS</a>
@@ -259,92 +166,140 @@
     <img src="search.png" alt="Search">
   </div>
 </header>
-
+<!-- Main Banner -->
 <section class="banner">
-  <video autoplay muted loop>
-    <source src="banner-video.mp4" type="video/mp4">
-  </video>
+  <img src="main-banner.jpg" alt="Main Banner" style="width: 100%; height: auto;" />
 </section>
 
-<section>
-  <h2>SHOP BY CATEGORY</h2>
-  <div class="grid">
-    <a href="tech.html" class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></a>
-    <a href="bags.html" class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></a>
-    <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a>
+<!-- Shop by Category -->
+<section class="category-section">
+  <h2 style="text-align: center; margin: 40px 0 20px;">Shop by Category</h2>
+  <div class="category-cards" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+    <a class="card" href="tech.html" style="text-decoration: none; text-align: center;">
+      <img src="tech.jpg" alt="Tech" style="width: 100%; max-width: 200px;">
+      <h3>TECH ACCESSORIES</h3>
+    </a>
+    <a class="card" href="bags.html" style="text-decoration: none; text-align: center;">
+      <img src="bags.jpg" alt="Bags" style="width: 100%; max-width: 200px;">
+      <h3>BAGS & WALLETS</h3>
+    </a>
+    <a class="card" href="work.html" style="text-decoration: none; text-align: center;">
+      <img src="work.jpg" alt="Work" style="width: 100%; max-width: 200px;">
+      <h3>WORK ESSENTIALS</h3>
+    </a>
   </div>
 </section>
 
-<section>
-  <div class="slideshow-container">
-    <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat4.jpg"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat5.jpg"><div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat6.jpg"><div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="dots">
-      <span class="dot" onclick="showSlide(0)"></span>
-      <span class="dot" onclick="showSlide(1)"></span>
-      <span class="dot" onclick="showSlide(2)"></span>
-      <span class="dot" onclick="showSlide(3)"></span>
-      <span class="dot" onclick="showSlide(4)"></span>
-      <span class="dot" onclick="showSlide(5)"></span>
+<!-- Slideshow Section -->
+<section class="slideshow" style="margin: 60px 0;">
+  <div class="slider-container" style="position: relative; overflow: hidden;">
+    <div class="slides" id="slides" style="display: flex; transition: transform 1s ease;">
+      <div class="slide" style="min-width: 100%; position: relative;">
+        <img src="slide1.jpg" alt="Slide 1" style="width: 100%; height: auto;">
+        <div class="slide-content" style="position: absolute; left: 30px; top: 30%; color: #fff;">
+          <h2>Slide One Title</h2>
+          <p>Description for slide one.</p>
+          <a href="#" style="background: #000; color: #fff; padding: 8px 16px; font-size: 14px; text-decoration: none;">SHOP NOW</a>
+        </div>
+      </div>
+      <div class="slide" style="min-width: 100%; position: relative;">
+        <img src="slide2.jpg" alt="Slide 2" style="width: 100%; height: auto;">
+        <div class="slide-content" style="position: absolute; left: 30px; top: 30%; color: #fff;">
+          <h2>Slide Two Title</h2>
+          <p>Description for slide two.</p>
+          <a href="#" style="background: #000; color: #fff; padding: 8px 16px; font-size: 14px; text-decoration: none;">SHOP NOW</a>
+        </div>
+      </div>
+      <!-- Add more slides if needed -->
+    </div>
+    <div class="dots" id="dots" style="position: absolute; bottom: 10px; left: 20px; display: flex; gap: 8px;">
+      <span class="dot" onclick="goToSlide(0)" style="width: 30px; height: 6px; background: #fff; border-radius: 3px; display: inline-block;"></span>
+      <span class="dot" onclick="goToSlide(1)" style="width: 6px; height: 6px; background: #ccc; border-radius: 50%; display: inline-block;"></span>
     </div>
   </div>
 </section>
 
-<section class="corporate-banner">
-  <img src="cg1.jpg" alt="Corporate Gifting">
-  <div class="overlay">
-    <h1>CORPORATE GIFTING</h1>
-    <p>It is the season to celebrate and nurture everlasting bonds. Build lasting relationships with our bespoke corporate solutions</p>
-  </div>
-</section>
-
-<section>
-  <h2>TRENDING COLLECTION</h2>
-  <div class="zoom-grid">
-    <div class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>BLACK PANGEA</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-  </div>
-</section>
-
-<section>
-  <h2>TECH ESSENTIALS</h2>
-  <div class="zoom-grid">
-    <div class="zoom-card"><img src="te1.jpg"><div class="overlay-text"><h3>ORGANISERS</h3></div></div>
-    <div class="zoom-card"><img src="te2.jpg"><div class="overlay-text"><h3>LAPTOP SLEEVES</h3></div></div>
-  </div>
-</section>
-
-<footer>
-  &copy; 2025 Daily Objects SA. All rights reserved.
-</footer>
-
 <script>
-let slideIndex = 0;
-let slides = document.getElementsByClassName("slide");
-let dots = document.getElementsByClassName("dot");
-let timeout;
+  let currentSlide = 0;
+  const slides = document.getElementById('slides');
+  const dots = document.querySelectorAll('.dot');
 
-function showSlide(index = null) {
-  if (index !== null) {
-    slideIndex = index;
-    clearTimeout(timeout);
+  function goToSlide(index) {
+    currentSlide = index;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.style.width = i === index ? '30px' : '6px';
+      dot.style.background = i === index ? '#fff' : '#ccc';
+    });
   }
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-    dots[i].classList.remove("active");
-  }
-  slides[slideIndex].style.display = "block";
-  dots[slideIndex].classList.add("active");
-  slideIndex = (slideIndex + 1) % slides.length;
-  timeout = setTimeout(() => showSlide(), 10000);
-}
-window.onload = () => showSlide();
+
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % dots.length;
+    goToSlide(currentSlide);
+  }, 10000); // 10 seconds
 </script>
+<!-- Trending Collection -->
+<section class="trending-section">
+  <h2 style="text-align: center; margin: 40px 0;">Trending Collection</h2>
+  <div class="trending-cards" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+    <a class="card" href="#" style="text-decoration: none; overflow: hidden;">
+      <img src="sbc1.jpg" alt="Trending 1" style="width: 100%; max-width: 300px; transition: transform 0.3s;">
+      <div style="position: absolute; left: 20px; bottom: 20px; color: white;">
+        <h3>Trending One</h3>
+        <a href="#" style="background: #000; color: #fff; padding: 6px 12px; font-size: 14px; text-decoration: none;">SHOP NOW</a>
+      </div>
+    </a>
+    <a class="card" href="#" style="text-decoration: none; overflow: hidden;">
+      <img src="sbc2.jpg" alt="Trending 2" style="width: 100%; max-width: 300px; transition: transform 0.3s;">
+      <div style="position: absolute; left: 20px; bottom: 20px; color: white;">
+        <h3>Trending Two</h3>
+        <a href="#" style="background: #000; color: #fff; padding: 6px 12px; font-size: 14px; text-decoration: none;">SHOP NOW</a>
+      </div>
+    </a>
+    <a class="card" href="#" style="text-decoration: none; overflow: hidden;">
+      <img src="sbc3.jpg" alt="Trending 3" style="width: 100%; max-width: 300px; transition: transform 0.3s;">
+      <div style="position: absolute; left: 20px; bottom: 20px; color: white;">
+        <h3>Trending Three</h3>
+        <a href="#" style="background: #000; color: #fff; padding: 6px 12px; font-size: 14px; text-decoration: none;">SHOP NOW</a>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Tech Essentials -->
+<section class="tech-essentials">
+  <h2 style="text-align: center; margin: 40px 0;">Tech Essentials</h2>
+  <div class="tech-cards" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+    <a class="card" href="#" style="text-decoration: none; overflow: hidden;">
+      <img src="te1.jpg" alt="Tech Essential 1" style="width: 100%; max-width: 300px; transition: transform 0.3s;">
+      <div style="position: absolute; left: 20px; bottom: 20px; color: white;">
+        <h3>Tech Item One</h3>
+        <a href="#" style="background: #000; color: #fff; padding: 6px 12px; font-size: 14px; text-decoration: none;">SHOP NOW</a>
+      </div>
+    </a>
+    <a class="card" href="#" style="text-decoration: none; overflow: hidden;">
+      <img src="te2.jpg" alt="Tech Essential 2" style="width: 100%; max-width: 300px; transition: transform 0.3s;">
+      <div style="position: absolute; left: 20px; bottom: 20px; color: white;">
+        <h3>Tech Item Two</h3>
+        <a href="#" style="background: #000; color: #fff; padding: 6px 12px; font-size: 14px; text-decoration: none;">SHOP NOW</a>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Corporate Gifting Banner -->
+<section class="corporate-banner" style="margin: 60px 0; position: relative;">
+  <img src="cg1.jpg" alt="Corporate Gifting" style="width: 100%; height: auto;">
+  <div style="position: absolute; left: 40px; top: 30%; color: white;">
+    <h2 style="font-size: 32px;">CORPORATE GIFTING</h2>
+    <p style="font-size: 16px; max-width: 400px;">Explore premium corporate gift ideas that combine utility and style. Perfect for clients, teams, and events.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: 20px 0; background: #f0f0f0;">
+  © 2025 Daily Objects SA. All rights reserved.
+</footer>
 
 </body>
 </html>

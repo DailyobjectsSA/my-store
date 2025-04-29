@@ -158,9 +158,10 @@
 
     /* Slideshow */
     .slideshow-container {
-      max-width: 100%;
       position: relative;
+      max-width: 100%;
       margin: auto;
+      background: #000;
     }
 
     .slide {
@@ -177,29 +178,40 @@
       width: 100%;
       height: 500px;
       object-fit: contain;
-      background-color: #000;
     }
 
     .dots {
-      text-align: center;
-      margin-top: 10px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      gap: 8px;
     }
 
     .dot {
-      display: inline-block;
-      height: 8px;
-      width: 80px;
-      margin: 5px 5px;
-      background-color: #ccc;
-      border-radius: 4px;
-      overflow: hidden;
+      width: 12px;
+      height: 12px;
+      background-color: #bbb;
+      border-radius: 50%;
       position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      width: 80px;
+      border-radius: 5px;
+      background-color: #444;
     }
 
     .dot .bar {
       height: 100%;
       width: 0%;
       background-color: #007BFF;
+      position: absolute;
+      top: 0;
+      left: 0;
       animation: none;
     }
 
@@ -280,18 +292,19 @@
     <div class="slide"><img src="cat4.jpg" alt="cat4"></div>
     <div class="slide"><img src="cat5.jpg" alt="cat5"></div>
     <div class="slide"><img src="cat6.jpg" alt="cat6"></div>
-  </div>
-  <div class="dots">
-    <span class="dot"><div class="bar"></div></span>
-    <span class="dot"><div class="bar"></div></span>
-    <span class="dot"><div class="bar"></div></span>
-    <span class="dot"><div class="bar"></div></span>
-    <span class="dot"><div class="bar"></div></span>
-    <span class="dot"><div class="bar"></div></span>
+
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"><div class="bar"></div></span>
+      <span class="dot" onclick="currentSlide(2)"><div class="bar"></div></span>
+      <span class="dot" onclick="currentSlide(3)"><div class="bar"></div></span>
+      <span class="dot" onclick="currentSlide(4)"><div class="bar"></div></span>
+      <span class="dot" onclick="currentSlide(5)"><div class="bar"></div></span>
+      <span class="dot" onclick="currentSlide(6)"><div class="bar"></div></span>
+    </div>
   </div>
 </section>
 
-<!-- More Sections -->
+<!-- Additional Sections Below -->
 <section style="background:#f8f8f8;">
   <h2>SHOP BY COLLECTION</h2>
   <div class="grid">
@@ -321,21 +334,34 @@
 
 <script>
 let slideIndex = 0;
-const slides = document.getElementsByClassName("slide");
-const dots = document.getElementsByClassName("dot");
+let timeout;
 
-function showSlides() {
+function showSlides(index = null) {
+  const slides = document.getElementsByClassName("slide");
+  const dots = document.getElementsByClassName("dot");
+
+  if (index !== null) slideIndex = index - 1;
+  else slideIndex = (slideIndex + 1) % slides.length;
+
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
     dots[i].classList.remove("active");
   }
-  slideIndex = (slideIndex + 1) > slides.length ? 1 : slideIndex + 1;
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].classList.add("active");
-  setTimeout(showSlides, 15000); // 15 seconds
+
+  slides[slideIndex].style.display = "block";
+  dots[slideIndex].classList.add("active");
+
+  clearTimeout(timeout);
+  timeout = setTimeout(showSlides, 15000);
 }
 
-showSlides();
+function currentSlide(n) {
+  showSlides(n);
+}
+
+window.onload = function() {
+  showSlides();
+};
 </script>
 
 </body>

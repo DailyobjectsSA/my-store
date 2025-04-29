@@ -3,231 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <title>Daily Objects SA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: Arial, sans-serif; background: #fff;}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #fff; }
+    a { text-decoration: none; color: inherit; }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 30px; background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 999;
     }
-    .logo-area img { height: 60px; width: auto; }
-    .menu {
-      display: flex;
-      gap: 25px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-    .menu a {
-      text-decoration: none;
-      color: #222;
-    }
-    .menu a:hover { color: #007BFF; }
+
+    .logo-area img { height: 60px; }
+    .menu { display: flex; gap: 25px; font-weight: bold; font-size: 16px; flex-wrap: wrap; }
+    .menu-item { position: relative; }
     .dropdown {
-      display: none;
-      position: absolute;
-      top: 35px;
-      background: #fff;
-      border: 1px solid #ddd;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      min-width: 200px;
+      display: none; position: absolute; top: 35px;
+      background: #fff; border: 1px solid #ddd; min-width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); z-index: 999;
     }
-    .menu-item {
-      position: relative;
+    .menu-item:hover .dropdown { display: block; }
+    .dropdown a { display: block; padding: 10px; }
+
+    .icons img { height: 24px; cursor: pointer; }
+
+    .filter-container { padding: 20px; max-width: 1200px; margin: auto; display: none; }
+    .model-list, .brand-list { margin: 20px 0; }
+    .model-list button, .brand-list button {
+      margin: 5px; padding: 10px 14px; border: 1px solid #ccc;
+      border-radius: 5px; background: #f0f0f0; cursor: pointer;
     }
-    .menu-item:hover .dropdown {
-      display: block;
+    .product-grid {
+      display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
     }
-    .dropdown a {
-      display: block;
-      padding: 10px;
-      text-decoration: none;
-      color: #333;
+    .product-card {
+      width: 200px; border: 1px solid #ccc; text-align: center;
+      padding: 10px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-    .icons {
-      display: flex;
-      gap: 20px;
-    }
-    .icons img {
-      height: 24px;
-      cursor: pointer;
+    .product-card img {
+      width: 100%; height: auto; object-fit: cover; margin-bottom: 10px;
     }
 
-    section h2 {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin: 40px 0 30px;
-    }
-
-    .grid, .zoom-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 40px;
-    }
-
-    .card, .zoom-card {
-      flex: 1 1 33%;
-      text-align: center;
-      background: #f9f9f9;
-      border: 1px solid #eee;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .card img, .zoom-card img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .card:hover img, .zoom-card:hover img {
-      transform: scale(1.05);
-    }
-    .card h3 {
-      padding: 15px;
-      font-size: 18px;
-      color: #333;
-    }
-
-    .banner video {
-      width: 100%;
-      height: 450px;
-      object-fit: cover;
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      overflow: hidden;
-    }
-    .slide {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0; left: 0;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .slide-content {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      max-width: 45%;
-    }
-    .slide-content h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .slide-content p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-    .slide-content .shop-btn {
-      display: inline-block;
-      padding: 8px 16px;
-      font-size: 14px;
-      font-weight: bold;
-      color: black;
-      background: white;
-      border-radius: 5px;
-      text-decoration: none;
-      float: right;
-    }
-    .dots {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      display: flex;
-      gap: 10px;
-      z-index: 5;
-    }
-    .dot {
-      width: 12px;
-      height: 12px;
-      background-color: #ccc;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .dot.active {
-      width: 60px;
-      border-radius: 6px;
-      background-color: #444;
-    }
-
-    .overlay-text {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-    }
-    .overlay-text h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-    .overlay-text .shop-btn {
-      background: white;
-      color: black;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 4px;
-      text-decoration: none;
-    }
-
-    .corporate-banner {
-      position: relative;
-      height: 400px;
-      overflow: hidden;
-    }
-    .corporate-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .corporate-banner .overlay {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      max-width: 600px;
-    }
-    .corporate-banner .overlay h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .corporate-banner .overlay p {
-      font-size: 16px;
-    }
-
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
+    @media (max-width: 768px) {
+      .menu { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -238,11 +57,7 @@
   <nav class="menu">
     <div class="menu-item"><a href="#">TECH</a>
       <div class="dropdown">
-        <a href="#">Phone Cases</a>
-        <a href="#">Watch Accessories</a>
-        <a href="#">Charging Solutions</a>
-        <a href="#">Laptop Sleeves</a>
-        <a href="#">Organisers</a>
+        <a href="#" onclick="selectBrand('Apple')">Phone Cases</a>
       </div>
     </div>
     <a href="#">BAGS & WALLETS</a>
@@ -259,90 +74,62 @@
   </div>
 </header>
 
-<section class="banner">
-  <video autoplay muted loop>
-    <source src="banner-video.mp4" type="video/mp4">
-  </video>
-</section>
-
-<section>
-  <h2>SHOP BY CATEGORY</h2>
-  <div class="grid">
-    <a href="tech.html" class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></a>
-    <a href="bags.html" class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></a>
-    <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a>
-  </div>
-</section>
-
-<section>
-  <div class="slideshow-container">
-    <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat4.jpg"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat5.jpg"><div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat6.jpg"><div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="dots">
-      <span class="dot" onclick="showSlide(0)"></span>
-      <span class="dot" onclick="showSlide(1)"></span>
-      <span class="dot" onclick="showSlide(2)"></span>
-      <span class="dot" onclick="showSlide(3)"></span>
-      <span class="dot" onclick="showSlide(4)"></span>
-      <span class="dot" onclick="showSlide(5)"></span>
-    </div>
-  </div>
-</section>
-
-<section class="corporate-banner">
-  <img src="cg1.jpg" alt="Corporate Gifting">
-  <div class="overlay">
-    <h1>CORPORATE GIFTING</h1>
-    <p>It is the season to celebrate and nurture everlasting bonds. Build lasting relationships with our bespoke corporate solutions</p>
-  </div>
-</section>
-
-<section>
-  <h2>TRENDING COLLECTION</h2>
-  <div class="zoom-grid">
-    <div class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>BLACK PANGEA</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-  </div>
-</section>
-
-<section>
-  <h2>TECH ESSENTIALS</h2>
-  <div class="zoom-grid">
-    <div class="zoom-card"><img src="te1.jpg"><div class="overlay-text"><h3>ORGANISERS</h3></div></div>
-    <div class="zoom-card"><img src="te2.jpg"><div class="overlay-text"><h3>LAPTOP SLEEVES</h3></div></div>
-  </div>
-</section>
-
-<footer>
-  &copy; 2025 Daily Objects SA. All rights reserved.
-</footer>
+<div class="filter-container" id="filterContainer">
+  <h2 id="filterTitle">Choose Model</h2>
+  <div class="model-list" id="modelList"></div>
+  <div class="product-grid" id="productGrid"></div>
+</div>
 
 <script>
-let slideIndex = 0;
-let slides = document.getElementsByClassName("slide");
-let dots = document.getElementsByClassName("dot");
-let timeout;
+  const models = {
+    "Apple": [
+      "iPhone 16e", "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max",
+      "iPhone 15", "iPhone 15 Pro Max", "iPhone 15 Pro", "iPhone 15 Plus"
+    ]
+  };
 
-function showSlide(index = null) {
-  if (index !== null) {
-    slideIndex = index;
-    clearTimeout(timeout);
+  function selectBrand(brand) {
+    const modelList = document.getElementById('modelList');
+    const filterTitle = document.getElementById('filterTitle');
+    const productGrid = document.getElementById('productGrid');
+    modelList.innerHTML = '';
+    productGrid.innerHTML = '';
+    filterTitle.innerText = "Choose Model";
+
+    if (models[brand]) {
+      models[brand].forEach(model => {
+        const btn = document.createElement("button");
+        btn.innerText = model;
+        btn.onclick = () => {
+          if (model === "iPhone 15") {
+            loadIPhone15Products();
+          } else {
+            productGrid.innerHTML = `<p>Model "${model}" not implemented yet.</p>`;
+          }
+        };
+        modelList.appendChild(btn);
+      });
+    } else {
+      modelList.innerHTML = "<p>No models available.</p>";
+    }
+
+    document.getElementById('filterContainer').style.display = "block";
+    window.scrollTo({ top: document.getElementById('filterContainer').offsetTop, behavior: 'smooth' });
   }
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-    dots[i].classList.remove("active");
+
+  function loadIPhone15Products() {
+    const grid = document.getElementById("productGrid");
+    grid.innerHTML = "";
+    for (let i = 1; i <= 41; i++) {
+      grid.innerHTML += `
+        <div class="product-card">
+          <img src="images/A15-P${i}.png" alt="A15-P${i}">
+          <p>iPhone 15 Case ${i}</p>
+          <p><strong>Rs. ${799 + i * 10}</strong></p>
+          <button onclick="alert('Added to cart')">Add to Cart</button>
+        </div>`;
+    }
   }
-  slides[slideIndex].style.display = "block";
-  dots[slideIndex].classList.add("active");
-  slideIndex = (slideIndex + 1) % slides.length;
-  timeout = setTimeout(() => showSlide(), 10000);
-}
-window.onload = () => showSlide();
 </script>
 
 </body>

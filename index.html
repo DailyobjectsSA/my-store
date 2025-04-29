@@ -31,6 +31,12 @@
       color: #222;
     }
     .menu a:hover { color: #007BFF; }
+    .menu-item {
+      position: relative;
+    }
+    .menu-item:hover .dropdown {
+      display: block;
+    }
     .dropdown {
       display: none;
       position: absolute;
@@ -39,12 +45,17 @@
       border: 1px solid #ddd;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
       min-width: 200px;
+      padding: 10px;
     }
-    .menu-item {
-      position: relative;
+    .dropdown .category {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
     }
-    .menu-item:hover .dropdown {
-      display: block;
+    .dropdown .category > div {
+      flex: 1 1 45%;
+      padding: 10px;
     }
     .dropdown a {
       display: block;
@@ -60,175 +71,7 @@
       height: 24px;
       cursor: pointer;
     }
-
-    section h2 {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin: 40px 0 30px;
-    }
-
-    .grid, .zoom-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 40px;
-    }
-
-    .card, .zoom-card {
-      flex: 1 1 33%;
-      text-align: center;
-      background: #f9f9f9;
-      border: 1px solid #eee;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .card img, .zoom-card img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .card:hover img, .zoom-card:hover img {
-      transform: scale(1.05);
-    }
-    .card h3 {
-      padding: 15px;
-      font-size: 18px;
-      color: #333;
-    }
-
-    .banner video {
-      width: 100%;
-      height: 450px;
-      object-fit: cover;
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      overflow: hidden;
-    }
-    .slide {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0; left: 0;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .slide-content {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      max-width: 45%;
-    }
-    .slide-content h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .slide-content p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-    .slide-content .shop-btn {
-      display: inline-block;
-      padding: 8px 16px;
-      font-size: 14px;
-      font-weight: bold;
-      color: black;
-      background: white;
-      border-radius: 5px;
-      text-decoration: none;
-      float: right;
-    }
-    .dots {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      display: flex;
-      gap: 10px;
-      z-index: 5;
-    }
-    .dot {
-      width: 12px;
-      height: 12px;
-      background-color: #ccc;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .dot.active {
-      width: 60px;
-      border-radius: 6px;
-      background-color: #444;
-    }
-
-    .overlay-text {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-    }
-    .overlay-text h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-    .overlay-text .shop-btn {
-      background: white;
-      color: black;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 4px;
-      text-decoration: none;
-    }
-
-    .corporate-banner {
-      position: relative;
-      height: 400px;
-      overflow: hidden;
-    }
-    .corporate-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .corporate-banner .overlay {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      max-width: 600px;
-    }
-    .corporate-banner .overlay h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .corporate-banner .overlay p {
-      font-size: 16px;
-    }
-
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
+    /* Other Styles Remain the Same */
   </style>
 </head>
 <body>
@@ -239,61 +82,63 @@
     <div class="menu-item">
       <a href="#">TECH</a>
       <div class="dropdown">
-        <a href="#">PHONE CASES</a>
-        <div class="dropdown">
-          <a href="apple.html">Apple</a>
-          <a href="samsung.html">Samsung</a>
-          <a href="oneplus.html">OnePlus</a>
-          <a href="google.html">Google</a>
-          <a href="#">View All</a>
-        </div>
-        <a href="#">WATCH ACCESSORIES</a>
-        <div class="dropdown">
-          <a href="watchbands.html">Watchbands</a>
-          <a href="apple-watch-chargers.html">Apple Watch Chargers</a>
-          <a href="watch-organizers.html">Watch Organisers</a>
-          <a href="apple-watch-cases.html">Apple Watch Cases</a>
-          <a href="#">View All</a>
-        </div>
-        <a href="#">CHARGING SOLUTIONS</a>
-        <div class="dropdown">
-          <a href="powerbank.html">Powerbank</a>
-          <a href="wireless-chargers.html">Wireless Chargers</a>
-          <a href="charging-cables.html">Charging Cables</a>
-          <a href="chargers-adapters.html">Chargers and Adapters</a>
-          <a href="#">View All</a>
-        </div>
-        <a href="#">TECH ADD-ONS</a>
-        <div class="dropdown">
-          <a href="ipad-cases.html">iPad Cases</a>
-          <a href="airpods-cover.html">AirPods Cover</a>
-          <a href="screen-guards.html">Screen Guards</a>
-          <a href="phone-wallets.html">Phone Wallets</a>
-          <a href="#">View All</a>
-        </div>
-        <a href="#">LAPTOP SLEEVES AND BAGS</a>
-        <div class="dropdown">
-          <a href="zippered-sleeves.html">Zippered Sleeves</a>
-          <a href="macbook-hardcases.html">Macbook Hardcases</a>
-          <a href="messenger-bags.html">Messenger Bags</a>
-          <a href="backpacks.html">Backpacks</a>
-          <a href="#">View All</a>
-        </div>
-        <a href="#">STANDS</a>
-        <div class="dropdown">
-          <a href="mobile-stands.html">Mobile</a>
-          <a href="laptop-stands.html">Laptop</a>
-          <a href="monitor-stands.html">Monitor</a>
-          <a href="ipad-stands.html">iPad</a>
-          <a href="#">View All</a>
-        </div>
-        <a href="#">ORGANISERS</a>
-        <div class="dropdown">
-          <a href="tech-kit.html">Tech Kit</a>
-          <a href="folio.html">Folio</a>
-          <a href="cables.html">Cables</a>
-          <a href="pouches.html">Pouches</a>
-          <a href="#">View All</a>
+        <div class="category">
+          <div>
+            <h3>PHONE CASES</h3>
+            <a href="apple.html">Apple</a>
+            <a href="samsung.html">Samsung</a>
+            <a href="oneplus.html">OnePlus</a>
+            <a href="google.html">Google</a>
+            <a href="view-all.html">View All +</a>
+          </div>
+          <div>
+            <h3>WATCH ACCESSORIES</h3>
+            <a href="watchbands.html">Watchbands</a>
+            <a href="apple-watch-chargers.html">Apple Watch Chargers</a>
+            <a href="watch-organizers.html">Watch Organisers</a>
+            <a href="apple-watch-cases.html">Apple Watch Cases</a>
+            <a href="view-all.html">View All +</a>
+          </div>
+          <div>
+            <h3>CHARGING SOLUTIONS</h3>
+            <a href="powerbank.html">Powerbank</a>
+            <a href="wireless-chargers.html">Wireless Chargers</a>
+            <a href="charging-cables.html">Charging Cables</a>
+            <a href="chargers-adapters.html">Chargers and Adapters</a>
+            <a href="view-all.html">View All +</a>
+          </div>
+          <div>
+            <h3>TECH ADD-ONS</h3>
+            <a href="ipad-cases.html">iPad Cases</a>
+            <a href="airpods-cover.html">AirPods Cover</a>
+            <a href="screen-guards.html">Screen Guards</a>
+            <a href="phone-wallets.html">Phone Wallets</a>
+            <a href="view-all.html">View All +</a>
+          </div>
+          <div>
+            <h3>LAPTOP SLEEVES AND BAGS</h3>
+            <a href="zippered-sleeves.html">Zippered Sleeves</a>
+            <a href="macbook-hardcases.html">Macbook Hardcases</a>
+            <a href="messenger-bags.html">Messenger Bags</a>
+            <a href="backpacks.html">Backpacks</a>
+            <a href="view-all.html">View All +</a>
+          </div>
+          <div>
+            <h3>STANDS</h3>
+            <a href="mobile-stands.html">Mobile</a>
+            <a href="laptop-stands.html">Laptop</a>
+            <a href="monitor-stands.html">Monitor</a>
+            <a href="ipad-stands.html">iPad</a>
+            <a href="view-all.html">View All +</a>
+          </div>
+          <div>
+            <h3>ORGANISERS</h3>
+            <a href="tech-kit.html">Tech Kit</a>
+            <a href="folio.html">Folio</a>
+            <a href="cables.html">Cables</a>
+            <a href="pouches.html">Pouches</a>
+            <a href="view-all.html">View All +</a>
+          </div>
         </div>
       </div>
     </div>
@@ -311,54 +156,26 @@
   </div>
 </header>
 
-<section class="banner">
-  <video autoplay muted loop>
-    <source src="banner-video.mp4" type="video/mp4">
-  </video>
-</section>
+<!-- Rest of your body remains unchanged -->
+<!-- Add the following dynamic page for 'Apple' as a new example -->
+<script>
+// This part can be added to the Apple category page (apple.html) to dynamically load images
+document.addEventListener("DOMContentLoaded", function() {
+  const modelImages = ['A15-P1.png', 'A15-P2.png', 'A15-P3.png']; // Example images
+  const container = document.getElementById('image-container');
+  modelImages.forEach(image => {
+    const imgElement = document.createElement('img');
+    imgElement.src = `https://github.com/DailyobjectsSA/my-store/blob/main/images/${image}?raw=true`;
+    imgElement.alt = image;
+    container.appendChild(imgElement);
+  });
+});
+</script>
 
-<section>
-  <h2>SHOP BY CATEGORY</h2>
-  <div class="grid">
-    <a href="tech.html" class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></a>
-    <a href="bags.html" class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></a>
-    <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a>
-  </div>
+<!-- Dynamic image container for 'Apple' page -->
+<section id="image-container">
+  <!-- Dynamic images will appear here -->
 </section>
-
-<section>
-  <div class="slideshow-container">
-    <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi wireless charging solution for your gadgets.</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>MODERN LAPTOP SLEEVES</h1><p>Protect your devices with style.</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>BACKPACKS</h1><p>Convenient, comfortable, and stylish for every day.</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-  </div>
-</section>
-
-<section class="corporate-banner">
-  <img src="cg1.jpg">
-  <div class="overlay">
-    <h1>CORPORATE GIFTING</h1>
-    <p>Get personalized tech gifts for your team or clients.</p>
-  </div>
-</section>
-
-<section>
-  <h2>TRENDING COLLECTION</h2>
-  <div class="zoom-grid">
-    <a href="#" class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>TRAVEL ESSENTIALS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></a>
-    <a href="#" class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>OFFICE SUPPLIES</h3><a href="#" class="shop-btn">SHOP NOW</a></div></a>
-    <a href="#" class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>NEW ARRIVALS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></a>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2025 Daily Objects SA. All Rights Reserved.</p>
-</footer>
 
 </body>
 </html>

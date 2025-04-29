@@ -23,7 +23,6 @@
     }
 
     .menu a:hover { color: #007BFF; }
-
     .menu-item { position: relative; }
     .dropdown {
       display: none; position: absolute; top: 35px;
@@ -42,13 +41,6 @@
 
     .icons { display: flex; gap: 15px; }
     .icons img { height: 24px; cursor: pointer; }
-
-    .banner video { width: 100%; height: 450px; object-fit: cover; }
-
-    section h2 {
-      font-size: 24px; font-weight: bold;
-      text-align: center; margin: 40px 0 30px;
-    }
 
     .grid {
       display: flex;
@@ -82,18 +74,118 @@
       color: #333;
     }
 
+    .filter-container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .search-bar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product-card {
+      width: 220px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-card h4 {
+      font-size: 14px;
+      margin: 8px 0;
+    }
+
+    .product-card .price {
+      font-weight: bold;
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    .product-card button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .pagination button {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background: #eee;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .pagination button.active {
+      background: #007BFF;
+      color: white;
+    }
+
     @media (max-width: 768px) {
       .menu {
-        display: none; flex-direction: column;
-        width: 100%; background: white;
-        position: absolute; top: 80px; left: 0;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        position: absolute;
+        top: 80px;
+        left: 0;
         padding: 10px 0;
       }
 
-      .menu.open { display: flex; }
-      .hamburger { display: flex; }
-      .grid { flex-direction: column; }
-      .card { flex: 1 1 100%; }
+      .menu.open {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .grid {
+        flex-direction: column;
+      }
+
+      .card {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
@@ -101,13 +193,13 @@
 
 <header>
   <div class="logo-area"><img src="logo.png" alt="Logo"></div>
-  <div class="hamburger" onclick="toggleMenu()">
+  <div class="hamburger" onclick="document.getElementById('menu').classList.toggle('open')">
     <span></span><span></span><span></span>
   </div>
   <nav class="menu" id="menu">
     <div class="menu-item"><a href="#">TECH</a>
       <div class="dropdown">
-        <a href="#" onclick="showFilter('apple')">Phone Cases</a>
+        <a href="#" onclick="showProductGrid()">Phone Cases</a>
       </div>
     </div>
     <a href="#">BAGS & WALLETS</a>
@@ -124,16 +216,10 @@
   </div>
 </header>
 
-<section class="banner">
-  <video autoplay muted loop>
-    <source src="banner-video.mp4" type="video/mp4" />
-  </video>
-</section>
-
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
-    <a href="#" onclick="loadAllProducts()" class="card">
+    <a href="#" onclick="showProductGrid()" class="card">
       <img src="cat2.jpg" alt="Phone Cases">
       <h3>TECH ACCESSORIES</h3>
     </a>
@@ -141,3 +227,68 @@
     <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a>
   </div>
 </section>
+
+<!-- Filter/Search/Product Grid Section -->
+<div class="filter-container" id="productSection" style="display:none;">
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search model..." oninput="renderProducts()">
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+  <div class="pagination" id="pagination"></div>
+</div>
+
+<script>
+let allProducts = [];
+let currentPage = 1;
+const itemsPerPage = 12;
+
+for (let i = 1; i <= 41; i++) {
+  allProducts.push({
+    name: `iPhone 15 Case ${i}`,
+    image: `images/A15-P${i}.png`,
+    price: 799 + i * 10
+  });
+}
+
+function showProductGrid() {
+  document.getElementById("productSection").style.display = "block";
+  currentPage = 1;
+  renderProducts();
+  window.scrollTo({ top: document.getElementById("productSection").offsetTop, behavior: 'smooth' });
+}
+
+function renderProducts() {
+  const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+  const filtered = allProducts.filter(p => p.name.toLowerCase().includes(searchQuery));
+  const start = (currentPage - 1) * itemsPerPage;
+  const paginated = filtered.slice(start, start + itemsPerPage);
+
+  const grid = document.getElementById("productGrid");
+  grid.innerHTML = '';
+  paginated.forEach(p => {
+    grid.innerHTML += `
+      <div class="product-card">
+        <img src="${p.image}" alt="${p.name}">
+        <h4>${p.name}</h4>
+        <div class="price">Rs. ${p.price}</div>
+        <button onclick="alert('${p.name} added to cart')">Add to Cart</button>
+      </div>
+    `;
+  });
+
+  const pagination = document.getElementById("pagination");
+  pagination.innerHTML = '';
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  for (let i = 1; i <= totalPages; i++) {
+    pagination.innerHTML += `<button class="${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+  }
+}
+
+function goToPage(page) {
+  currentPage = page;
+  renderProducts();
+}
+</script>
+
+</body>
+</html>

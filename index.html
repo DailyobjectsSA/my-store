@@ -8,14 +8,13 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Arial', sans-serif; background: #fff; }
 
-    /* Navbar */
     header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 15px 30px;
       background: #fff;
-      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 999;
@@ -43,27 +42,31 @@
       font-size: 16px;
       position: relative;
     }
+
     .menu a {
       text-decoration: none;
       color: #222;
       font-weight: 700;
     }
+
     .menu a:hover { color: #007BFF; }
+
     .icons {
       display: flex;
       gap: 20px;
       align-items: center;
     }
+
     .icons img {
       height: 24px;
       width: 24px;
       cursor: pointer;
     }
 
-    /* Dropdown for TECH */
     .menu-item {
       position: relative;
     }
+
     .dropdown {
       display: none;
       position: absolute;
@@ -75,6 +78,7 @@
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
       z-index: 99;
     }
+
     .dropdown a {
       display: block;
       padding: 10px;
@@ -82,22 +86,22 @@
       text-decoration: none;
       font-weight: normal;
     }
+
     .dropdown a:hover {
       background: #f8f8f8;
       color: #007BFF;
     }
+
     .menu-item:hover .dropdown {
       display: block;
     }
 
-    /* Banner */
     .banner video {
       width: 100%;
       height: 450px;
       object-fit: cover;
     }
 
-    /* Sections */
     section h2 {
       font-size: 24px;
       font-weight: bold;
@@ -105,7 +109,6 @@
       margin: 40px 0 30px;
     }
 
-    /* Product Grid */
     .grid {
       display: flex;
       flex-wrap: wrap;
@@ -114,6 +117,7 @@
       padding: 0;
       margin-bottom: 40px;
     }
+
     .card {
       flex: 1 1 33%;
       text-align: center;
@@ -129,19 +133,23 @@
       align-items: center;
       position: relative;
     }
+
     .card img {
       width: 80%;
       height: 250px;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
+
     .card:hover img {
       transform: scale(1.05);
     }
+
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
+
     .card h3 {
       padding: 15px 10px;
       font-size: 18px;
@@ -150,38 +158,60 @@
 
     /* Slideshow */
     .slideshow-container {
-      position: relative;
       max-width: 100%;
-      margin: 40px auto;
-      overflow: hidden;
-    }
-    .slide {
-      display: none;
-    }
-    .slide img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-    .dots {
-      text-align: center;
-      margin-top: 15px;
-    }
-    .dot {
-      cursor: pointer;
-      height: 15px;
-      width: 15px;
-      margin: 0 5px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
-    }
-    .active, .dot:hover {
-      background-color: #717171;
+      position: relative;
+      margin: auto;
     }
 
-    /* Footer */
+    .slide {
+      display: none;
+      animation: fade 1s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+
+    .slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      display: inline-block;
+      height: 8px;
+      width: 80px;
+      margin: 5px 5px;
+      background-color: #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dot .bar {
+      height: 100%;
+      width: 0%;
+      background-color: #007BFF;
+      animation: none;
+    }
+
+    .dot.active .bar {
+      animation: progressBar 15s linear forwards;
+    }
+
+    @keyframes progressBar {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
     footer {
       background: #222;
       color: #fff;
@@ -191,7 +221,6 @@
     }
   </style>
 </head>
-
 <body>
 
 <!-- Header -->
@@ -199,7 +228,6 @@
   <div class="logo-area">
     <img src="logo.png" alt="Logo">
   </div>
-
   <nav class="menu">
     <div class="menu-item">
       <a href="#">TECH</a>
@@ -218,7 +246,6 @@
     <a href="#">SHOP BY APPLE</a>
     <a href="#">NEW ARRIVALS</a>
   </nav>
-
   <div class="icons">
     <img src="cart.png" alt="Cart">
     <img src="user.png" alt="User">
@@ -238,132 +265,77 @@
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
-    <div class="card">
-      <img src="tech1.jpg" alt="Tech Accessories">
-      <h3>TECH ACCESSORIES</h3>
-    </div>
-    <div class="card">
-      <img src="bags1.jpg" alt="Bags & Wallets">
-      <h3>BAGS & WALLETS</h3>
-    </div>
-    <div class="card">
-      <img src="work1.jpg" alt="Work Essentials">
-      <h3>WORK ESSENTIALS</h3>
-    </div>
+    <div class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></div>
+    <div class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></div>
+    <div class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></div>
   </div>
 </section>
 
-<!-- Slideshow Section -->
+<!-- Slideshow -->
 <section>
   <div class="slideshow-container">
-
-    <div class="slide fade">
-      <img src="cat1.jpg" alt="Category 1">
-    </div>
-
-    <div class="slide fade">
-      <img src="cat2.jpg" alt="Category 2">
-    </div>
-
-    <div class="slide fade">
-      <img src="cat3.jpg" alt="Category 3">
-    </div>
-
-    <div class="slide fade">
-      <img src="cat4.jpg" alt="Category 4">
-    </div>
-
-    <div class="slide fade">
-      <img src="cat5.jpg" alt="Category 5">
-    </div>
-
-    <div class="slide fade">
-      <img src="cat6.jpg" alt="Category 6">
-    </div>
-
+    <div class="slide"><img src="cat1.jpg" alt="cat1"></div>
+    <div class="slide"><img src="cat2.jpg" alt="cat2"></div>
+    <div class="slide"><img src="cat3.jpg" alt="cat3"></div>
+    <div class="slide"><img src="cat4.jpg" alt="cat4"></div>
+    <div class="slide"><img src="cat5.jpg" alt="cat5"></div>
+    <div class="slide"><img src="cat6.jpg" alt="cat6"></div>
   </div>
-
   <div class="dots">
-    <span class="dot" onclick="currentSlide(1)"></span> 
-    <span class="dot" onclick="currentSlide(2)"></span> 
-    <span class="dot" onclick="currentSlide(3)"></span> 
-    <span class="dot" onclick="currentSlide(4)"></span> 
-    <span class="dot" onclick="currentSlide(5)"></span> 
-    <span class="dot" onclick="currentSlide(6)"></span> 
+    <span class="dot"><div class="bar"></div></span>
+    <span class="dot"><div class="bar"></div></span>
+    <span class="dot"><div class="bar"></div></span>
+    <span class="dot"><div class="bar"></div></span>
+    <span class="dot"><div class="bar"></div></span>
+    <span class="dot"><div class="bar"></div></span>
   </div>
 </section>
 
-<!-- Shop by Collection -->
-<section style="background: #f8f8f8;">
+<!-- More Sections -->
+<section style="background:#f8f8f8;">
   <h2>SHOP BY COLLECTION</h2>
   <div class="grid">
-    <div class="card">
-      <img src="collection1.jpg" alt="Collection 1">
-      <h3>COLLECTION 1</h3>
-    </div>
-    <div class="card">
-      <img src="collection2.jpg" alt="Collection 2">
-      <h3>COLLECTION 2</h3>
-    </div>
+    <div class="card"><img src="collection1.jpg"><h3>COLLECTION 1</h3></div>
+    <div class="card"><img src="collection2.jpg"><h3>COLLECTION 2</h3></div>
   </div>
 </section>
 
-<!-- Shop by Device -->
 <section>
   <h2>SHOP BY DEVICE</h2>
   <div class="grid">
-    <div class="card">
-      <img src="apple1.jpg" alt="Apple Accessories">
-      <h3>SHOP BY APPLE</h3>
-    </div>
+    <div class="card"><img src="apple1.jpg"><h3>SHOP BY APPLE</h3></div>
   </div>
 </section>
 
-<!-- New Arrivals -->
-<section style="background: #f8f8f8;">
+<section style="background:#f8f8f8;">
   <h2>NEW ARRIVALS</h2>
   <div class="grid">
-    <div class="card">
-      <img src="new1.jpg" alt="New Arrival 1">
-      <h3>NEW ARRIVAL 1</h3>
-    </div>
-    <div class="card">
-      <img src="new2.jpg" alt="New Arrival 2">
-      <h3>NEW ARRIVAL 2</h3>
-    </div>
+    <div class="card"><img src="new1.jpg"><h3>NEW ARRIVAL 1</h3></div>
+    <div class="card"><img src="new2.jpg"><h3>NEW ARRIVAL 2</h3></div>
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
   &copy; 2025 Daily Objects SA. All rights reserved.
 </footer>
 
 <script>
 let slideIndex = 0;
-showSlides();
+const slides = document.getElementsByClassName("slide");
+const dots = document.getElementsByClassName("dot");
 
 function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("slide");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    dots[i].classList.remove("active");
   }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 3000); // Change image every 3 seconds
+  slideIndex = (slideIndex + 1) > slides.length ? 1 : slideIndex + 1;
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].classList.add("active");
+  setTimeout(showSlides, 15000); // 15 seconds
 }
 
-function currentSlide(n) {
-  slideIndex = n - 1;
-  showSlides();
-}
+showSlides();
 </script>
 
 </body>

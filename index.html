@@ -20,15 +20,6 @@
       z-index: 999;
     }
 
-    .logo-area {
-      display: flex;
-      align-items: center;
-      background: white;
-      padding: 5px 10px;
-      border-radius: 8px;
-      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-    }
-
     .logo-area img {
       height: 60px;
       width: auto;
@@ -40,7 +31,6 @@
       gap: 25px;
       font-weight: bold;
       font-size: 16px;
-      position: relative;
     }
 
     .menu a {
@@ -51,30 +41,22 @@
 
     .menu a:hover { color: #007BFF; }
 
-    .icons {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .icons img {
-      height: 24px;
-      width: 24px;
-      cursor: pointer;
-    }
-
-    .menu-item { position: relative; }
-
     .dropdown {
       display: none;
       position: absolute;
       top: 35px;
-      left: 0;
       background: #fff;
       border: 1px solid #ddd;
       min-width: 200px;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      z-index: 99;
+    }
+
+    .menu-item {
+      position: relative;
+    }
+
+    .menu-item:hover .dropdown {
+      display: block;
     }
 
     .dropdown a {
@@ -85,13 +67,14 @@
       font-weight: normal;
     }
 
-    .dropdown a:hover {
-      background: #f8f8f8;
-      color: #007BFF;
+    .icons {
+      display: flex;
+      gap: 20px;
     }
 
-    .menu-item:hover .dropdown {
-      display: block;
+    .icons img {
+      height: 24px;
+      cursor: pointer;
     }
 
     .banner video {
@@ -112,7 +95,6 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0;
-      padding: 0;
       margin-bottom: 40px;
     }
 
@@ -121,8 +103,6 @@
       text-align: center;
       background: #f9f9f9;
       border: 1px solid #eee;
-      overflow: hidden;
-      cursor: pointer;
     }
 
     .card img {
@@ -132,7 +112,7 @@
     }
 
     .card h3 {
-      padding: 15px 10px;
+      padding: 15px;
       font-size: 18px;
       color: #333;
     }
@@ -149,12 +129,45 @@
       display: none;
       height: 100%;
       width: 100%;
+      position: absolute;
+      top: 0; left: 0;
     }
 
     .slide img {
       height: 100%;
       width: 100%;
       object-fit: cover;
+    }
+
+    .slide-content {
+      position: absolute;
+      top: 20%;
+      left: 5%;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      max-width: 45%;
+    }
+
+    .slide-content h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .slide-content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .slide-content .shop-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      color: black;
+      background: white;
+      border-radius: 5px;
+      text-decoration: none;
+      float: right;
     }
 
     .dots {
@@ -194,9 +207,7 @@
 
 <!-- Header -->
 <header>
-  <div class="logo-area">
-    <img src="logo.png" alt="Logo">
-  </div>
+  <div class="logo-area"><img src="logo.png" alt="Logo"></div>
   <nav class="menu">
     <div class="menu-item">
       <a href="#">TECH</a>
@@ -226,7 +237,6 @@
 <section class="banner">
   <video autoplay muted loop>
     <source src="banner-video.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
   </video>
 </section>
 
@@ -243,12 +253,60 @@
 <!-- Slideshow -->
 <section>
   <div class="slideshow-container">
-    <div class="slide"><img src="cat1.jpg"></div>
-    <div class="slide"><img src="cat2.jpg"></div>
-    <div class="slide"><img src="cat3.jpg"></div>
-    <div class="slide"><img src="cat4.jpg"></div>
-    <div class="slide"><img src="cat5.jpg"></div>
-    <div class="slide"><img src="cat6.jpg"></div>
+
+    <div class="slide">
+      <img src="cat1.jpg">
+      <div class="slide-content">
+        <h1>LOOP POWER BANKS</h1>
+        <p>Qi2-Certified, Next-Gen Fast Wireless charging</p>
+        <a href="#" class="shop-btn">SHOP NOW</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="cat2.jpg">
+      <div class="slide-content">
+        <h1>PHONE CASES</h1>
+        <p>Phone in ultimate style and safety</p>
+        <a href="#" class="shop-btn">SHOP NOW</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="cat3.jpg">
+      <div class="slide-content">
+        <h1>RFID MAGSAFE CARD WALLET</h1>
+        <p>Snap on unparalleled convenience & safety</p>
+        <a href="#" class="shop-btn">SHOP NOW</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="cat4.jpg">
+      <div class="slide-content">
+        <h1>MARCH CROSSBODY</h1>
+        <p>Complimenting your style</p>
+        <a href="#" class="shop-btn">SHOP NOW</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="cat5.jpg">
+      <div class="slide-content">
+        <h1>WRAPPED ELEGANCE</h1>
+        <p>Chic and stylish tech accessories</p>
+        <a href="#" class="shop-btn">SHOP NOW</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="cat6.jpg">
+      <div class="slide-content">
+        <h1>WATCH BAND</h1>
+        <p>Upgrade your watch</p>
+        <a href="#" class="shop-btn">SHOP NOW</a>
+      </div>
+    </div>
 
     <div class="dots">
       <span class="dot" onclick="showSlide(0)"></span>
@@ -258,6 +316,24 @@
       <span class="dot" onclick="showSlide(4)"></span>
       <span class="dot" onclick="showSlide(5)"></span>
     </div>
+  </div>
+</section>
+
+<!-- Shop by Collection -->
+<section>
+  <h2>SHOP BY COLLECTION</h2>
+  <div class="grid">
+    <div class="card"><img src="collection1.jpg"><h3>COLLECTION 1</h3></div>
+    <div class="card"><img src="collection2.jpg"><h3>COLLECTION 2</h3></div>
+  </div>
+</section>
+
+<!-- New Arrivals -->
+<section>
+  <h2>NEW ARRIVALS</h2>
+  <div class="grid">
+    <div class="card"><img src="new1.jpg"><h3>NEW ARRIVAL 1</h3></div>
+    <div class="card"><img src="new2.jpg"><h3>NEW ARRIVAL 2</h3></div>
   </div>
 </section>
 
@@ -287,7 +363,7 @@ function showSlide(index = null) {
   dots[slideIndex].classList.add("active");
 
   slideIndex = (slideIndex + 1) % slides.length;
-  timeout = setTimeout(() => showSlide(), 15000); // 15 seconds
+  timeout = setTimeout(() => showSlide(), 10000); // 10 sec
 }
 
 window.onload = () => showSlide();

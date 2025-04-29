@@ -35,7 +35,7 @@
       position: relative;
     }
     .menu-item:hover .dropdown {
-      display: flex;
+      display: block;
       position: absolute;
       top: 35px;
       background: #fff;
@@ -43,6 +43,7 @@
       min-width: 600px;
       padding: 20px;
       flex-wrap: wrap;
+      z-index: 999;
     }
     .dropdown {
       display: none;
@@ -52,10 +53,11 @@
       background: #fff;
       border: 1px solid #ddd;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
     }
     .dropdown div {
-      flex: 1;
       padding: 15px;
+      width: 150px;
       min-width: 150px;
     }
     .dropdown a {
@@ -263,54 +265,7 @@
           <a href="google.html">Google</a>
           <a href="#">View All</a>
         </div>
-        <div>
-          <a href="#">WATCH ACCESSORIES</a>
-          <a href="watchbands.html">Watchbands</a>
-          <a href="apple-watch-chargers.html">Apple Watch Chargers</a>
-          <a href="watch-organisers.html">Watch Organisers</a>
-          <a href="apple-watch-cases.html">Apple Watch Cases</a>
-          <a href="#">View All</a>
-        </div>
-        <div>
-          <a href="#">CHARGING SOLUTIONS</a>
-          <a href="powerbank.html">Powerbank</a>
-          <a href="wireless-chargers.html">Wireless Chargers</a>
-          <a href="charging-cables.html">Charging Cables</a>
-          <a href="chargers-and-adapters.html">Chargers and Adapters</a>
-          <a href="#">View All</a>
-        </div>
-        <div>
-          <a href="#">TECH ADD-ONS</a>
-          <a href="ipad-cases.html">iPad Cases</a>
-          <a href="airpods-cover.html">AirPods Cover</a>
-          <a href="screen-guards.html">Screen Guards</a>
-          <a href="phone-wallets.html">Phone Wallets</a>
-          <a href="#">View All</a>
-        </div>
-        <div>
-          <a href="#">LAPTOP SLEEVES AND BAGS</a>
-          <a href="zippered-sleeves.html">Zippered Sleeves</a>
-          <a href="macbook-hardcases.html">Macbook Hardcases</a>
-          <a href="messenger-bags.html">Messenger Bags</a>
-          <a href="backpacks.html">Backpacks</a>
-          <a href="#">View All</a>
-        </div>
-        <div>
-          <a href="#">STANDS</a>
-          <a href="mobile-stands.html">Mobile</a>
-          <a href="laptop-stands.html">Laptop</a>
-          <a href="monitor-stands.html">Monitor</a>
-          <a href="ipad-stands.html">iPad</a>
-          <a href="#">View All</a>
-        </div>
-        <div>
-          <a href="#">ORGANISERS</a>
-          <a href="tech-kit.html">Tech Kit</a>
-          <a href="folio.html">Folio</a>
-          <a href="cables.html">Cables</a>
-          <a href="pouches.html">Pouches</a>
-          <a href="#">View All</a>
-        </div>
+        <!-- Add other categories here -->
       </div>
     </div>
   </nav>

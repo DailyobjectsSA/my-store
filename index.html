@@ -103,6 +103,8 @@
       text-align: center;
       background: #f9f9f9;
       border: 1px solid #eee;
+      text-decoration: none;
+      color: inherit;
     }
 
     .card img {
@@ -240,20 +242,19 @@
   </video>
 </section>
 
-<!-- Shop by Category -->
+<!-- Shop by Category (with clickable links) -->
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
-    <div class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></div>
-    <div class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></div>
-    <div class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></div>
+    <a href="tech.html" class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></a>
+    <a href="bags.html" class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></a>
+    <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a>
   </div>
 </section>
 
 <!-- Slideshow -->
 <section>
   <div class="slideshow-container">
-
     <div class="slide">
       <img src="cat1.jpg">
       <div class="slide-content">
@@ -363,7 +364,7 @@ function showSlide(index = null) {
   dots[slideIndex].classList.add("active");
 
   slideIndex = (slideIndex + 1) % slides.length;
-  timeout = setTimeout(() => showSlide(), 10000); // 10 sec
+  timeout = setTimeout(() => showSlide(), 10000); // 10 seconds
 }
 
 window.onload = () => showSlide();

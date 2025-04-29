@@ -238,11 +238,7 @@
   <nav class="menu">
     <div class="menu-item"><a href="#">TECH</a>
       <div class="dropdown">
-        <a href="#">Phone Cases</a>
-        <a href="#">Watch Accessories</a>
-        <a href="#">Charging Solutions</a>
-        <a href="#">Laptop Sleeves</a>
-        <a href="#">Organisers</a>
+        <a href="#" onclick="showTechFilters()">Phone Cases</a>
       </div>
     </div>
     <a href="#">BAGS & WALLETS</a>
@@ -274,33 +270,95 @@
   </div>
 </section>
 
+<section id="phone-cases-filter">
+  <!-- Filter for Phone Cases (Tech → Phone Cases → Apple → iPhone 15) -->
+  <h2>Select Model</h2>
+  <div id="filter">
+    <button onclick="filterByApple()">Apple</button>
+    <button onclick="filterByIphone15()">iPhone 15</button>
+  </div>
+  <div id="iphone-cases"></div>
+</section>
+
 <section>
   <div class="slideshow-container">
-    <div class="slide"><img src="https://raw.githubusercontent.com/DailyobjectsSA/my-store/main/images/cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="https://raw.githubusercontent.com/DailyobjectsSA/my-store/main/images/cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="https://raw.githubusercontent.com/DailyobjectsSA/my-store/main/images/cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="https://raw.githubusercontent.com/DailyobjectsSA/my-store/main/images/cat4.jpg"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="dots">
+      <span class="dot" onclick="showSlide(0)"></span>
+      <span class="dot" onclick="showSlide(1)"></span>
+      <span class="dot" onclick="showSlide(2)"></span>
+    </div>
   </div>
-  <div class="dots"></div>
 </section>
 
 <section class="corporate-banner">
-  <img src="https://raw.githubusercontent.com/DailyobjectsSA/my-store/main/images/cg1.jpg" alt="Corporate Gifting">
+  <img src="cg1.jpg" alt="Corporate Gifting">
   <div class="overlay">
-    <h1>Corporate Gifting</h1>
-    <p>Perfect for events, employee gifts, and promotional giveaways.</p>
+    <h1>CORPORATE GIFTING</h1>
+    <p>It is the season to celebrate and nurture everlasting bonds. Build lasting relationships with our bespoke corporate solutions</p>
+  </div>
+</section>
+
+<section>
+  <h2>TRENDING COLLECTION</h2>
+  <div class="zoom-grid">
+    <div class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>BLACK PANGEA</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2025 DailyObjects. All rights reserved.</p>
+  &copy; 2025 Daily Objects SA. All rights reserved.
 </footer>
 
 <script>
-  // JavaScript to handle dropdowns and image filters
-  
-  // Filter functionality code here (already provided above)
-  
+  let slideIndex = 0;
+  let slides = document.getElementsByClassName("slide");
+  let dots = document.getElementsByClassName("dot");
+  let timeout;
+
+  function showSlide(index = null) {
+    if (index !== null) {
+      slideIndex = index;
+      clearTimeout(timeout);
+    }
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      dots[i].classList.remove("active");
+    }
+    slides[slideIndex].style.display = "block";
+    dots[slideIndex].classList.add("active");
+    slideIndex = (slideIndex + 1) % slides.length;
+    timeout = setTimeout(() => showSlide(), 10000);
+  }
+
+  window.onload = () => showSlide();
+
+  function filterByApple() {
+    document.getElementById("iphone-cases").innerHTML = `
+      <h3>iPhone Cases</h3>
+      <div class="grid">
+        <img src="https://github.com/DailyobjectsSA/my-store/blob/main/images/A15-P1.png?raw=true">
+        <img src="https://github.com/DailyobjectsSA/my-store/blob/main/images/A15-P2.png?raw=true">
+        <img src="https://github.com/DailyobjectsSA/my-store/blob/main/images/A15-P3.png?raw=true">
+      </div>
+    `;
+  }
+
+  function filterByIphone15() {
+    document.getElementById("iphone-cases").innerHTML = `
+      <h3>iPhone 15 Cases</h3>
+      <div class="grid">
+        <img src="https://github.com/DailyobjectsSA/my-store/blob/main/images/A15-P1.png?raw=true">
+        <img src="https://github.com/DailyobjectsSA/my-store/blob/main/images/A15-P2.png?raw=true">
+        <img src="https://github.com/DailyobjectsSA/my-store/blob/main/images/A15-P3.png?raw=true">
+      </div>
+    `;
+  }
 </script>
+
 </body>
 </html>

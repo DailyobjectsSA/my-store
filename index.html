@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Daily Objects SA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Arial', sans-serif; background: #fff; }
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: Arial, sans-serif; background: #fff;}
 
     header {
       display: flex;
@@ -19,68 +19,46 @@
       top: 0;
       z-index: 999;
     }
-
-    .logo-area img {
-      height: 60px;
-      width: auto;
-    }
-
+    .logo-area img { height: 60px; width: auto; }
     .menu {
       display: flex;
-      align-items: center;
       gap: 25px;
       font-weight: bold;
       font-size: 16px;
     }
-
     .menu a {
       text-decoration: none;
       color: #222;
-      font-weight: 700;
     }
-
     .menu a:hover { color: #007BFF; }
-
     .dropdown {
       display: none;
       position: absolute;
       top: 35px;
       background: #fff;
       border: 1px solid #ddd;
-      min-width: 200px;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      min-width: 200px;
     }
-
     .menu-item {
       position: relative;
     }
-
     .menu-item:hover .dropdown {
       display: block;
     }
-
     .dropdown a {
       display: block;
       padding: 10px;
-      color: #333;
       text-decoration: none;
-      font-weight: normal;
+      color: #333;
     }
-
     .icons {
       display: flex;
       gap: 20px;
     }
-
     .icons img {
       height: 24px;
       cursor: pointer;
-    }
-
-    .banner video {
-      width: 100%;
-      height: 450px;
-      object-fit: cover;
     }
 
     section h2 {
@@ -90,7 +68,7 @@
       margin: 40px 0 30px;
     }
 
-    .grid {
+    .grid, .zoom-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -98,49 +76,56 @@
       margin-bottom: 40px;
     }
 
-    .card {
+    .card, .zoom-card {
       flex: 1 1 33%;
       text-align: center;
       background: #f9f9f9;
       border: 1px solid #eee;
       text-decoration: none;
       color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
     }
-
-    .card img {
+    .card img, .zoom-card img {
       width: 100%;
       height: auto;
-      object-fit: contain;
+      object-fit: cover;
+      transition: transform 0.4s ease;
     }
-
+    .card:hover img, .zoom-card:hover img {
+      transform: scale(1.05);
+    }
     .card h3 {
       padding: 15px;
       font-size: 18px;
       color: #333;
     }
 
-    /* Slideshow */
+    .banner video {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
     .slideshow-container {
       position: relative;
       width: 100%;
       height: 500px;
       overflow: hidden;
     }
-
     .slide {
       display: none;
-      height: 100%;
       width: 100%;
+      height: 100%;
       position: absolute;
       top: 0; left: 0;
     }
-
     .slide img {
-      height: 100%;
       width: 100%;
+      height: 100%;
       object-fit: cover;
     }
-
     .slide-content {
       position: absolute;
       top: 20%;
@@ -149,17 +134,14 @@
       text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
       max-width: 45%;
     }
-
     .slide-content h1 {
       font-size: 32px;
       margin-bottom: 10px;
     }
-
     .slide-content p {
       font-size: 16px;
       margin-bottom: 20px;
     }
-
     .slide-content .shop-btn {
       display: inline-block;
       padding: 8px 16px;
@@ -171,7 +153,6 @@
       text-decoration: none;
       float: right;
     }
-
     .dots {
       position: absolute;
       bottom: 20px;
@@ -180,20 +161,65 @@
       gap: 10px;
       z-index: 5;
     }
-
     .dot {
-      height: 12px;
       width: 12px;
+      height: 12px;
       background-color: #ccc;
       border-radius: 50%;
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
     .dot.active {
       width: 60px;
       border-radius: 6px;
       background-color: #444;
+    }
+
+    .overlay-text {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+    .overlay-text h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .overlay-text .shop-btn {
+      background: white;
+      color: black;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .corporate-banner {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+    .corporate-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .corporate-banner .overlay {
+      position: absolute;
+      top: 20%;
+      left: 5%;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      max-width: 600px;
+    }
+    .corporate-banner .overlay h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .corporate-banner .overlay p {
+      font-size: 16px;
     }
 
     footer {
@@ -207,12 +233,10 @@
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <div class="logo-area"><img src="logo.png" alt="Logo"></div>
   <nav class="menu">
-    <div class="menu-item">
-      <a href="#">TECH</a>
+    <div class="menu-item"><a href="#">TECH</a>
       <div class="dropdown">
         <a href="#">Phone Cases</a>
         <a href="#">Watch Accessories</a>
@@ -235,14 +259,12 @@
   </div>
 </header>
 
-<!-- Banner -->
 <section class="banner">
   <video autoplay muted loop>
     <source src="banner-video.mp4" type="video/mp4">
   </video>
 </section>
 
-<!-- Shop by Category (with clickable links) -->
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
@@ -252,63 +274,14 @@
   </div>
 </section>
 
-<!-- Slideshow -->
 <section>
   <div class="slideshow-container">
-    <div class="slide">
-      <img src="cat1.jpg">
-      <div class="slide-content">
-        <h1>LOOP POWER BANKS</h1>
-        <p>Qi2-Certified, Next-Gen Fast Wireless charging</p>
-        <a href="#" class="shop-btn">SHOP NOW</a>
-      </div>
-    </div>
-
-    <div class="slide">
-      <img src="cat2.jpg">
-      <div class="slide-content">
-        <h1>PHONE CASES</h1>
-        <p>Phone in ultimate style and safety</p>
-        <a href="#" class="shop-btn">SHOP NOW</a>
-      </div>
-    </div>
-
-    <div class="slide">
-      <img src="cat3.jpg">
-      <div class="slide-content">
-        <h1>RFID MAGSAFE CARD WALLET</h1>
-        <p>Snap on unparalleled convenience & safety</p>
-        <a href="#" class="shop-btn">SHOP NOW</a>
-      </div>
-    </div>
-
-    <div class="slide">
-      <img src="cat4.jpg">
-      <div class="slide-content">
-        <h1>MARCH CROSSBODY</h1>
-        <p>Complimenting your style</p>
-        <a href="#" class="shop-btn">SHOP NOW</a>
-      </div>
-    </div>
-
-    <div class="slide">
-      <img src="cat5.jpg">
-      <div class="slide-content">
-        <h1>WRAPPED ELEGANCE</h1>
-        <p>Chic and stylish tech accessories</p>
-        <a href="#" class="shop-btn">SHOP NOW</a>
-      </div>
-    </div>
-
-    <div class="slide">
-      <img src="cat6.jpg">
-      <div class="slide-content">
-        <h1>WATCH BAND</h1>
-        <p>Upgrade your watch</p>
-        <a href="#" class="shop-btn">SHOP NOW</a>
-      </div>
-    </div>
-
+    <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat4.jpg"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat5.jpg"><div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat6.jpg"><div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
     <div class="dots">
       <span class="dot" onclick="showSlide(0)"></span>
       <span class="dot" onclick="showSlide(1)"></span>
@@ -320,25 +293,31 @@
   </div>
 </section>
 
-<!-- Shop by Collection -->
-<section>
-  <h2>SHOP BY COLLECTION</h2>
-  <div class="grid">
-    <div class="card"><img src="collection1.jpg"><h3>COLLECTION 1</h3></div>
-    <div class="card"><img src="collection2.jpg"><h3>COLLECTION 2</h3></div>
+<section class="corporate-banner">
+  <img src="cg1.jpg" alt="Corporate Gifting">
+  <div class="overlay">
+    <h1>CORPORATE GIFTING</h1>
+    <p>It is the season to celebrate and nurture everlasting bonds. Build lasting relationships with our bespoke corporate solutions</p>
   </div>
 </section>
 
-<!-- New Arrivals -->
 <section>
-  <h2>NEW ARRIVALS</h2>
-  <div class="grid">
-    <div class="card"><img src="new1.jpg"><h3>NEW ARRIVAL 1</h3></div>
-    <div class="card"><img src="new2.jpg"><h3>NEW ARRIVAL 2</h3></div>
+  <h2>TRENDING COLLECTION</h2>
+  <div class="zoom-grid">
+    <div class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>BLACK PANGEA</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
   </div>
 </section>
 
-<!-- Footer -->
+<section>
+  <h2>TECH ESSENTIALS</h2>
+  <div class="zoom-grid">
+    <div class="zoom-card"><img src="te1.jpg"><div class="overlay-text"><h3>ORGANISERS</h3></div></div>
+    <div class="zoom-card"><img src="te2.jpg"><div class="overlay-text"><h3>LAPTOP SLEEVES</h3></div></div>
+  </div>
+</section>
+
 <footer>
   &copy; 2025 Daily Objects SA. All rights reserved.
 </footer>
@@ -354,19 +333,15 @@ function showSlide(index = null) {
     slideIndex = index;
     clearTimeout(timeout);
   }
-
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
     dots[i].classList.remove("active");
   }
-
   slides[slideIndex].style.display = "block";
   dots[slideIndex].classList.add("active");
-
   slideIndex = (slideIndex + 1) % slides.length;
-  timeout = setTimeout(() => showSlide(), 10000); // 10 seconds
+  timeout = setTimeout(() => showSlide(), 10000);
 }
-
 window.onload = () => showSlide();
 </script>
 

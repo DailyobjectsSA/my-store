@@ -1,59 +1,149 @@
-<!-- NAVBAR SECTION (Only TECH dropdown updated) -->
-<nav class="navbar">
-  <ul class="menu">
-    <li class="dropdown">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Objects SA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      background: #fff; padding: 10px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 999;
+    }
+    .logo-area img { height: 60px; }
+    .menu { display: flex; gap: 25px; font-weight: bold; font-size: 15px; flex-wrap: wrap; }
+    .menu-item { position: relative; }
+    .menu-item:hover .dropdown { display: grid; }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      padding: 10px;
+      grid-template-columns: repeat(3, 200px);
+      gap: 20px;
+      z-index: 1000;
+    }
+    .dropdown h4 { margin: 10px 0 5px; font-size: 14px; font-weight: bold; }
+    .dropdown a {
+      display: block; padding: 4px 0; font-size: 14px;
+      text-decoration: none; color: #333;
+    }
+    .dropdown a:hover { color: #007BFF; }
+
+    .filter-container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 20px auto;
+      display: none;
+    }
+
+    .model-buttons button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .product-card {
+      width: 200px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-card button {
+      background: #007BFF;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu { flex-direction: column; gap: 10px; }
+      .dropdown { grid-template-columns: 1fr; position: static; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area"><img src="logo.png" alt="Logo"></div>
+  <nav class="menu">
+    <div class="menu-item">
       <a href="#">TECH</a>
-      <div class="dropdown-content">
-        <div class="menu-section">
-          <strong>PHONE CASES</strong>
-          <a href="apple.html">Apple</a>
+      <div class="dropdown">
+        <div>
+          <h4>PHONE CASES</h4>
+          <a href="#" onclick="showModels('Apple')">Apple</a>
           <a href="#">Samsung</a>
           <a href="#">OnePlus</a>
           <a href="#">Google</a>
           <a href="#">View All +</a>
         </div>
-        <div class="menu-section">
-          <strong>WATCH ACCESSORIES</strong>
+        <div>
+          <h4>WATCH ACCESSORIES</h4>
           <a href="#">Watchbands</a>
           <a href="#">Apple Watch Chargers</a>
           <a href="#">Watch Organisers</a>
           <a href="#">Apple Watch Cases</a>
           <a href="#">View All +</a>
         </div>
-        <div class="menu-section">
-          <strong>CHARGING SOLUTIONS</strong>
+        <div>
+          <h4>CHARGING SOLUTIONS</h4>
           <a href="#">Powerbank</a>
           <a href="#">Wireless Chargers</a>
           <a href="#">Charging Cables</a>
           <a href="#">Chargers and Adapters</a>
           <a href="#">View All +</a>
         </div>
-        <div class="menu-section">
-          <strong>TECH ADD-ONS</strong>
+        <div>
+          <h4>TECH ADD-ONS</h4>
           <a href="#">iPad Cases</a>
           <a href="#">AirPods Cover</a>
           <a href="#">Screen Guards</a>
           <a href="#">Phone Wallets</a>
           <a href="#">View All +</a>
         </div>
-        <div class="menu-section">
-          <strong>LAPTOP SLEEVES AND BAGS</strong>
+        <div>
+          <h4>LAPTOP SLEEVES AND BAGS</h4>
           <a href="#">Zippered Sleeves</a>
           <a href="#">Macbook Hardcases</a>
           <a href="#">Messenger Bags</a>
           <a href="#">Backpacks</a>
           <a href="#">View All +</a>
         </div>
-        <div class="menu-section">
-          <strong>STANDS</strong>
+        <div>
+          <h4>STANDS</h4>
           <a href="#">Mobile</a>
           <a href="#">Laptop</a>
           <a href="#">Monitor</a>
           <a href="#">iPad</a>
           <a href="#">View All +</a>
         </div>
-        <div class="menu-section">
-          <strong>ORGANISERS</strong>
+        <div>
+          <h4>ORGANISERS</h4>
           <a href="#">Tech Kit</a>
           <a href="#">Folio</a>
           <a href="#">Cables</a>
@@ -61,59 +151,63 @@
           <a href="#">View All +</a>
         </div>
       </div>
-    </li>
-    <!-- Other menu items -->
-    <li><a href="#">BAGS</a></li>
-    <li><a href="#">COLLECTIONS</a></li>
-    <li><a href="#">GIFTS</a></li>
-    <li><a href="#">SALE</a></li>
-  </ul>
-</nav>
+    </div>
+    <a href="#">BAGS & WALLETS</a>
+    <a href="#">WORK ESSENTIALS</a>
+    <a href="#">GIFTING</a>
+    <a href="#">COLLECTIONS</a>
+    <a href="#">SHOP BY APPLE</a>
+    <a href="#">NEW ARRIVALS</a>
+  </nav>
+</header>
 
-<!-- Add this to your CSS if not already present -->
-<style>
-.navbar {
-  background-color: #fff;
-  padding: 10px;
+<div class="filter-container" id="filterContainer">
+  <h2>SELECT MODEL</h2>
+  <div class="model-buttons" id="modelButtons"></div>
+  <div class="product-grid" id="productGrid"></div>
+</div>
+
+<script>
+function showModels(brand) {
+  const container = document.getElementById("filterContainer");
+  const buttons = document.getElementById("modelButtons");
+  const grid = document.getElementById("productGrid");
+  container.style.display = "block";
+  buttons.innerHTML = "";
+  grid.innerHTML = "";
+
+  const models = ["iPhone 15", "iPhone 15 Pro", "iPhone 16", "iPhone 16 Pro"];
+  models.forEach(model => {
+    const btn = document.createElement("button");
+    btn.textContent = model;
+    btn.onclick = () => {
+      if (model === "iPhone 15") {
+        loadIphone15();
+      } else {
+        grid.innerHTML = `<p>Coming soon for ${model}</p>`;
+      }
+    };
+    buttons.appendChild(btn);
+  });
+
+  window.scrollTo({ top: container.offsetTop, behavior: 'smooth' });
 }
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+
+function loadIphone15() {
+  const grid = document.getElementById("productGrid");
+  grid.innerHTML = "";
+  for (let i = 1; i <= 41; i++) {
+    const img = `https://github.com/DailyobjectsSA/my-store/blob/main/images/A15-P${i}.png?raw=true`;
+    grid.innerHTML += `
+      <div class="product-card">
+        <img src="${img}" alt="A15-P${i}">
+        <p>iPhone 15 Case ${i}</p>
+        <p><strong>Rs. ${799 + i * 10}</strong></p>
+        <button onclick="alert('Added to cart')">Add to Cart</button>
+      </div>`;
+  }
 }
-.menu li {
-  position: relative;
-}
-.menu a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 1fr));
-  gap: 20px;
-  z-index: 1000;
-  border: 1px solid #ccc;
-}
-.menu li:hover .dropdown-content {
-  display: grid;
-}
-.menu-section strong {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-.menu-section a {
-  display: block;
-  margin: 4px 0;
-  font-size: 13px;
-}
-</style>
+</script>
+
+</body>
+</html>

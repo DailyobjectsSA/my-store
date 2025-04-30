@@ -39,7 +39,6 @@
       position: static; /* Dropdown positions relative to header */
     }
     .dropdown {
-      /* display: none; Replaced by visibility/opacity */
       visibility: hidden; /* Initially hidden */
       opacity: 0; /* Initially transparent */
       position: absolute; /* Position relative to header */
@@ -50,15 +49,13 @@
       max-width: 90%; /* Prevent it becoming excessively wide on large screens */
       background: #fff;
       border: 1px solid #ddd;
-      border-top: none; /* Optional: remove top border if header shadow is enough */
+      border-top: none;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      padding: 25px 30px; /* Padding inside the dropdown */
+      padding: 30px 40px; /* Increased padding slightly */
       z-index: 1000;
-      transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s; /* Fade out, hide slightly later */
-      /* Note: The visibility transition delay prevents instant hiding */
+      transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s;
     }
     .menu-item:hover .dropdown {
-      /* display: block; Replaced by visibility/opacity */
       visibility: visible; /* Make visible on hover */
       opacity: 1; /* Make opaque on hover */
       transition-delay: 0s; /* Remove delay when showing */
@@ -67,58 +64,48 @@
     .dropdown-columns {
       display: flex;
       justify-content: center; /* Center the columns horizontally within the dropdown */
-      gap: 40px; /* Gap between columns */
+      gap: 50px; /* Increased gap between columns */
       flex-wrap: wrap; /* Allow columns to wrap to the next line */
     }
     .category-block {
       display: flex;
       flex-direction: column;
-      /* align-items: center; Changed alignment as image removed */
-      align-items: flex-start; /* Align items to the start (left) */
-      gap: 8px; /* Adjusted gap after image removal */
-      min-width: 150px; /* Adjusted width slightly */
-      margin-bottom: 20px; /* Add space below blocks when they wrap */
+      align-items: center; /* Center the H4 initially */
+      width: 150px; /* Set a fixed width for consistent columns */
+      margin-bottom: 20px;
     }
-    /* Removed .category-block img rule as images are gone */
-    /*
-    .category-block img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-    */
+    /* Removed .category-block img rule */
+
     .category-block h4 {
-      font-size: 12px;
+      font-size: 12px; /* Adjusted font size */
       font-weight: bold;
       color: #000;
-      margin-bottom: 8px; /* Adjusted margin */
+      margin-bottom: 15px; /* Increased space below heading */
       text-transform: uppercase;
-      /* text-align: center; Changed alignment */
-      text-align: left; /* Align heading text left */
-      width: 100%;
+      text-align: center; /* Center the heading text */
+      width: 100%; /* Ensure h4 takes full width for centering */
     }
     .category-block a {
       display: block;
-      width: 100%;
-      padding: 4px 0 4px 0; /* Adjusted padding (removed left indent) */
+      width: 100%; /* Take full width of parent */
+      padding: 4px 0; /* Vertical padding, no horizontal */
       text-decoration: none;
       color: #333;
-      font-size: 13px;
+      font-size: 14px; /* Slightly larger font for links */
       font-weight: normal;
-      text-align: left; /* Links aligned left */
-      white-space: normal; /* Allow link text to wrap */
+      text-align: left; /* Align link text left */
+      white-space: normal;
     }
     .category-block a.view-all-link {
-      color: #1abc9c;
-      font-weight: bold;
-      margin-top: 8px;
+      color: #1abc9c; /* Teal color like screenshot */
+      font-weight: bold; /* Keep bold */
+      margin-top: 8px; /* Space above View All */
     }
     .category-block a:not(.view-all-link):hover {
-      color: #007BFF;
+      color: #007BFF; /* Keep hover effect */
     }
     .category-block a.view-all-link:hover {
-      color: #16a085;
+      color: #16a085; /* Darker teal on hover */
     }
     /* --- End Dropdown Styles --- */
 
@@ -313,20 +300,18 @@
       <div class="dropdown">
          <div class="dropdown-columns">
 
-             <!-- Column 1: Phone Cases (Image Removed) -->
+             <!-- Column 1: Phone Cases (No Image, Styled Text) -->
              <div class="category-block">
-               <!-- <img src="images/tech-dd-phone-cases.jpg" alt="Phone Cases"> REMOVED -->
                <h4>PHONE CASES</h4>
-               <a href="phone-cases.html">Apple</a> <!-- Example: Replace # with actual URL -->
+               <a href="phone-cases.html">Apple</a>
                <a href="#">Samsung</a>
                <a href="#">OnePlus</a>
                <a href="#">Google</a>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 2: Watch Accessories (Image Removed) -->
+             <!-- Column 2: Watch Accessories (No Image, Styled Text) -->
              <div class="category-block">
-                <!-- <img src="images/tech-dd-watch-accessories.jpg" alt="Watch Accessories"> REMOVED -->
                <h4>WATCH ACCESSORIES</h4>
                <a href="#">Watchbands</a>
                <a href="#">Apple Watch Chargers</a>
@@ -335,9 +320,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 3: Charging Solutions (Image Removed) -->
+             <!-- Column 3: Charging Solutions (No Image, Styled Text) -->
              <div class="category-block">
-                <!-- <img src="images/tech-dd-charging-solutions.jpg" alt="Charging Solutions"> REMOVED -->
                <h4>CHARGING SOLUTIONS</h4>
                <a href="#">Powerbank</a>
                <a href="#">Wireless Chargers</a>
@@ -346,9 +330,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 4: Tech Add-ons (Image Removed) -->
+             <!-- Column 4: Tech Add-ons (No Image, Styled Text) -->
              <div class="category-block">
-                <!-- <img src="images/tech-dd-tech-addons.jpg" alt="Tech Add-ons"> REMOVED -->
                <h4>TECH ADD-ONS</h4>
                <a href="#">iPad Cases</a>
                <a href="#">AirPods Cover</a>
@@ -357,9 +340,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 5: Laptop Sleeves (Image Removed) -->
+             <!-- Column 5: Laptop Sleeves (No Image, Styled Text) -->
              <div class="category-block">
-                <!-- <img src="images/tech-dd-laptop-sleeves.jpg" alt="Laptop Sleeves and Bags"> REMOVED -->
                <h4>LAPTOP SLEEVES AND BAGS</h4>
                <a href="#">Zippered Sleeves</a>
                <a href="#">Macbook Hardcases</a>
@@ -368,9 +350,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 6: Stands (Image Removed) -->
+             <!-- Column 6: Stands (No Image, Styled Text) -->
              <div class="category-block">
-                <!-- <img src="images/tech-dd-stands.jpg" alt="Stands"> REMOVED -->
                <h4>STANDS</h4>
                <a href="#">Mobile</a>
                <a href="#">Laptop</a>
@@ -379,9 +360,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 7: Organisers (Image Removed) -->
+             <!-- Column 7: Organisers (No Image, Styled Text) -->
              <div class="category-block">
-                <!-- <img src="images/tech-dd-organisers.jpg" alt="Organisers"> REMOVED -->
                <h4>ORGANISERS</h4>
                <a href="#">Tech Kit</a>
                <a href="#">Folio</a>
@@ -409,7 +389,7 @@
   </div>
 </header>
 
-<!-- ... (rest of the HTML body remains the same - ensure image paths/video paths are correct) ... -->
+<!-- ... (Rest of the HTML body remains unchanged) ... -->
 <section class="banner">
   <video autoplay muted loop>
     <source src="banner-video.mp4" type="video/mp4"> <!-- Ensure path is correct -->

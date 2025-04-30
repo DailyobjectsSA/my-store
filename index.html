@@ -33,8 +33,8 @@
     .menu a, .menu .menu-item > a {
       text-decoration: none;
       color: #222;
-      padding-bottom: 15px;
-      margin-bottom: -15px;
+      padding-bottom: 15px; /* Keep this for hover effect alignment */
+      margin-bottom: -15px; /* Keep this for hover effect alignment */
       font-size: 13px;
       font-weight: bold;
       text-transform: uppercase;
@@ -52,22 +52,24 @@
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static;
+      position: static; /* Changed from relative for full-width dropdown */
     }
     .dropdown {
       visibility: hidden;
       opacity: 0;
       position: absolute;
-      top: 100%;
+      top: 100%; /* Position below the header */
       left: 0;
       width: 100%;
       background: #fff;
       border: 1px solid #eee;
       border-top: none;
-      box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
-      padding: 40px 0; /* Vertical padding */
+      box-shadow: 0px 8px 15px rgba(0,0,0,0.1); /* Slightly softer shadow */
+      padding: 30px 0; /* Adjusted vertical padding */
       z-index: 1000;
-      transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s;
+      transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s;
+      /* Ensure the dropdown itself doesn't get pushed by content */
+      box-sizing: border-box;
     }
     .menu-item:hover .dropdown {
       visibility: visible;
@@ -75,61 +77,63 @@
       transition-delay: 0s;
     }
 
-    /* Container for the columns, centered, allows wrapping */
+    /* Container for the columns */
     .dropdown-columns {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start; /* Align columns to the left */
       align-items: flex-start; /* Align tops of columns */
-      gap: 40px 50px; /* Row gap, Column gap */
-      flex-wrap: wrap; /* Allow columns to wrap */
-      /* Removed overflow-x: auto */
-      max-width: 1200px; /* Adjust as needed for desired max width */
-      margin: 0 auto;
-      padding: 0 30px;
+      gap: 0 60px; /* Row gap (irrelevant now), Column gap increased */
+      flex-wrap: nowrap; /* Force columns onto one line */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+      max-width: 100%; /* Allow container to use full width if needed */
+      width: max-content; /* Make container width fit its content */
+      min-width: 100%; /* Ensure it stretches at least full width if content is less */
+      margin: 0 auto; /* Center the scrollable container if screen is wider */
+      padding: 0 50px; /* Horizontal padding inside the scroll container */
+      box-sizing: border-box; /* Include padding in width calculation */
     }
 
     /* Styling for each individual column block (No Image) */
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center heading and links */
-      width: 165px; /* Adjust width as needed */
-      /* Removed flex-shrink: 0 */
-      margin-bottom: 10px; /* Adjust vertical space when wrapped */
+      align-items: flex-start; /* Align heading and links to the left */
+      width: 180px; /* Slightly increased width for better spacing */
+      flex-shrink: 0; /* Prevent columns from shrinking */
+      margin-bottom: 10px; /* Adjust vertical space when wrapped - less important now */
     }
 
-    /* Removed Image Styling block */
-
-    /* Title Styling (Bold, Uppercase, Centered) */
+    /* Title Styling (Bold, Uppercase, Left-Aligned) */
     .category-block h4 {
       font-family: Arial, sans-serif;
-      font-size: 12px; /* Slightly larger for clarity */
+      font-size: 13px; /* Slightly larger than before */
       font-weight: bold;
       color: #000;
-      margin-bottom: 15px;
+      margin-bottom: 20px; /* Increased space below heading */
       text-transform: uppercase;
-      text-align: center;
+      text-align: left; /* Align heading text left */
       width: 100%;
       letter-spacing: 0.5px;
-      white-space: nowrap; /* Prevent heading text itself from wrapping */
-      overflow: hidden; /* Hide overflow if name is too long */
-      text-overflow: ellipsis; /* Add ellipsis if name is too long */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    /* Link Styling (Vertical List, Centered Text) */
+    /* Link Styling (Vertical List, Left-Aligned Text) */
     .category-block a:not(.view-all-link) {
       display: block;
-      padding: 3px 0;
+      padding: 6px 0; /* Increased vertical padding for more space */
       text-decoration: none;
       color: #333;
       font-family: Arial, sans-serif;
       font-size: 13px;
-      line-height: 1.6;
-      text-align: center; /* Center link text */
+      line-height: 1.5; /* Adjusted line-height */
+      text-align: left; /* Align link text left */
       width: 100%;
+      transition: color 0.2s ease; /* Add smooth hover transition */
     }
 
-    /* "View All" Link Styling (Centered Text, Special Color) */
+    /* "View All" Link Styling (Left-Aligned Text, Special Color) */
     .category-block a.view-all-link {
       display: block;
       padding: 0;
@@ -138,13 +142,14 @@
       font-family: Arial, sans-serif;
       font-size: 13px;
       font-weight: bold;
-      text-align: center; /* Center link text */
+      text-align: left; /* Align link text left */
       width: 100%;
-      margin-top: 10px;
+      margin-top: 15px; /* Increased space above "View All" */
+       transition: color 0.2s ease; /* Add smooth hover transition */
     }
 
     .category-block a:not(.view-all-link):hover {
-      color: #007BFF;
+      color: #1abc9c; /* Match hover color with View All */
     }
     .category-block a.view-all-link:hover {
       color: #16a085;
@@ -167,17 +172,24 @@
     section h2 { font-size: 24px; font-weight: bold; text-align: center; margin: 40px 0 30px; }
     .grid, .zoom-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0; margin-bottom: 40px; }
     .card, .zoom-card { flex: 1 1 33%; text-align: center; background: #f9f9f9; border: 1px solid #eee; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: transform 0.3s ease; }
-    .card img, .zoom-card img { width: 100%; height: auto; object-fit: cover; transition: transform 0.4s ease; }
+    /* Basic responsive adjustment for cards on smaller screens */
+    @media (max-width: 768px) {
+      .card, .zoom-card { flex: 1 1 48%; } /* 2 columns */
+    }
+    @media (max-width: 480px) {
+      .card, .zoom-card { flex: 1 1 100%; } /* 1 column */
+    }
+    .card img, .zoom-card img { width: 100%; height: auto; display: block; object-fit: cover; transition: transform 0.4s ease; }
     .card:hover img, .zoom-card:hover img { transform: scale(1.05); }
     .card h3 { padding: 15px; font-size: 18px; color: #333; }
-    .banner video { width: 100%; height: 450px; object-fit: cover; }
+    .banner video { width: 100%; height: 450px; object-fit: cover; display: block; }
     .slideshow-container { position: relative; width: 100%; height: 500px; overflow: hidden; }
     .slide { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
-    .slide img { width: 100%; height: 100%; object-fit: cover; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .slide-content { position: absolute; top: 20%; left: 5%; color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); max-width: 45%; }
     .slide-content h1 { font-size: 32px; margin-bottom: 10px; }
     .slide-content p { font-size: 16px; margin-bottom: 20px; }
-    .slide-content .shop-btn { display: inline-block; padding: 8px 16px; font-size: 14px; font-weight: bold; color: black; background: white; border-radius: 5px; text-decoration: none; float: right; }
+    .slide-content .shop-btn { display: inline-block; padding: 8px 16px; font-size: 14px; font-weight: bold; color: black; background: white; border-radius: 5px; text-decoration: none; /* Removed float: right; */ }
     .dots { position: absolute; bottom: 20px; left: 20px; display: flex; gap: 10px; z-index: 5; }
     .dot { width: 12px; height: 12px; background-color: #ccc; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }
     .dot.active { width: 60px; border-radius: 6px; background-color: #444; }
@@ -185,11 +197,53 @@
     .overlay-text h3 { font-size: 20px; margin-bottom: 8px; }
     .overlay-text .shop-btn { background: white; color: black; font-size: 14px; font-weight: bold; padding: 6px 12px; border-radius: 4px; text-decoration: none; }
     .corporate-banner { position: relative; height: 400px; overflow: hidden; }
-    .corporate-banner img { width: 100%; height: 100%; object-fit: cover; }
+    .corporate-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .corporate-banner .overlay { position: absolute; top: 20%; left: 5%; color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); max-width: 600px; }
     .corporate-banner .overlay h1 { font-size: 32px; margin-bottom: 10px; }
     .corporate-banner .overlay p { font-size: 16px; }
     footer { background: #222; color: #fff; text-align: center; padding: 20px; font-size: 14px; }
+
+    /* Responsive adjustments for header */
+    @media (max-width: 1024px) {
+      .menu { gap: 15px; } /* Reduce gap between main menu items */
+      .menu a, .menu .menu-item > a { font-size: 12px; }
+      .dropdown-columns { padding: 0 30px; gap: 0 40px; } /* Adjust dropdown padding/gap */
+      .category-block { width: 160px; } /* Slightly smaller columns */
+    }
+
+    @media (max-width: 850px) {
+       header { flex-direction: column; align-items: stretch; padding: 10px; }
+       .logo-area { text-align: center; margin-bottom: 10px; }
+       .logo-area img { height: 50px; }
+       .menu { justify-content: center; flex-wrap: wrap; gap: 10px 20px; /* Allow wrapping */ overflow: visible; } /* Allow wrap */
+       .menu a, .menu .menu-item > a { padding-bottom: 5px; margin-bottom: 0; } /* Adjust padding for wrapped items */
+       .icons { justify-content: center; margin-top: 10px; }
+       .menu-item { position: relative; } /* Need relative for dropdown positioning again */
+       .dropdown { top: calc(100% + 5px); /* Adjust top position */ box-shadow: 0px 6px 10px rgba(0,0,0,0.1); width: 95%; left: 2.5%; } /* Make dropdown slightly less wide */
+       .dropdown-columns { padding: 0 20px; gap: 0 30px; }
+       .slide-content { max-width: 70%; top: 15%; }
+       .slide-content h1 { font-size: 24px; }
+       .slide-content p { font-size: 14px; }
+       .corporate-banner .overlay { max-width: 80%; top: 15%;}
+       .corporate-banner .overlay h1 { font-size: 26px; }
+    }
+     @media (max-width: 480px) {
+       .slideshow-container { height: 350px; }
+       .slide-content { max-width: 85%; top: 10%; left: 7.5%; }
+        .slide-content h1 { font-size: 20px; }
+        .slide-content p { font-size: 13px; margin-bottom: 15px;}
+        .slide-content .shop-btn { padding: 6px 12px; font-size: 12px; }
+       .dots { bottom: 10px; left: 10px; }
+       .dot { width: 10px; height: 10px; }
+       .dot.active { width: 40px; }
+        section h2 { font-size: 20px; margin: 30px 0 20px; }
+        .corporate-banner { height: 300px; }
+         .corporate-banner .overlay h1 { font-size: 22px; }
+         .corporate-banner .overlay p { font-size: 14px; }
+        footer { padding: 15px; font-size: 12px;}
+     }
+
+
   </style>
 </head>
 <body>
@@ -203,9 +257,8 @@
       <div class="dropdown">
          <div class="dropdown-columns">
 
-             <!-- Column 1: Phone Cases (No Image, Centered) -->
+             <!-- Column 1: Phone Cases -->
              <div class="category-block">
-               <!-- Image Removed -->
                <h4>PHONE CASES</h4>
                <a href="phone-cases.html">Apple</a>
                <a href="#">Samsung</a>
@@ -214,9 +267,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 2: Watch Accessories (No Image, Centered) -->
+             <!-- Column 2: Watch Accessories -->
              <div class="category-block">
-               <!-- Image Removed -->
                <h4>WATCH ACCESSORIES</h4>
                <a href="#">Watchbands</a>
                <a href="#">Apple Watch Chargers</a>
@@ -225,9 +277,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 3: Charging Solutions (No Image, Centered) -->
+             <!-- Column 3: Charging Solutions -->
              <div class="category-block">
-               <!-- Image Removed -->
                <h4>CHARGING SOLUTIONS</h4>
                <a href="#">Powerbank</a>
                <a href="#">Wireless Chargers</a>
@@ -236,9 +287,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 4: Tech Add-ons (No Image, Centered) -->
+             <!-- Column 4: Tech Add-ons -->
              <div class="category-block">
-               <!-- Image Removed -->
                <h4>TECH ADD-ONS</h4>
                <a href="#">iPad Cases</a>
                <a href="#">AirPods Cover</a>
@@ -247,9 +297,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 5: Laptop Sleeves (No Image, Centered) -->
+             <!-- Column 5: Laptop Sleeves -->
              <div class="category-block">
-               <!-- Image Removed -->
                <h4>LAPTOP SLEEVES AND BAGS</h4>
                <a href="#">Zippered Sleeves</a>
                <a href="#">Macbook Hardcases</a>
@@ -258,9 +307,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 6: Stands (No Image, Centered) -->
+             <!-- Column 6: Stands -->
              <div class="category-block">
-               <!-- Image Removed -->
                <h4>STANDS</h4>
                <a href="#">Mobile</a>
                <a href="#">Laptop</a>
@@ -269,9 +317,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 7: Organisers (No Image, Centered) -->
+             <!-- Column 7: Organisers -->
              <div class="category-block">
-               <!-- Image Removed -->
                <h4>ORGANISERS</h4>
                <a href="#">Tech Kit</a>
                <a href="#">Folio</a>
@@ -299,44 +346,48 @@
   </div>
 </header>
 
-<!-- ... (Rest of the HTML body remains unchanged) ... -->
 <section class="banner">
+  <!-- Make sure you have a video file named 'banner-video.mp4' in the same folder or provide the correct path -->
   <video autoplay muted loop>
-    <source src="banner-video.mp4" type="video/mp4"> <!-- Ensure path is correct -->
+    <source src="banner-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
   </video>
 </section>
 
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
-    <a href="tech.html" class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></a> <!-- Ensure path is correct -->
-    <a href="bags.html" class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></a> <!-- Ensure path is correct -->
-    <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a> <!-- Ensure path is correct -->
+    <!-- Make sure you have image files named 'tech1.jpg', 'bags1.jpg', 'work1.jpg' or provide the correct paths -->
+    <a href="tech.html" class="card"><img src="tech1.jpg" alt="Tech Accessories"><h3>TECH ACCESSORIES</h3></a>
+    <a href="bags.html" class="card"><img src="bags1.jpg" alt="Bags & Wallets"><h3>BAGS & WALLETS</h3></a>
+    <a href="work.html" class="card"><img src="work1.jpg" alt="Work Essentials"><h3>WORK ESSENTIALS</h3></a>
   </div>
 </section>
 
 <section>
   <div class="slideshow-container">
-    <!-- Ensure image paths are correct -->
-    <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat4.jpg"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat5.jpg"><div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat6.jpg"><div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <!-- Make sure you have image files named 'cat1.jpg' through 'cat6.jpg' or provide the correct paths -->
+    <div class="slide"><img src="cat1.jpg" alt="Loop Power Banks"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat2.jpg" alt="Phone Cases"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat3.jpg" alt="RFID Magsafe Card Wallet"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat4.jpg" alt="March Crossbody Bag"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat5.jpg" alt="Wrapped Elegance"><div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat6.jpg" alt="Watch Bands"><div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
     <div class="dots">
-      <span class="dot" onclick="showSlide(0)"></span>
-      <span class="dot" onclick="showSlide(1)"></span>
-      <span class="dot" onclick="showSlide(2)"></span>
-      <span class="dot" onclick="showSlide(3)"></span>
-      <span class="dot" onclick="showSlide(4)"></span>
-      <span class="dot" onclick="showSlide(5)"></span>
+      <!-- Javascript will add 'active' class here -->
+      <span class="dot" onclick="showSlideManual(0)"></span>
+      <span class="dot" onclick="showSlideManual(1)"></span>
+      <span class="dot" onclick="showSlideManual(2)"></span>
+      <span class="dot" onclick="showSlideManual(3)"></span>
+      <span class="dot" onclick="showSlideManual(4)"></span>
+      <span class="dot" onclick="showSlideManual(5)"></span>
     </div>
   </div>
 </section>
 
 <section class="corporate-banner">
-  <img src="cg1.jpg" alt="Corporate Gifting"> <!-- Ensure path is correct -->
+  <!-- Make sure you have an image file named 'cg1.jpg' or provide the correct path -->
+  <img src="cg1.jpg" alt="Corporate Gifting Banner">
   <div class="overlay">
     <h1>CORPORATE GIFTING</h1>
     <p>It is the season to celebrate and nurture everlasting bonds. Build lasting relationships with our bespoke corporate solutions</p>
@@ -346,10 +397,10 @@
 <section>
   <h2>TRENDING COLLECTION</h2>
   <div class="zoom-grid">
-     <!-- Ensure image paths are correct -->
-    <div class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>TIMELESS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+     <!-- Make sure you have image files named 'sbc1.jpg', 'sbc2.jpg', 'sbc3.jpg' or provide the correct paths -->
+    <div class="zoom-card"><img src="sbc1.jpg" alt="Reflective Collection"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="zoom-card"><img src="sbc2.jpg" alt="Canvas Collection"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="zoom-card"><img src="sbc3.jpg" alt="Timeless Collection"><div class="overlay-text"><h3>TIMELESS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
   </div>
 </section>
 
@@ -358,17 +409,24 @@
 </footer>
 
 <script>
-  // Javascript for slideshow (remains the same)
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
+  let intervalId = null;
+  const slideInterval = 10000; // 10 seconds
 
   function showSlide(index) {
-    if (!slides || slides.length === 0) return;
+    if (!slides || slides.length === 0 || !dots || dots.length === 0) return; // Basic check
+
+    // Ensure index is within bounds
     if (index >= slides.length) { index = 0; }
     if (index < 0) { index = slides.length - 1; }
+
+    // Hide current slide and deactivate dot
     if (slides[currentSlide]) slides[currentSlide].style.display = 'none';
     if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+
+    // Show new slide and activate dot
     currentSlide = index;
     if (slides[currentSlide]) slides[currentSlide].style.display = 'block';
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
@@ -380,18 +438,38 @@
     showSlide(nextSlide);
   }
 
-  let intervalId = null;
-  if (slides.length > 0) {
-      showSlide(currentSlide);
-      intervalId = setInterval(autoSlide, 10000);
+  // Function called by manual dot clicks
+  function showSlideManual(index) {
+      if(intervalId) {
+          clearInterval(intervalId); // Stop auto sliding
+      }
+      showSlide(index);
+      // Optional: Restart auto-slide after manual click
+      // intervalId = setInterval(autoSlide, slideInterval);
+  }
+
+
+  // Initialize slideshow only if slides exist
+  if (slides.length > 0 && dots.length === slides.length) {
+      showSlide(currentSlide); // Show the first slide initially
+      intervalId = setInterval(autoSlide, slideInterval); // Start auto sliding
+
+      // Add event listeners to dots (already handled by onclick in HTML, but this is an alternative)
+      /*
       dots.forEach((dot, index) => {
           dot.addEventListener('click', () => {
-            if(intervalId) clearInterval(intervalId);
-            showSlide(index);
-            // intervalId = setInterval(autoSlide, 10000); // Optional: Restart auto-slide
+            showSlideManual(index);
           });
       });
+      */
+  } else if (slides.length > 0) {
+      console.warn("Slideshow initialized, but the number of dots doesn't match the number of slides.");
+       showSlide(currentSlide); // Show the first slide anyway
+       intervalId = setInterval(autoSlide, slideInterval);
+  } else {
+      console.warn("Slideshow could not be initialized: No slides found.");
   }
+
 </script>
 
 </body>

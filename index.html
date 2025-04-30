@@ -40,12 +40,13 @@
       display: none; /* Hide by default */
       position: absolute;
       top: 100%; /* Position below the menu item */
-      left: 0; /* Align with the left edge of the menu item */
+      left: 50%; /* Start from center of parent */
+      transform: translateX(-50%); /* Center the dropdown */
       background: #fff;
       border: 1px solid #ddd;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      min-width: auto; /* Remove fixed width, let content decide */
-      padding: 20px 25px; /* Add padding around the columns */
+      min-width: auto; /* Let content decide */
+      padding: 25px; /* Padding around the columns */
       z-index: 1000; /* Ensure it's above other content */
       white-space: nowrap; /* Prevent text wrapping that breaks columns */
     }
@@ -54,33 +55,51 @@
     }
     .dropdown-columns {
       display: flex; /* Arrange columns side-by-side */
-      gap: 40px; /* Space between columns */
+      gap: 30px; /* Space between columns - adjusted */
     }
     .category-block {
-      /* Styles for each column block */
       display: flex;
       flex-direction: column;
+      align-items: center; /* Center items horizontally */
+      text-align: center; /* Center text */
       gap: 5px; /* Space between links within a column */
+      width: 120px; /* Give columns a consistent width */
+    }
+    /* Style for the image within the dropdown */
+    .category-block img {
+      width: 80px; /* Adjust size as needed */
+      height: 80px; /* Adjust size as needed */
+      object-fit: contain; /* Or 'cover', depending on images */
+      margin-bottom: 15px; /* Space below image */
     }
     .category-block h4 {
-      font-size: 14px;
+      font-size: 12px; /* Adjusted size */
       font-weight: bold;
-      color: #333; /* Darker color for main category */
+      color: #000; /* Black color like screenshot */
       margin-bottom: 10px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #eee; /* Optional separator */
       text-transform: uppercase;
+      /* border-bottom: 1px solid #eee; Optional separator */
     }
     .category-block a {
       display: block;
-      padding: 5px 0; /* Vertical padding for links */
+      padding: 3px 0; /* Adjust vertical padding */
       text-decoration: none;
-      color: #555; /* Slightly lighter color for sub-items */
-      font-size: 14px;
+      color: #333; /* Standard link color */
+      font-size: 13px; /* Adjusted size */
       font-weight: normal; /* Normal weight for sub-items */
+      white-space: normal; /* Allow text wrapping for sub-items if needed */
     }
-    .category-block a:hover {
-      color: #007BFF; /* Hover color */
+     /* Style for the "View All +" link */
+    .category-block a.view-all-link {
+      color: #1abc9c; /* Greenish color from screenshot */
+      font-weight: bold; /* Make it bold */
+      margin-top: 8px; /* Add some space above it */
+    }
+    .category-block a:not(.view-all-link):hover {
+      color: #007BFF; /* Hover color for regular links */
+    }
+    .category-block a.view-all-link:hover {
+      color: #16a085; /* Darker green on hover */
     }
     /* --- End Dropdown Styles --- */
 
@@ -273,69 +292,84 @@
       <a href="#">TECH</a>
       <div class="dropdown">
         <div class="dropdown-columns">
+
           <!-- Column 1: Phone Cases -->
           <div class="category-block">
+            <img src="tech-dd-img1.jpg" alt="Phone Cases"> {/* <-- REPLACE IMAGE SRC */}
             <h4>PHONE CASES</h4>
             <a href="#">Apple</a>
             <a href="#">Samsung</a>
             <a href="#">OnePlus</a>
             <a href="#">Google</a>
-            <a href="#">View All +</a>
+            <a href="#" class="view-all-link">View All +</a>
           </div>
+
           <!-- Column 2: Watch Accessories -->
           <div class="category-block">
+             <img src="tech-dd-img2.jpg" alt="Watch Accessories"> {/* <-- REPLACE IMAGE SRC */}
             <h4>WATCH ACCESSORIES</h4>
             <a href="#">Watchbands</a>
             <a href="#">Apple Watch Chargers</a>
             <a href="#">Watch Organisers</a>
             <a href="#">Apple Watch Cases</a>
-            <a href="#">View All +</a>
+            <a href="#" class="view-all-link">View All +</a>
           </div>
+
           <!-- Column 3: Charging Solutions -->
           <div class="category-block">
+             <img src="tech-dd-img3.jpg" alt="Charging Solutions"> {/* <-- REPLACE IMAGE SRC */}
             <h4>CHARGING SOLUTIONS</h4>
             <a href="#">Powerbank</a>
             <a href="#">Wireless Chargers</a>
             <a href="#">Charging Cables</a>
             <a href="#">Chargers and Adapters</a>
-            <a href="#">View All +</a>
+            <a href="#" class="view-all-link">View All +</a>
           </div>
+
           <!-- Column 4: Tech Add-ons -->
           <div class="category-block">
+             <img src="tech-dd-img4.jpg" alt="Tech Add-ons"> {/* <-- REPLACE IMAGE SRC */}
             <h4>TECH ADD-ONS</h4>
             <a href="#">iPad Cases</a>
             <a href="#">AirPods Cover</a>
             <a href="#">Screen Guards</a>
             <a href="#">Phone Wallets</a>
-            <a href="#">View All +</a>
+            <a href="#" class="view-all-link">View All +</a>
           </div>
+
           <!-- Column 5: Laptop Sleeves -->
           <div class="category-block">
+             <img src="tech-dd-img5.jpg" alt="Laptop Sleeves and Bags"> {/* <-- REPLACE IMAGE SRC */}
             <h4>LAPTOP SLEEVES AND BAGS</h4>
             <a href="#">Zippered Sleeves</a>
             <a href="#">Macbook Hardcases</a>
             <a href="#">Messenger Bags</a>
             <a href="#">Backpacks</a>
-            <a href="#">View All +</a>
+            <a href="#" class="view-all-link">View All +</a>
           </div>
+
           <!-- Column 6: Stands -->
           <div class="category-block">
+             <img src="tech-dd-img6.jpg" alt="Stands"> {/* <-- REPLACE IMAGE SRC */}
             <h4>STANDS</h4>
             <a href="#">Mobile</a>
             <a href="#">Laptop</a>
             <a href="#">Monitor</a>
             <a href="#">iPad</a>
-            <a href="#">View All +</a>
+            <a href="#" class="view-all-link">View All +</a>
           </div>
+
           <!-- Column 7: Organisers -->
           <div class="category-block">
+             <img src="tech-dd-img7.jpg" alt="Organisers"> {/* <-- REPLACE IMAGE SRC */}
             <h4>ORGANISERS</h4>
             <a href="#">Tech Kit</a>
             <a href="#">Folio</a>
             <a href="#">Cables</a>
             <a href="#">Pouches</a>
-            <a href="#">View All +</a>
+            <a href="#" class="view-all-link">View All +</a>
           </div>
+
         </div>
       </div>
     </div>
@@ -354,6 +388,8 @@
     <img src="search.png" alt="Search">
   </div>
 </header>
+
+<!-- ... rest of your HTML body remains the same ... -->
 
 <section class="banner">
   <video autoplay muted loop>
@@ -417,22 +453,33 @@
 
   function showSlide(index) {
     // Ensure index is within bounds
+    if (!slides || slides.length === 0) return; // Exit if no slides
     if (index >= slides.length) { index = 0; }
     if (index < 0) { index = slides.length - 1; }
 
-    // Hide current slide and deactivate dot
-    slides[currentSlide].style.display = 'none';
-    dots[currentSlide].classList.remove('active');
+    // Hide current slide and deactivate dot (if they exist)
+    if (slides[currentSlide]) {
+        slides[currentSlide].style.display = 'none';
+    }
+     if (dots[currentSlide]) {
+       dots[currentSlide].classList.remove('active');
+     }
+
 
     // Update currentSlide index
     currentSlide = index;
 
-    // Show new slide and activate dot
-    slides[currentSlide].style.display = 'block';
-    dots[currentSlide].classList.add('active');
+    // Show new slide and activate dot (if they exist)
+     if (slides[currentSlide]) {
+       slides[currentSlide].style.display = 'block';
+     }
+    if (dots[currentSlide]) {
+       dots[currentSlide].classList.add('active');
+    }
   }
 
   function autoSlide() {
+    if (!slides || slides.length === 0) return; // Exit if no slides
     let nextSlide = (currentSlide + 1) % slides.length;
     showSlide(nextSlide);
   }
@@ -441,12 +488,12 @@
   if (slides.length > 0) {
       showSlide(currentSlide); // Show the first slide initially
       setInterval(autoSlide, 10000); // Start auto slide interval
-  }
 
-  // Add event listeners to dots (if they exist)
-  dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => showSlide(index));
-  });
+      // Add event listeners to dots (if they exist)
+      dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => showSlide(index));
+      });
+  }
 
 </script>
 

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     /* --- Import Google Font --- */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap'); /* Added 800 weight */
 
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {font-family: 'Inter', Arial, sans-serif; background: #fff; color: #333;}
@@ -74,7 +74,7 @@
       background: #fff;
       border-top: 1px solid #eee;
       box-shadow: 0px 5px 10px rgba(0,0,0,0.07);
-      padding: 40px 0; /* Increased vertical padding */
+      padding: 40px 0;
       z-index: 1000;
       transform: translateY(-10px);
       transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s, transform 0.25s ease-in-out;
@@ -93,13 +93,13 @@
     .dropdown-columns {
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Align columns to the top */
+      align-items: flex-start;
       flex-wrap: nowrap;
-      /* *** ADJUSTED GAP *** */
-      gap: 0 10px; /* Reduced gap to fit wider columns */
+      /* *** ADJUSTED GAP FOR SEPARATION *** */
+      gap: 0 35px; /* Increased gap */
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 30px; /* Keep container padding */
+      padding: 0 30px;
     }
 
     /* Styling for each individual column block */
@@ -107,56 +107,62 @@
       display: flex;
       flex-direction: column;
       /* *** ADJUSTED WIDTH *** */
-      width: 165px; /* Wider columns */
+      width: 145px; /* Slightly reduced width to allow for more gap */
       flex-shrink: 0;
     }
 
-    /* Title Styling (Left-aligned) */
+    /* Title Styling (Left-aligned) - ENHANCED HIERARCHY */
     .category-block h4 {
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #000;
+      /* *** STYLE CHANGES *** */
+      font-size: 12px;      /* Slightly smaller for uppercase */
+      font-weight: 800;     /* Bolder */
+      color: #111;         /* Darker color */
+      letter-spacing: 0.8px;/* Increased spacing */
+      /* --- End Style Changes ---*/
       text-transform: uppercase;
       text-align: left;
       width: 100%;
-      letter-spacing: 0.6px;
-      line-height: 1.4; /* Adjusted line-height */
-      white-space: normal; /* Allow wrapping */
-      /* *** ADDED MIN-HEIGHT & ALIGNMENT *** */
-      min-height: 40px; /* Force minimum height (enough for ~2 lines + margin) */
-      margin-bottom: 15px; /* Consistent bottom margin */
-      display: flex; /* Use flex to align text within the min-height */
-      align-items: flex-start; /* Align text to the top */
+      line-height: 1.4;
+      white-space: normal;
+      min-height: 38px; /* Keep min height (adjust if needed based on font changes) */
+      margin-bottom: 18px; /* Increased bottom margin */
+      display: flex;
+      align-items: flex-start;
     }
 
-    /* Link Styling (Left-aligned) */
+    /* Link Styling (Left-aligned) - DIFFERENTIATED */
     .category-block a:not(.view-all-link) {
       display: block;
-      padding: 6px 0; /* Consistent vertical padding */
+      padding: 6px 0;
       text-decoration: none;
-      color: #333;
+      /* *** STYLE CHANGES *** */
+      color: #555;           /* Standard text color */
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13px;
-      line-height: 1.5; /* Adjusted line height */
+      font-size: 13px;      /* Clear link size */
+      font-weight: 400;     /* Normal weight */
+      letter-spacing: 0.2px;/* Subtle spacing */
+      /* --- End Style Changes ---*/
+      line-height: 1.5;
       text-align: left;
       width: 100%;
       transition: color 0.2s ease;
     }
 
-    /* "View All" Link Styling (Left-aligned) */
+    /* "View All" Link Styling (Left-aligned) - KEPT DISTINCT */
     .category-block a.view-all-link {
       display: block;
       padding: 0;
       text-decoration: none;
       color: #1abc9c;
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 13px; /* Match link size */
+      font-weight: 700; /* Keep bold */
       text-align: left;
       width: 100%;
-      margin-top: 12px; /* Consistent top margin */
+      margin-top: 12px;
       transition: color 0.2s ease;
+      letter-spacing: 0.3px; /* Slight spacing */
     }
 
     /* Link Hover Effects */
@@ -213,18 +219,16 @@
     /* --- Responsive adjustments --- */
 
     /* Adjustments for when wrapping starts */
-    @media (max-width: 1279px) { /* Matches calculated breakpoint */
+    @media (max-width: 1279px) {
       .dropdown-columns {
         flex-wrap: wrap;
-        gap: 30px 25px; /* Adjust gap for wrapped items */
+        gap: 35px 30px; /* Adjust gap for wrapped items */
         justify-content: center;
         max-width: 100%;
         padding: 0 20px;
       }
-       /* Allow columns to slightly shrink if needed, but keep base width */
-       .category-block { width: 160px; }
-       /* Keep min-height on h4 for horizontal alignment when wrapped */
-       .category-block h4 { min-height: 40px; }
+       .category-block { width: 145px; } /* Keep width consistent */
+       .category-block h4 { min-height: 38px; } /* Keep min-height */
     }
 
     @media (max-width: 1024px) {
@@ -234,9 +238,9 @@
       .icons { gap: 20px; }
       .icons img { height: 18px; }
        /* Dropdown columns */
-       .dropdown-columns { gap: 30px 20px; padding: 0 15px; }
-       .category-block { width: 150px; } /* Slightly narrower */
-       .category-block h4 { min-height: 40px; font-size: 12px; } /* Adjust font-size slightly if needed */
+       .dropdown-columns { gap: 30px 25px; padding: 0 15px; }
+       .category-block { width: 150px; } /* Allow slightly wider */
+       .category-block h4 { min-height: 38px; font-size: 12px; }
        /* Other general adjustments */
        .slide-content { max-width: 50%; left: 5%; }
        .slide-content h1 { font-size: 30px; }
@@ -263,10 +267,10 @@
              flex-wrap: wrap;
              justify-content: center;
              padding: 20px 15px;
-             gap: 25px 20px;
+             gap: 30px 20px; /* Adjust gap */
          }
        .category-block { width: 140px; } /* Adjust width */
-       .category-block h4 { min-height: 40px; } /* Keep min-height */
+       .category-block h4 { min-height: 38px; } /* Keep min-height */
        /* Other general adjustments */
        .slideshow-container { height: 450px; }
        .slide-content { max-width: 75%; }
@@ -283,7 +287,7 @@
          .dropdown-columns {
              flex-direction: column; /* STACK */
              align-items: center; /* Center stacked blocks */
-             gap: 20px 0; /* Vertical gap */
+             gap: 25px 0; /* Vertical gap */
              flex-wrap: nowrap;
              padding: 20px;
          }
@@ -291,22 +295,24 @@
              width: 90%; /* Wider when stacked */
              align-items: flex-start; /* Align content start */
          }
-         /* *** REMOVE MIN-HEIGHT & RESET H4 DISPLAY *** */
+         /* Reset H4 styles for stacking */
          .category-block h4 {
              min-height: auto; /* Remove fixed height */
              display: block; /* Reset display */
-             text-align: left; /* Keep left align */
-             margin-bottom: 10px;
-             font-size: 12.5px;
+             text-align: left;
+             margin-bottom: 12px; /* Adjust margin */
+             font-size: 12.5px; /* Adjust size if needed */
              line-height: 1.4;
+             font-weight: 800; /* Keep bold */
+             letter-spacing: 0.8px; /* Keep spacing */
          }
          .category-block a:not(.view-all-link),
          .category-block a.view-all-link {
              text-align: left;
              width: 100%;
          }
-          .category-block a:not(.view-all-link) { padding: 5px 0; font-size: 13px; line-height: 1.5; }
-          .category-block a.view-all-link { margin-top: 10px; font-size: 13px; }
+          .category-block a:not(.view-all-link) { padding: 5px 0; font-size: 13px; line-height: 1.5; font-weight: 400; letter-spacing: 0.2px; }
+          .category-block a.view-all-link { margin-top: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.3px;}
         /* Other general adjustments */
         section h2 { font-size: 20px; margin: 40px 0 25px; }
         .slideshow-container { height: 400px; }

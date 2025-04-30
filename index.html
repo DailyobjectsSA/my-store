@@ -1,166 +1,157 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Objects SA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: Arial, sans-serif; background: #fff; color: #333;} /* Default text color */
+    body {font-family: Arial, sans-serif; background: #fff; color: #333;}
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 30px; /* Slightly reduced padding */
+      padding: 10px 30px;
       background: #fff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* Softer shadow */
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
       position: sticky;
       top: 0;
       z-index: 999;
       flex-wrap: nowrap;
-      min-height: 70px; /* Ensure header has some minimum height */
+      min-height: 70px;
     }
-    .logo-area img { height: 35px; /* Adjusted logo height to match screenshot */ width: auto; flex-shrink: 0; }
+    .logo-area img { height: 35px; width: auto; flex-shrink: 0; }
 
     .menu {
       display: flex;
-      gap: 30px; /* Fine-tuned gap */
+      gap: 30px;
       flex-wrap: nowrap;
       overflow: hidden;
       align-items: center;
-      height: 100%; /* Ensure menu takes full header height for alignment */
+      height: 100%;
     }
-    /* Main menu link styling */
     .menu a, .menu .menu-item > a {
-      display: flex; /* Use flex for vertical alignment */
-      align-items: center; /* Center text vertically */
-      height: 100%; /* Take full height */
+      display: flex;
+      align-items: center;
+      height: 100%;
       text-decoration: none;
       color: #333;
-      padding: 0 5px; /* Horizontal padding */
-      /* Removed bottom padding/margin */
-      font-size: 13px; /* Adjusted size */
+      padding: 0 5px;
+      font-size: 13px;
       font-weight: bold;
       text-transform: uppercase;
-      letter-spacing: 0.7px; /* Adjusted spacing */
+      letter-spacing: 0.7px;
       transition: color 0.2s ease, border-color 0.2s ease;
       white-space: nowrap;
-      border-bottom: 3px solid transparent; /* Prepare for hover effect */
+      border-bottom: 3px solid transparent;
       line-height: 1.4;
     }
-     .menu .menu-item > a {
-        flex-shrink: 0;
+     .menu .menu-item > a { flex-shrink: 0; }
+     .menu .menu-item:hover > a, .menu a:hover {
+       color: #1abc9c;
+       border-bottom-color: #1abc9c;
      }
-     /* Hover effect - underline matching screenshot's highlight */
-     .menu .menu-item:hover > a,
-     .menu a:hover {
-       color: #1abc9c; /* Highlight color */
-       border-bottom-color: #1abc9c; /* Underline on hover */
-     }
-
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static; /* Base for absolute dropdown */
-      height: 100%; /* Ensure menu item takes full header height */
-      display: flex; /* Align link inside */
+      position: static;
+      height: 100%;
+      display: flex;
       align-items: center;
     }
     .dropdown {
       visibility: hidden;
       opacity: 0;
       position: absolute;
-      /* Position right below the bottom border of the header */
       top: 100%;
       left: 0;
       width: 100%;
       background: #fff;
       border-top: 1px solid #eee;
-      box-shadow: 0px 5px 10px rgba(0,0,0,0.07); /* Adjusted shadow */
-      padding: 35px 0; /* Vertical padding inside dropdown */
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.07);
+      padding: 35px 0; /* Vertical padding */
       z-index: 1000;
       transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s;
       box-sizing: border-box;
-       overflow: hidden; /* Prevent any potential overflow causing scrollbars */
+      overflow: hidden; /* Hide any potential brief overflow during transition */
     }
     .menu-item:hover .dropdown {
       visibility: visible;
       opacity: 1;
       transition-delay: 0s;
-       overflow: visible; /* Allow content to be visible on hover */
+      overflow: visible; /* Allow content */
     }
 
-    /* Container for the columns - Centered, Allows Wrapping */
+    /* Container for the columns - DESKTOP FIRST */
     .dropdown-columns {
       display: flex;
       justify-content: center; /* Center the group of columns */
-      align-items: flex-start; /* Align tops of columns */
-      flex-wrap: wrap; /* Allow columns to wrap onto next line */
-      /* Define gap: row-gap column-gap */
-      gap: 30px 40px; /* Space between rows when wrapped, Space between columns */
-      max-width: 1280px; /* Limit content width */
-      margin: 0 auto; /* Center the max-width container */
-      padding: 0 20px; /* Horizontal padding inside the container */
-      /* NO overflow property here that would cause scrollbars */
+      align-items: flex-start;
+      flex-wrap: nowrap; /* <<< FORCE SINGLE ROW BY DEFAULT */
+      gap: 0 40px; /* Column gap (Row gap 0 as nowrap) */
+      max-width: 1280px; /* Max width container */
+      margin: 0 auto; /* Center the container */
+      padding: 0 30px; /* Padding inside */
+      /* NO overflow property here to allow scroll if forced */
+      /* But sizing below should prevent it on desktop */
     }
 
-    /* Styling for each individual column block (No Image) */
+    /* Styling for each individual column block */
     .category-block {
       display: flex;
       flex-direction: column;
-      /* align-items: center; Remove this, rely on text-align */
-      width: 165px; /* Column width - adjust as needed */
-      flex-shrink: 0; /* Prevent shrinking before wrapping */
-      /* margin-bottom is handled by row-gap now */
+      width: 140px; /* <<< ADJUSTED WIDTH TO FIT 7 COLUMNS + GAPS */
+      flex-shrink: 0; /* Prevent shrinking */
     }
 
-    /* Title Styling (Bold, Uppercase, Centered) */
+    /* Title Styling (Centered) */
     .category-block h4 {
       font-family: Arial, sans-serif;
-      font-size: 11.5px; /* Fine-tuned font size */
+      font-size: 11.5px;
       font-weight: bold;
       color: #000;
-      margin-bottom: 20px; /* Space below heading */
+      margin-bottom: 20px;
       text-transform: uppercase;
-      text-align: center; /* Center heading text */
+      text-align: center; /* <<< CENTER HEADING */
       width: 100%;
-      letter-spacing: 0.6px; /* Fine-tuned spacing */
-      white-space: normal; /* Allow heading to wrap if needed */
+      letter-spacing: 0.6px;
       line-height: 1.3;
-       /* Removed overflow/ellipsis to allow wrapping if needed */
+      white-space: normal; /* Allow wrapping if needed */
     }
 
-    /* Link Styling (Vertical List, Left-Aligned Text) */
+    /* Link Styling (Left-aligned) */
     .category-block a:not(.view-all-link) {
       display: block;
-      padding: 4px 0; /* Fine-tuned vertical padding between links */
+      padding: 4px 0;
       text-decoration: none;
       color: #333;
       font-family: Arial, sans-serif;
-      font-size: 13.5px; /* Fine-tuned size */
+      font-size: 13.5px;
       line-height: 1.5;
-      text-align: left; /* Align link text left */
+      text-align: left; /* <<< LEFT ALIGN LINKS */
       width: 100%;
       transition: color 0.2s ease;
     }
 
-    /* "View All" Link Styling (Left-Aligned Text, Special Color) */
+    /* "View All" Link Styling (Left-aligned) */
     .category-block a.view-all-link {
       display: block;
       padding: 0;
       text-decoration: none;
-      color: #1abc9c; /* Teal color */
+      color: #1abc9c;
       font-family: Arial, sans-serif;
-      font-size: 13.5px; /* Match link size */
+      font-size: 13.5px;
       font-weight: bold;
-      text-align: left; /* Align link text left */
+      text-align: left; /* <<< LEFT ALIGN LINK */
       width: 100%;
-      margin-top: 12px; /* Fine-tuned space above "View All" */
+      margin-top: 12px;
       transition: color 0.2s ease;
     }
 
     /* Link Hover Effects */
-    .category-block a:not(.view-all-link):hover {
-      color: #1abc9c; /* Hover color matches View All */
-    }
-    .category-block a.view-all-link:hover {
-      color: #16a085; /* Darker shade on hover */
-    }
+    .category-block a:not(.view-all-link):hover { color: #1abc9c; }
+    .category-block a.view-all-link:hover { color: #16a085; }
     /* --- End Dropdown Styles --- */
 
 
@@ -169,38 +160,23 @@
       gap: 25px;
       align-items: center;
       flex-shrink: 0;
-      height: 100%; /* Align with menu items */
+      height: 100%;
     }
-    .icons img {
-      height: 20px; /* Adjusted icon size */
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-    .icons img:hover {
-        opacity: 1;
-    }
+    .icons img { height: 20px; cursor: pointer; opacity: 0.7; transition: opacity 0.2s ease; }
+    .icons img:hover { opacity: 1; }
 
-    /* Rest of the CSS (Minimal changes from previous version) */
+    /* --- Rest of the CSS --- */
     section { width: 100%; }
     section h2 { font-size: 24px; font-weight: bold; text-align: center; margin: 50px 0 35px; color: #333; }
     .grid, .zoom-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1px; margin-bottom: 40px; background-color: #eee; border: 1px solid #eee; }
     .card, .zoom-card { flex: 1 1 33%; text-align: center; background: #fff; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-
-    @media (max-width: 992px) {
-        .card, .zoom-card { flex-basis: calc(50% - 1px); }
-    }
-    @media (max-width: 600px) {
-        .card, .zoom-card { flex-basis: calc(100% - 1px); }
-    }
-
+    @media (max-width: 992px) { .card, .zoom-card { flex-basis: calc(50% - 1px); } }
+    @media (max-width: 600px) { .card, .zoom-card { flex-basis: calc(100% - 1px); } }
     .card img, .zoom-card img { width: 100%; height: auto; display: block; object-fit: cover; transition: transform 0.4s ease; }
     .card:hover, .zoom-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); z-index: 10; }
     .card:hover img, .zoom-card:hover img { transform: scale(1.03); }
     .card h3 { padding: 20px 15px; font-size: 16px; color: #333; font-weight: normal; text-transform: uppercase; letter-spacing: 0.5px;}
-
     .banner video { width: 100%; height: auto; max-height: 70vh; object-fit: cover; display: block; }
-
     .slideshow-container { position: relative; width: 100%; height: 550px; overflow: hidden; background: #f0f0f0; }
     .slide { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; animation: fadeEffect 1.5s; }
     @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
@@ -210,70 +186,79 @@
     .slide-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
     .slide-content .shop-btn { display: inline-block; padding: 10px 25px; font-size: 14px; font-weight: bold; color: #fff; background: #1abc9c; border: none; border-radius: 4px; text-decoration: none; transition: background-color 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;}
     .slide-content .shop-btn:hover { background-color: #16a085; }
-
     .dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 5; }
     .dot { width: 10px; height: 10px; background-color: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.4s ease; }
     .dot.active { background-color: #fff; transform: scale(1.2); }
-
     .overlay-text { position: absolute; bottom: 0; left: 0; width: 100%; padding: 25px 20px; color: white; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); text-align: left; }
     .overlay-text h3 { font-size: 22px; margin-bottom: 10px; font-weight: bold; }
     .overlay-text .shop-btn { background: #fff; color: #1abc9c; font-size: 13px; font-weight: bold; padding: 8px 15px; border-radius: 4px; text-decoration: none; transition: background-color 0.3s ease, color 0.3s ease; text-transform: uppercase; }
     .overlay-text .shop-btn:hover { background-color: #eee; color: #16a085; }
-
     .corporate-banner { position: relative; height: 450px; overflow: hidden; }
     .corporate-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .corporate-banner .overlay { position: absolute; top: 50%; left: 8%; transform: translateY(-50%); color: white; text-shadow: 1px 1px 8px rgba(0,0,0,0.7); max-width: 550px; }
     .corporate-banner .overlay h1 { font-size: 36px; margin-bottom: 15px; font-weight: bold; }
     .corporate-banner .overlay p { font-size: 16px; line-height: 1.6; }
-
     footer { background: #222; color: #aaa; text-align: center; padding: 25px 20px; font-size: 13px; }
 
     /* --- Responsive adjustments --- */
-    @media (max-width: 1200px) {
-        .dropdown-columns { max-width: 95%; gap: 25px 35px; /* Adjust gap */ }
+
+    /* --- Breakpoint where nowrap causes overflow --- */
+    /* Adjust this value based on testing (1280px max-width - 60px padding = 1220px content area) */
+    /* 7 * 140 (width) + 6 * 40 (gap) = 980 + 240 = 1220. So below 1280px window width */
+    @media (max-width: 1279px) {
+      .dropdown-columns {
+        flex-wrap: wrap;   /* <<< ALLOW WRAPPING on smaller screens */
+        gap: 30px 40px;    /* Reintroduce row gap */
+        justify-content: center; /* Keep centered */
+        /* Width can adjust naturally, or set max-width: 100%; */
+        max-width: 100%; /* Use available width */
+         padding: 0 20px; /* Adjust padding */
+      }
+       /* Column width can stay 140px or adjust if needed */
+       .category-block { width: 150px; /* Example: slightly wider when wrapped */ }
     }
 
     @media (max-width: 1024px) {
+      /* Header adjustments */
       .menu { gap: 20px; }
       .menu a, .menu .menu-item > a { font-size: 12px; letter-spacing: 0.6px; }
       .icons { gap: 20px; }
-      .icons img { height: 18px; } /* Smaller icons */
-      .dropdown-columns { padding: 0 15px; /* Reduce padding */ gap: 25px 30px; }
-      .category-block { width: 155px; } /* Adjust column width */
-      .slide-content { max-width: 50%; left: 5%;}
-      .slide-content h1 { font-size: 30px; }
+      .icons img { height: 18px; }
+       /* Dropdown columns gap adjust slightly */
+       .dropdown-columns { gap: 25px 35px; padding: 0 15px; }
+       .category-block { width: 145px; } /* Slightly adjust width */
+       /* Other general adjustments */
+       .slide-content { max-width: 50%; left: 5%; }
+       .slide-content h1 { font-size: 30px; }
        .corporate-banner .overlay { max-width: 70%; left: 5%; }
        .corporate-banner .overlay h1 { font-size: 30px; }
     }
 
     @media (max-width: 850px) {
-       header { flex-direction: column; align-items: center; padding: 10px 15px; min-height: auto; /* Allow shrink */ }
+        /* Header stacking */
+       header { flex-direction: column; align-items: center; padding: 10px 15px; min-height: auto; }
        .logo-area { margin-bottom: 10px; }
-       .menu { justify-content: center; flex-wrap: wrap; gap: 8px 15px; overflow: visible; border-top: 1px solid #eee; padding-top: 10px; width: 100%; height: auto; /* Allow wrap */ }
-       .menu a, .menu .menu-item > a { padding-bottom: 5px; border-bottom-width: 2px; height: auto; } /* Adjust padding for wrap */
-        .menu-item { height: auto; } /* Allow menu item height to adjust */
+       .menu { justify-content: center; flex-wrap: wrap; gap: 8px 15px; overflow: visible; border-top: 1px solid #eee; padding-top: 10px; width: 100%; height: auto; }
+       .menu a, .menu .menu-item > a { padding-bottom: 5px; border-bottom-width: 2px; height: auto; }
+       .menu-item { height: auto; position: relative; } /* Add relative positioning for dropdown */
        .icons { justify-content: center; margin-top: 10px; height: auto; }
-       .menu-item { position: relative; }
-       /* Dropdown on mobile */
+
+        /* Dropdown position/style on mobile */
         .menu-item:hover .dropdown {
-            position: absolute;
-            top: 100%; /* Below menu item */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90vw; /* Use viewport width */
-            max-width: 500px; /* Limit max width */
-            min-width: 300px; /* Ensure reasonable min width */
-            margin-top: 2px; /* Small gap */
-            border-radius: 4px;
-            border: 1px solid #eee; /* Add full border on mobile */
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            width: 90vw; max-width: 500px; min-width: 300px;
+            margin-top: 2px; border-radius: 4px; border: 1px solid #eee;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+        /* Ensure wrapping is still active */
         .dropdown-columns {
-            justify-content: flex-start; /* Align left when wrapped */
-            padding: 20px 15px; /* Internal padding */
-            gap: 20px 25px; /* Adjust gap */
-        }
-       .category-block { width: 145px; } /* Adjust width */
+             flex-wrap: wrap; /* Explicitly keep wrap */
+             justify-content: center; /* Center wrapped items */
+             padding: 20px 15px;
+             gap: 20px 25px;
+         }
+       .category-block { width: 135px; } /* Adjust width */
+       /* Other general adjustments */
        .slideshow-container { height: 450px; }
        .slide-content { max-width: 75%; }
        .slide-content h1 { font-size: 26px; }
@@ -283,6 +268,29 @@
     }
 
      @media (max-width: 600px) {
+        /* Stack dropdown columns vertically */
+         .menu-item:hover .dropdown {
+             width: calc(100vw - 30px); left: 15px; transform: none;
+         }
+         .dropdown-columns {
+             flex-direction: column; /* STACK */
+             align-items: center; /* Center stacked items */
+             gap: 25px 0; /* Vertical gap only */
+             flex-wrap: nowrap; /* No wrapping needed when direction is column */
+             padding: 20px;
+         }
+         .category-block {
+             width: 85%; /* Make columns wider when stacked */
+             align-items: center; /* Center content */
+         }
+         .category-block h4,
+         .category-block a:not(.view-all-link),
+         .category-block a.view-all-link {
+             text-align: center; /* Center all text */
+         }
+          .category-block h4 { margin-bottom: 15px; }
+         .category-block a.view-all-link { margin-top: 10px; }
+        /* Other general adjustments */
         section h2 { font-size: 20px; margin: 40px 0 25px; }
         .slideshow-container { height: 400px; }
         .slide-content { max-width: 85%; left: 7.5%; transform: translateY(-50%); }
@@ -296,42 +304,10 @@
         .overlay-text h3 { font-size: 18px;}
         .overlay-text .shop-btn { padding: 6px 12px; font-size: 12px; }
         footer { padding: 20px 15px; font-size: 12px;}
-
-         /* Stack dropdown columns vertically on very small screens */
-         .menu-item:hover .dropdown {
-             width: calc(100vw - 30px); /* Near full width */
-             left: 15px; /* Align edge */
-             transform: none; /* No translation */
-         }
-         .dropdown-columns {
-             flex-direction: column;
-             align-items: center; /* Center the stacked columns */
-             gap: 25px 0; /* Vertical gap only */
-             padding: 20px;
-         }
-         .category-block {
-             width: 85%; /* Make columns wider when stacked */
-             align-items: center; /* Center content within column */
-             margin-bottom: 0; /* Gap handles spacing now */
-         }
-         .category-block h4 {
-             text-align: center;
-             margin-bottom: 15px;
-             white-space: normal; /* Ensure wrapping */
-         }
-         /* Center all links within the column */
-         .category-block a:not(.view-all-link),
-         .category-block a.view-all-link {
-             text-align: center;
-         }
-         .category-block a.view-all-link {
-            margin-top: 10px;
-         }
      }
     /* --- End Responsive adjustments --- */
   </style>
 </head>
-
 <body>
 
 <header>
@@ -434,9 +410,9 @@
   </div>
 </header>
 
-<!-- Rest of the body content remains the same as the previous 'entire code' example -->
 <section class="banner">
-  <video autoplay muted loop playsinline poster="fallback-banner-image.jpg">
+  <!-- Make sure banner-video.mp4 exists or update path -->
+  <video autoplay muted loop playsinline poster="fallback-banner-image.jpg"> <!-- Added playsinline and poster -->
     <source src="banner-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -445,6 +421,7 @@
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
+    <!-- Make sure image paths are correct -->
     <a href="tech.html" class="card"><img src="tech1.jpg" alt="Tech Accessories"><h3>TECH ACCESSORIES</h3></a>
     <a href="bags.html" class="card"><img src="bags1.jpg" alt="Bags & Wallets"><h3>BAGS & WALLETS</h3></a>
     <a href="work.html" class="card"><img src="work1.jpg" alt="Work Essentials"><h3>WORK ESSENTIALS</h3></a>
@@ -453,7 +430,8 @@
 
 <section>
   <div class="slideshow-container">
-    <div class="slide" style="display: block;">
+    <!-- Make sure image paths are correct -->
+    <div class="slide" style="display: block;"> <!-- Show first slide by default -->
         <img src="cat1.jpg" alt="Loop Power Banks">
         <div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">Shop Now</a></div>
     </div>
@@ -478,6 +456,7 @@
         <div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">Shop Now</a></div>
     </div>
     <div class="dots">
+      <!-- Dots will be handled by JS -->
       <span class="dot active" onclick="showSlideManual(0)"></span>
       <span class="dot" onclick="showSlideManual(1)"></span>
       <span class="dot" onclick="showSlideManual(2)"></span>
@@ -489,6 +468,7 @@
 </section>
 
 <section class="corporate-banner">
+  <!-- Make sure image path is correct -->
   <img src="cg1.jpg" alt="Corporate Gifting Banner">
   <div class="overlay">
     <h1>CORPORATE GIFTING</h1>
@@ -499,6 +479,7 @@
 <section>
   <h2>TRENDING COLLECTION</h2>
   <div class="zoom-grid">
+     <!-- Make sure image paths are correct -->
     <div class="zoom-card"><img src="sbc1.jpg" alt="Reflective Collection"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">Shop Now</a></div></div>
     <div class="zoom-card"><img src="sbc2.jpg" alt="Canvas Collection"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">Shop Now</a></div></div>
     <div class="zoom-card"><img src="sbc3.jpg" alt="Timeless Collection"><div class="overlay-text"><h3>TIMELESS</h3><a href="#" class="shop-btn">Shop Now</a></div></div>

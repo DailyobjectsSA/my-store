@@ -18,48 +18,56 @@
       position: sticky;
       top: 0;
       z-index: 999;
+      /* Ensure header itself doesn't contribute to unwanted wrapping */
+      flex-wrap: nowrap;
     }
-    .logo-area img { height: 60px; width: auto; }
+    .logo-area img { height: 60px; width: auto; flex-shrink: 0; }
+    /* Ensure menu items stay in one line */
     .menu {
       display: flex;
       gap: 25px;
+      flex-wrap: nowrap; /* Prevent menu items wrapping */
+      overflow: hidden; /* Hide overflow if it somehow occurs */
+      align-items: center; /* Vertically align menu items */
     }
-    /* Styles for top navigation links */
     .menu a, .menu .menu-item > a {
       text-decoration: none;
       color: #222;
-      padding-bottom: 15px; /* Helps with hover continuity */
-      margin-bottom: -15px; /* Counteracts padding for layout */
+      padding-bottom: 15px;
+      margin-bottom: -15px;
       font-size: 13px;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       transition: color 0.2s ease;
+      white-space: nowrap; /* Prevent individual link text wrapping */
     }
-     /* Hover effect specifically for the TECH link itself */
+     .menu .menu-item > a {
+        flex-shrink: 0; /* Prevent link from shrinking */
+     }
      .menu .menu-item:hover > a {
-       color: #1abc9c; /* Teal color on hover */
+       color: #1abc9c;
      }
 
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static; /* Context for absolute dropdown */
+      position: static;
     }
     .dropdown {
       visibility: hidden;
       opacity: 0;
       position: absolute;
-      top: 100%; /* Position directly below header */
+      top: 100%;
       left: 0;
-      width: 100%; /* Full width background */
+      width: 100%;
       background: #fff;
-      border: 1px solid #eee; /* Subtle border */
+      border: 1px solid #eee;
       border-top: none;
-      box-shadow: 0px 6px 12px rgba(0,0,0,0.1); /* Soft shadow */
-      padding: 40px 0; /* Generous vertical padding, horizontal padding handled by inner container */
+      box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
+      padding: 40px 0; /* Vertical padding */
       z-index: 1000;
-      transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s; /* Slightly slower fade */
+      transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s;
     }
     .menu-item:hover .dropdown {
       visibility: visible;
@@ -67,82 +75,79 @@
       transition-delay: 0s;
     }
 
-    /* Container for the columns, centered */
+    /* Container for the columns, centered, allows wrapping */
     .dropdown-columns {
       display: flex;
-      justify-content: center; /* Center the columns horizontally */
+      justify-content: center;
       align-items: flex-start; /* Align tops of columns */
-      gap: 45px; /* Horizontal space between columns */
-      flex-wrap: nowrap; /* Prevent wrapping for this specific design if possible */
-      overflow-x: auto; /* Add scroll if it overflows on small screens */
-      max-width: 1400px; /* Max width of the content area */
-      margin: 0 auto; /* Center the container */
-      padding: 0 30px; /* Padding on the sides of the column group */
+      gap: 40px 50px; /* Row gap, Column gap */
+      flex-wrap: wrap; /* Allow columns to wrap */
+      /* Removed overflow-x: auto */
+      max-width: 1200px; /* Adjust as needed for desired max width */
+      margin: 0 auto;
+      padding: 0 30px;
     }
 
-    /* Styling for each individual column block */
+    /* Styling for each individual column block (No Image) */
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center image and title */
-      width: 160px; /* Consistent width for each column */
-      flex-shrink: 0; /* Prevent columns from shrinking */
+      align-items: center; /* Center heading and links */
+      width: 165px; /* Adjust width as needed */
+      /* Removed flex-shrink: 0 */
+      margin-bottom: 10px; /* Adjust vertical space when wrapped */
     }
 
-    /* Image Styling */
-    .category-block img {
-      width: 120px; /* Consistent image width */
-      height: 120px; /* Consistent image height */
-      object-fit: contain; /* Fit image while preserving aspect ratio */
-      margin-bottom: 20px; /* Space between image and title */
-    }
+    /* Removed Image Styling block */
 
     /* Title Styling (Bold, Uppercase, Centered) */
     .category-block h4 {
       font-family: Arial, sans-serif;
-      font-size: 11px;
+      font-size: 12px; /* Slightly larger for clarity */
       font-weight: bold;
       color: #000;
-      margin-bottom: 15px; /* Space between title and list */
+      margin-bottom: 15px;
       text-transform: uppercase;
       text-align: center;
       width: 100%;
       letter-spacing: 0.5px;
+      white-space: nowrap; /* Prevent heading text itself from wrapping */
+      overflow: hidden; /* Hide overflow if name is too long */
+      text-overflow: ellipsis; /* Add ellipsis if name is too long */
     }
 
-    /* Link Styling (Vertical List, Left-aligned) */
+    /* Link Styling (Vertical List, Centered Text) */
     .category-block a:not(.view-all-link) {
-      display: block; /* Each link on its own line */
-      padding: 3px 0; /* Vertical spacing for list items */
+      display: block;
+      padding: 3px 0;
       text-decoration: none;
-      color: #333; /* Standard text color */
+      color: #333;
       font-family: Arial, sans-serif;
       font-size: 13px;
       line-height: 1.6;
-      text-align: left; /* CRITICAL: Left align text */
-      width: 100%; /* CRITICAL: Use full width for alignment */
+      text-align: center; /* Center link text */
+      width: 100%;
     }
 
-    /* "View All" Link Styling (Left-aligned, Special Color) */
+    /* "View All" Link Styling (Centered Text, Special Color) */
     .category-block a.view-all-link {
       display: block;
       padding: 0;
       text-decoration: none;
-      color: #1abc9c; /* Teal color */
+      color: #1abc9c;
       font-family: Arial, sans-serif;
       font-size: 13px;
       font-weight: bold;
-      text-align: left; /* CRITICAL: Left align text */
-      width: 100%; /* CRITICAL: Use full width for alignment */
-      margin-top: 10px; /* Space above View All link */
+      text-align: center; /* Center link text */
+      width: 100%;
+      margin-top: 10px;
     }
 
-    /* Hover effects for links */
     .category-block a:not(.view-all-link):hover {
-      color: #007BFF; /* Example hover color */
+      color: #007BFF;
     }
     .category-block a.view-all-link:hover {
-      color: #16a085; /* Darker teal on hover */
+      color: #16a085;
     }
     /* --- End Dropdown Styles --- */
 
@@ -150,180 +155,41 @@
     .icons {
       display: flex;
       gap: 20px;
+      align-items: center; /* Align icons vertically */
+      flex-shrink: 0; /* Prevent icons area from shrinking */
     }
     .icons img {
       height: 24px;
       cursor: pointer;
     }
 
-    section h2 {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin: 40px 0 30px;
-    }
-
-    .grid, .zoom-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 40px;
-    }
-
-    .card, .zoom-card {
-      flex: 1 1 33%;
-      text-align: center;
-      background: #f9f9f9;
-      border: 1px solid #eee;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .card img, .zoom-card img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .card:hover img, .zoom-card:hover img {
-      transform: scale(1.05);
-    }
-    .card h3 {
-      padding: 15px;
-      font-size: 18px;
-      color: #333;
-    }
-
-    .banner video {
-      width: 100%;
-      height: 450px;
-      object-fit: cover;
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      overflow: hidden;
-    }
-    .slide {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0; left: 0;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .slide-content {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      max-width: 45%;
-    }
-    .slide-content h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .slide-content p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-    .slide-content .shop-btn {
-      display: inline-block;
-      padding: 8px 16px;
-      font-size: 14px;
-      font-weight: bold;
-      color: black;
-      background: white;
-      border-radius: 5px;
-      text-decoration: none;
-      float: right;
-    }
-    .dots {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      display: flex;
-      gap: 10px;
-      z-index: 5;
-    }
-    .dot {
-      width: 12px;
-      height: 12px;
-      background-color: #ccc;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .dot.active {
-      width: 60px;
-      border-radius: 6px;
-      background-color: #444;
-    }
-
-    .overlay-text {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-    }
-    .overlay-text h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-    .overlay-text .shop-btn {
-      background: white;
-      color: black;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 4px;
-      text-decoration: none;
-    }
-
-    .corporate-banner {
-      position: relative;
-      height: 400px;
-      overflow: hidden;
-    }
-    .corporate-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .corporate-banner .overlay {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      max-width: 600px;
-    }
-    .corporate-banner .overlay h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .corporate-banner .overlay p {
-      font-size: 16px;
-    }
-
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
+    /* Rest of the CSS remains the same */
+    section h2 { font-size: 24px; font-weight: bold; text-align: center; margin: 40px 0 30px; }
+    .grid, .zoom-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0; margin-bottom: 40px; }
+    .card, .zoom-card { flex: 1 1 33%; text-align: center; background: #f9f9f9; border: 1px solid #eee; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: transform 0.3s ease; }
+    .card img, .zoom-card img { width: 100%; height: auto; object-fit: cover; transition: transform 0.4s ease; }
+    .card:hover img, .zoom-card:hover img { transform: scale(1.05); }
+    .card h3 { padding: 15px; font-size: 18px; color: #333; }
+    .banner video { width: 100%; height: 450px; object-fit: cover; }
+    .slideshow-container { position: relative; width: 100%; height: 500px; overflow: hidden; }
+    .slide { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; }
+    .slide-content { position: absolute; top: 20%; left: 5%; color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); max-width: 45%; }
+    .slide-content h1 { font-size: 32px; margin-bottom: 10px; }
+    .slide-content p { font-size: 16px; margin-bottom: 20px; }
+    .slide-content .shop-btn { display: inline-block; padding: 8px 16px; font-size: 14px; font-weight: bold; color: black; background: white; border-radius: 5px; text-decoration: none; float: right; }
+    .dots { position: absolute; bottom: 20px; left: 20px; display: flex; gap: 10px; z-index: 5; }
+    .dot { width: 12px; height: 12px; background-color: #ccc; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }
+    .dot.active { width: 60px; border-radius: 6px; background-color: #444; }
+    .overlay-text { position: absolute; bottom: 20px; left: 20px; color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); }
+    .overlay-text h3 { font-size: 20px; margin-bottom: 8px; }
+    .overlay-text .shop-btn { background: white; color: black; font-size: 14px; font-weight: bold; padding: 6px 12px; border-radius: 4px; text-decoration: none; }
+    .corporate-banner { position: relative; height: 400px; overflow: hidden; }
+    .corporate-banner img { width: 100%; height: 100%; object-fit: cover; }
+    .corporate-banner .overlay { position: absolute; top: 20%; left: 5%; color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); max-width: 600px; }
+    .corporate-banner .overlay h1 { font-size: 32px; margin-bottom: 10px; }
+    .corporate-banner .overlay p { font-size: 16px; }
+    footer { background: #222; color: #fff; text-align: center; padding: 20px; font-size: 14px; }
   </style>
 </head>
 <body>
@@ -337,20 +203,20 @@
       <div class="dropdown">
          <div class="dropdown-columns">
 
-             <!-- Column 1: Phone Cases -->
+             <!-- Column 1: Phone Cases (No Image, Centered) -->
              <div class="category-block">
-               <img src="images/tech-dd-phone-cases.jpg" alt="Phone Cases"> <!-- REPLACE IMAGE SRC -->
+               <!-- Image Removed -->
                <h4>PHONE CASES</h4>
-               <a href="phone-cases.html">Apple</a> <!-- REPLACE LINK HREF -->
+               <a href="phone-cases.html">Apple</a>
                <a href="#">Samsung</a>
                <a href="#">OnePlus</a>
                <a href="#">Google</a>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 2: Watch Accessories -->
+             <!-- Column 2: Watch Accessories (No Image, Centered) -->
              <div class="category-block">
-                <img src="images/tech-dd-watch-accessories.jpg" alt="Watch Accessories"> <!-- REPLACE IMAGE SRC -->
+               <!-- Image Removed -->
                <h4>WATCH ACCESSORIES</h4>
                <a href="#">Watchbands</a>
                <a href="#">Apple Watch Chargers</a>
@@ -359,9 +225,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 3: Charging Solutions -->
+             <!-- Column 3: Charging Solutions (No Image, Centered) -->
              <div class="category-block">
-                <img src="images/tech-dd-charging-solutions.jpg" alt="Charging Solutions"> <!-- REPLACE IMAGE SRC -->
+               <!-- Image Removed -->
                <h4>CHARGING SOLUTIONS</h4>
                <a href="#">Powerbank</a>
                <a href="#">Wireless Chargers</a>
@@ -370,9 +236,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 4: Tech Add-ons -->
+             <!-- Column 4: Tech Add-ons (No Image, Centered) -->
              <div class="category-block">
-                <img src="images/tech-dd-tech-addons.jpg" alt="Tech Add-ons"> <!-- REPLACE IMAGE SRC -->
+               <!-- Image Removed -->
                <h4>TECH ADD-ONS</h4>
                <a href="#">iPad Cases</a>
                <a href="#">AirPods Cover</a>
@@ -381,9 +247,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 5: Laptop Sleeves -->
+             <!-- Column 5: Laptop Sleeves (No Image, Centered) -->
              <div class="category-block">
-                <img src="images/tech-dd-laptop-sleeves.jpg" alt="Laptop Sleeves and Bags"> <!-- REPLACE IMAGE SRC -->
+               <!-- Image Removed -->
                <h4>LAPTOP SLEEVES AND BAGS</h4>
                <a href="#">Zippered Sleeves</a>
                <a href="#">Macbook Hardcases</a>
@@ -392,9 +258,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 6: Stands -->
+             <!-- Column 6: Stands (No Image, Centered) -->
              <div class="category-block">
-                <img src="images/tech-dd-stands.jpg" alt="Stands"> <!-- REPLACE IMAGE SRC -->
+               <!-- Image Removed -->
                <h4>STANDS</h4>
                <a href="#">Mobile</a>
                <a href="#">Laptop</a>
@@ -403,9 +269,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 7: Organisers -->
+             <!-- Column 7: Organisers (No Image, Centered) -->
              <div class="category-block">
-                <img src="images/tech-dd-organisers.jpg" alt="Organisers"> <!-- REPLACE IMAGE SRC -->
+               <!-- Image Removed -->
                <h4>ORGANISERS</h4>
                <a href="#">Tech Kit</a>
                <a href="#">Folio</a>
@@ -433,7 +299,7 @@
   </div>
 </header>
 
-<!-- ... (Rest of the HTML body remains unchanged - MAKE SURE ALL IMAGE/VIDEO PATHS ARE CORRECT) ... -->
+<!-- ... (Rest of the HTML body remains unchanged) ... -->
 <section class="banner">
   <video autoplay muted loop>
     <source src="banner-video.mp4" type="video/mp4"> <!-- Ensure path is correct -->

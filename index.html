@@ -34,72 +34,74 @@
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: relative; /* Needed for absolute positioning of dropdown */
+      position: relative;
     }
     .dropdown {
-      display: none; /* Hide by default */
+      display: none;
       position: absolute;
-      top: 100%; /* Position below the menu item */
-      left: 50%; /* Start from center of parent */
-      transform: translateX(-50%); /* Center the dropdown */
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
       background: #fff;
       border: 1px solid #ddd;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      min-width: auto; /* Let content decide */
-      padding: 25px; /* Padding around the columns */
-      z-index: 1000; /* Ensure it's above other content */
-      white-space: nowrap; /* Prevent text wrapping that breaks columns */
+      padding: 25px 30px; /* Increased horizontal padding */
+      z-index: 1000;
+       /* Removed white-space: nowrap; to allow wrapping if absolutely necessary */
     }
     .menu-item:hover .dropdown {
-      display: block; /* Show on hover */
+      display: block;
     }
     .dropdown-columns {
-      display: flex; /* Arrange columns side-by-side */
-      gap: 30px; /* Space between columns - adjusted */
+      display: flex;
+      gap: 40px; /* Increased gap between columns */
     }
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center items horizontally */
-      text-align: center; /* Center text */
-      gap: 5px; /* Space between links within a column */
-      width: 120px; /* Give columns a consistent width */
+      align-items: center; /* Center the image horizontally */
+      /* Removed text-align: center from here */
+      gap: 5px;
+      width: 140px; /* Increased width slightly */
     }
-    /* Style for the image within the dropdown */
     .category-block img {
-      width: 80px; /* Adjust size as needed */
-      height: 80px; /* Adjust size as needed */
-      object-fit: contain; /* Or 'cover', depending on images */
-      margin-bottom: 15px; /* Space below image */
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 15px;
     }
     .category-block h4 {
-      font-size: 12px; /* Adjusted size */
+      font-size: 12px;
       font-weight: bold;
-      color: #000; /* Black color like screenshot */
-      margin-bottom: 10px;
+      color: #000;
+      margin-bottom: 12px; /* Slightly more space */
       text-transform: uppercase;
-      /* border-bottom: 1px solid #eee; Optional separator */
+      text-align: center; /* Center the heading text */
+      width: 100%; /* Ensure it takes full width for centering */
     }
+    /* Target all links within the block for left alignment */
     .category-block a {
-      display: block;
-      padding: 3px 0; /* Adjust vertical padding */
+      display: block; /* Ensures it takes width */
+      width: 100%; /* Take full width of the block */
+      padding: 4px 0 4px 5px; /* Add small left padding for alignment */
       text-decoration: none;
-      color: #333; /* Standard link color */
-      font-size: 13px; /* Adjusted size */
-      font-weight: normal; /* Normal weight for sub-items */
-      white-space: normal; /* Allow text wrapping for sub-items if needed */
+      color: #333;
+      font-size: 13px;
+      font-weight: normal;
+      text-align: left; /* <<< ALIGN LINKS LEFT */
+      white-space: normal; /* Allow link text to wrap if needed */
     }
-     /* Style for the "View All +" link */
     .category-block a.view-all-link {
-      color: #1abc9c; /* Greenish color from screenshot */
-      font-weight: bold; /* Make it bold */
-      margin-top: 8px; /* Add some space above it */
+      color: #1abc9c;
+      font-weight: bold;
+      margin-top: 8px;
+      /* text-align: left; is inherited from the rule above */
     }
     .category-block a:not(.view-all-link):hover {
-      color: #007BFF; /* Hover color for regular links */
+      color: #007BFF;
     }
     .category-block a.view-all-link:hover {
-      color: #16a085; /* Darker green on hover */
+      color: #16a085;
     }
     /* --- End Dropdown Styles --- */
 
@@ -389,8 +391,7 @@
   </div>
 </header>
 
-<!-- ... rest of your HTML body remains the same ... -->
-
+<!-- ... (rest of the HTML body remains the same) ... -->
 <section class="banner">
   <video autoplay muted loop>
     <source src="banner-video.mp4" type="video/mp4">
@@ -487,15 +488,19 @@
   // Initial setup
   if (slides.length > 0) {
       showSlide(currentSlide); // Show the first slide initially
-      setInterval(autoSlide, 10000); // Start auto slide interval
+      const intervalId = setInterval(autoSlide, 10000); // Start auto slide interval
 
       // Add event listeners to dots (if they exist)
       dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => showSlide(index));
+          dot.addEventListener('click', () => {
+            clearInterval(intervalId); // Optional: Stop auto-slide on manual click
+            showSlide(index);
+          });
       });
   }
 
 </script>
+
 
 </body>
 </html>

@@ -60,7 +60,7 @@
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static; /* Changed from static to allow absolute positioning of dropdown relative to header */
+      position: static;
       height: 100%;
       display: flex;
       align-items: center;
@@ -69,7 +69,7 @@
       visibility: hidden;
       opacity: 0;
       position: absolute;
-      top: 100%; /* Position below the header */
+      top: 100%;
       left: 0;
       width: 100%;
       background: #fff;
@@ -77,8 +77,7 @@
       box-shadow: 0px 5px 10px rgba(0,0,0,0.07);
       padding: 35px 0; /* Vertical padding */
       z-index: 1000;
-      /* *** UPDATED TRANSITION *** */
-      transform: translateY(-10px); /* Start slightly above */
+      transform: translateY(-10px);
       transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s, transform 0.25s ease-in-out;
       box-sizing: border-box;
       overflow: hidden;
@@ -86,9 +85,8 @@
     .menu-item:hover .dropdown {
       visibility: visible;
       opacity: 1;
-      /* *** UPDATED TRANSFORM *** */
-      transform: translateY(0); /* Move to final position */
-      transition-delay: 0s; /* Ensure transition starts immediately */
+      transform: translateY(0);
+      transition-delay: 0s;
       overflow: visible;
     }
 
@@ -98,7 +96,8 @@
       justify-content: center;
       align-items: flex-start;
       flex-wrap: nowrap;
-      gap: 0 40px;
+      /* *** ADJUSTED GAP *** */
+      gap: 0 35px; /* Slightly reduced gap */
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 30px;
@@ -108,37 +107,38 @@
     .category-block {
       display: flex;
       flex-direction: column;
-      width: 140px;
+      /* *** ADJUSTED WIDTH *** */
+      width: 150px; /* Increased width for more text space */
       flex-shrink: 0;
     }
 
     /* Title Styling (Left-aligned) */
     .category-block h4 {
-      /* *** UPDATED FONT & ALIGNMENT *** */
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13px; /* Slightly larger for better hierarchy */
-      font-weight: 700; /* Bold */
+      /* *** ADJUSTED FONT & SPACING *** */
+      font-size: 12.5px; /* Slightly smaller if needed for wrapping */
+      font-weight: 700;
       color: #000;
-      margin-bottom: 18px; /* Adjusted spacing */
+      margin-bottom: 16px; /* Adjusted spacing */
       text-transform: uppercase;
-      text-align: left; /* <<< CHANGED TO LEFT ALIGN HEADING */
+      text-align: left;
       width: 100%;
       letter-spacing: 0.6px;
-      line-height: 1.4; /* Adjusted line height */
+      line-height: 1.5; /* Increased line-height for wrapping */
       white-space: normal;
     }
 
     /* Link Styling (Left-aligned) */
     .category-block a:not(.view-all-link) {
       display: block;
-      padding: 5px 0; /* Slightly increased vertical padding */
+      /* *** ADJUSTED PADDING & FONT *** */
+      padding: 5px 0; /* Adjusted vertical padding */
       text-decoration: none;
       color: #333;
-      /* *** UPDATED FONT *** */
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13.5px;
-      line-height: 1.6; /* Adjusted line height */
-      text-align: left; /* Kept left align */
+      font-size: 13px; /* Slightly smaller */
+      line-height: 1.6;
+      text-align: left;
       width: 100%;
       transition: color 0.2s ease;
     }
@@ -149,13 +149,13 @@
       padding: 0;
       text-decoration: none;
       color: #1abc9c;
-      /* *** UPDATED FONT *** */
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13.5px;
-      font-weight: 700; /* Bold */
-      text-align: left; /* Kept left align */
+      font-size: 13px; /* Match link size */
+      font-weight: 700;
+      text-align: left;
       width: 100%;
-      margin-top: 15px; /* Adjusted spacing */
+      /* *** ADJUSTED MARGIN *** */
+      margin-top: 14px; /* Adjusted spacing */
       transition: color 0.2s ease;
     }
 
@@ -216,11 +216,13 @@
     @media (max-width: 1279px) {
       .dropdown-columns {
         flex-wrap: wrap;
-        gap: 30px 40px;
+        /* *** ADJUSTED GAP (ROW) *** */
+        gap: 35px 35px; /* Add sufficient row gap */
         justify-content: center;
         max-width: 100%;
         padding: 0 20px;
       }
+       /* Keep column width reasonable when wrapping */
        .category-block { width: 150px; }
     }
 
@@ -231,8 +233,8 @@
       .icons { gap: 20px; }
       .icons img { height: 18px; }
        /* Dropdown columns gap adjust slightly */
-       .dropdown-columns { gap: 25px 35px; padding: 0 15px; }
-       .category-block { width: 145px; }
+       .dropdown-columns { gap: 30px 30px; padding: 0 15px; } /* Equal row/column gap */
+       .category-block { width: 145px; } /* Adjust width */
        /* Other general adjustments */
        .slide-content { max-width: 50%; left: 5%; }
        .slide-content h1 { font-size: 30px; }
@@ -248,23 +250,20 @@
        .menu-item { height: auto; position: relative; }
        .icons { justify-content: center; margin-top: 10px; height: auto; }
 
-        /* Dropdown position/style on mobile */
-        /* Re-anchor dropdown relative to the menu item */
         .menu-item:hover .dropdown {
-            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(0); /* Add translateY(0) to override base transform */
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(0);
             width: 90vw; max-width: 500px; min-width: 300px;
             margin-top: 2px; border-radius: 4px; border: 1px solid #eee;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-             /* Ensure animation still works */
              transition: opacity 0.25s ease-in-out, visibility 0s linear 0s, transform 0.25s ease-in-out;
         }
         .dropdown-columns {
              flex-wrap: wrap;
              justify-content: center;
              padding: 20px 15px;
-             gap: 20px 25px;
+             gap: 25px 25px; /* Adjust gap */
          }
-       .category-block { width: 135px; }
+       .category-block { width: 140px; } /* Adjust width for this range */
        /* Other general adjustments */
        .slideshow-container { height: 450px; }
        .slide-content { max-width: 75%; }
@@ -275,30 +274,30 @@
     }
 
      @media (max-width: 600px) {
-        /* Stack dropdown columns vertically */
          .menu-item:hover .dropdown {
-             width: calc(100vw - 30px); left: 15px; transform: translateX(0) translateY(0); /* Reset transform for full width */
+             width: calc(100vw - 30px); left: 15px; transform: translateX(0) translateY(0);
          }
          .dropdown-columns {
              flex-direction: column; /* STACK */
              align-items: center; /* Center stacked blocks */
-             gap: 25px 0; /* Vertical gap only */
+             /* *** ADJUSTED GAP (VERTICAL) *** */
+             gap: 25px 0; /* Ensure sufficient vertical gap */
              flex-wrap: nowrap;
              padding: 20px;
          }
          .category-block {
-             width: 85%;
-             /* Keep block centered via flexbox parent, align text left */
-             align-items: flex-start; /* Align items inside block to start */
+             width: 90%; /* Make columns wider when stacked */
+             align-items: flex-start;
          }
-         /* *** UPDATED MOBILE ALIGNMENT *** */
+         /* Keep text left-aligned */
          .category-block h4,
          .category-block a:not(.view-all-link),
          .category-block a.view-all-link {
-             text-align: left; /* Align text LEFT */
-             width: 100%; /* Ensure takes full width of block */
+             text-align: left;
+             width: 100%;
          }
-          .category-block h4 { margin-bottom: 10px; font-size: 12px;} /* Adjust mobile heading style */
+          /* Adjust spacing/size for stacked mobile */
+          .category-block h4 { margin-bottom: 10px; font-size: 12.5px;}
           .category-block a:not(.view-all-link) { padding: 4px 0; font-size: 13px; }
           .category-block a.view-all-link { margin-top: 10px; font-size: 13px; }
         /* Other general adjustments */
@@ -423,8 +422,7 @@
 
 <!-- REST OF THE BODY REMAINS IDENTICAL -->
 <section class="banner">
-  <!-- Make sure banner-video.mp4 exists or update path -->
-  <video autoplay muted loop playsinline poster="fallback-banner-image.jpg"> <!-- Added playsinline and poster -->
+  <video autoplay muted loop playsinline poster="fallback-banner-image.jpg">
     <source src="banner-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -433,7 +431,6 @@
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
-    <!-- Make sure image paths are correct -->
     <a href="tech.html" class="card"><img src="tech1.jpg" alt="Tech Accessories"><h3>TECH ACCESSORIES</h3></a>
     <a href="bags.html" class="card"><img src="bags1.jpg" alt="Bags & Wallets"><h3>BAGS & WALLETS</h3></a>
     <a href="work.html" class="card"><img src="work1.jpg" alt="Work Essentials"><h3>WORK ESSENTIALS</h3></a>
@@ -442,8 +439,7 @@
 
 <section>
   <div class="slideshow-container">
-    <!-- Make sure image paths are correct -->
-    <div class="slide" style="display: block;"> <!-- Show first slide by default -->
+    <div class="slide" style="display: block;">
         <img src="cat1.jpg" alt="Loop Power Banks">
         <div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">Shop Now</a></div>
     </div>
@@ -468,7 +464,6 @@
         <div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">Shop Now</a></div>
     </div>
     <div class="dots">
-      <!-- Dots will be handled by JS -->
       <span class="dot active" onclick="showSlideManual(0)"></span>
       <span class="dot" onclick="showSlideManual(1)"></span>
       <span class="dot" onclick="showSlideManual(2)"></span>
@@ -480,7 +475,6 @@
 </section>
 
 <section class="corporate-banner">
-  <!-- Make sure image path is correct -->
   <img src="cg1.jpg" alt="Corporate Gifting Banner">
   <div class="overlay">
     <h1>CORPORATE GIFTING</h1>
@@ -491,7 +485,6 @@
 <section>
   <h2>TRENDING COLLECTION</h2>
   <div class="zoom-grid">
-     <!-- Make sure image paths are correct -->
     <div class="zoom-card"><img src="sbc1.jpg" alt="Reflective Collection"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">Shop Now</a></div></div>
     <div class="zoom-card"><img src="sbc2.jpg" alt="Canvas Collection"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">Shop Now</a></div></div>
     <div class="zoom-card"><img src="sbc3.jpg" alt="Timeless Collection"><div class="overlay-text"><h3>TIMELESS</h3><a href="#" class="shop-btn">Shop Now</a></div></div>
@@ -503,24 +496,21 @@
 </footer>
 
 <script>
-  // --- Slideshow JavaScript (same as previous version) ---
+  // --- Slideshow JavaScript (Remains the same) ---
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slideshow-container .slide');
   const dots = document.querySelectorAll('.slideshow-container .dot');
   let intervalId = null;
-  const slideInterval = 5000; // Slide duration (5 seconds)
+  const slideInterval = 5000;
 
-  function showSlide(index) {
-    if (!slides || slides.length === 0 || !dots || dots.length === 0) {
-        return;
-    }
-    // Check if manual click is for the currently displayed slide
-     if (index === currentSlide && intervalId && event && event.type === 'click') {
+  function showSlide(index, isManual = false) {
+    if (!slides || slides.length === 0 || !dots || dots.length === 0) return;
+
+    if (isManual && index === currentSlide) {
          clearInterval(intervalId);
          intervalId = setInterval(autoSlide, slideInterval);
-         return; // Don't restart animation if clicking the active dot
+         return;
      }
-
 
     if (index >= slides.length) { index = 0; }
     if (index < 0) { index = slides.length - 1; }
@@ -533,7 +523,6 @@
 
     currentSlide = index;
 
-     // Always clear and reset interval on slide change (manual or auto)
      if(intervalId) clearInterval(intervalId);
      intervalId = setInterval(autoSlide, slideInterval);
   }
@@ -544,37 +533,30 @@
     showSlide(nextSlide);
   }
 
-  // Make sure manual clicks work correctly
   window.showSlideManual = function(index) {
-      // Pass the event object implicitly if called from onclick
-      showSlide(index);
+      showSlide(index, true); // Pass true to indicate manual trigger
   }
 
-
   function initSlideshow() {
-      if (slides.length > 0 && dots.length > 0) { // Check if dots exist too
-         // Ensure only the first slide/dot is active initially
+      if (slides.length > 0 && dots.length > 0 && dots.length === slides.length) {
           slides.forEach((slide, index) => {
               slide.style.display = index === 0 ? 'block' : 'none';
           });
-          dots.forEach((dot, index) => {
+           dots.forEach((dot, index) => {
               if (index === 0) dot.classList.add('active');
               else dot.classList.remove('active');
           });
           currentSlide = 0;
-          if(intervalId) clearInterval(intervalId); // Clear previous interval if any
-          intervalId = setInterval(autoSlide, slideInterval); // Start the automatic slideshow
+          if(intervalId) clearInterval(intervalId);
+          intervalId = setInterval(autoSlide, slideInterval);
       } else if (slides.length > 0) {
-          // Fallback if dots are missing/mismatched
-          console.warn("Slideshow initialized, but dots might be missing or incorrect.");
+          console.warn("Slideshow initialized, but the number of dots doesn't match the number of slides or dots are missing.");
           slides.forEach((slide, index) => { slide.style.display = index === 0 ? 'block' : 'none'; });
           currentSlide = 0;
           if(intervalId) clearInterval(intervalId);
           intervalId = setInterval(autoSlide, slideInterval);
       }
   }
-
-  // Initialize the slideshow when the DOM is fully loaded
   document.addEventListener('DOMContentLoaded', initSlideshow);
   // --- End Slideshow JavaScript ---
 </script>

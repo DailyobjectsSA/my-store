@@ -9,7 +9,6 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    /* Use Inter as a base, but keep Arial as fallback */
     body {font-family: 'Inter', Arial, sans-serif; background: #fff; color: #333;}
 
     header {
@@ -42,9 +41,9 @@
       text-decoration: none;
       color: #333;
       padding: 0 5px;
-      font-size: 13px; /* Keep original menu font size */
+      font-size: 13px;
       font-weight: bold;
-      font-family: Arial, sans-serif; /* Keep original menu font */
+      font-family: Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 0.7px;
       transition: color 0.2s ease, border-color 0.2s ease;
@@ -75,7 +74,7 @@
       background: #fff;
       border-top: 1px solid #eee;
       box-shadow: 0px 5px 10px rgba(0,0,0,0.07);
-      padding: 35px 0; /* Vertical padding */
+      padding: 40px 0; /* Increased vertical padding */
       z-index: 1000;
       transform: translateY(-10px);
       transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s, transform 0.25s ease-in-out;
@@ -94,13 +93,13 @@
     .dropdown-columns {
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: flex-start; /* Align columns to the top */
       flex-wrap: nowrap;
       /* *** ADJUSTED GAP *** */
-      gap: 0 35px; /* Slightly reduced gap */
+      gap: 0 10px; /* Reduced gap to fit wider columns */
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 30px;
+      padding: 0 30px; /* Keep container padding */
     }
 
     /* Styling for each individual column block */
@@ -108,36 +107,38 @@
       display: flex;
       flex-direction: column;
       /* *** ADJUSTED WIDTH *** */
-      width: 150px; /* Increased width for more text space */
+      width: 165px; /* Wider columns */
       flex-shrink: 0;
     }
 
     /* Title Styling (Left-aligned) */
     .category-block h4 {
       font-family: 'Inter', Arial, sans-serif;
-      /* *** ADJUSTED FONT & SPACING *** */
-      font-size: 12.5px; /* Slightly smaller if needed for wrapping */
+      font-size: 12.5px;
       font-weight: 700;
       color: #000;
-      margin-bottom: 16px; /* Adjusted spacing */
       text-transform: uppercase;
       text-align: left;
       width: 100%;
       letter-spacing: 0.6px;
-      line-height: 1.5; /* Increased line-height for wrapping */
-      white-space: normal;
+      line-height: 1.4; /* Adjusted line-height */
+      white-space: normal; /* Allow wrapping */
+      /* *** ADDED MIN-HEIGHT & ALIGNMENT *** */
+      min-height: 40px; /* Force minimum height (enough for ~2 lines + margin) */
+      margin-bottom: 15px; /* Consistent bottom margin */
+      display: flex; /* Use flex to align text within the min-height */
+      align-items: flex-start; /* Align text to the top */
     }
 
     /* Link Styling (Left-aligned) */
     .category-block a:not(.view-all-link) {
       display: block;
-      /* *** ADJUSTED PADDING & FONT *** */
-      padding: 5px 0; /* Adjusted vertical padding */
+      padding: 6px 0; /* Consistent vertical padding */
       text-decoration: none;
       color: #333;
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13px; /* Slightly smaller */
-      line-height: 1.6;
+      font-size: 13px;
+      line-height: 1.5; /* Adjusted line height */
       text-align: left;
       width: 100%;
       transition: color 0.2s ease;
@@ -150,12 +151,11 @@
       text-decoration: none;
       color: #1abc9c;
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13px; /* Match link size */
+      font-size: 13px;
       font-weight: 700;
       text-align: left;
       width: 100%;
-      /* *** ADJUSTED MARGIN *** */
-      margin-top: 14px; /* Adjusted spacing */
+      margin-top: 12px; /* Consistent top margin */
       transition: color 0.2s ease;
     }
 
@@ -212,18 +212,19 @@
 
     /* --- Responsive adjustments --- */
 
-    /* --- Breakpoint where nowrap causes overflow --- */
-    @media (max-width: 1279px) {
+    /* Adjustments for when wrapping starts */
+    @media (max-width: 1279px) { /* Matches calculated breakpoint */
       .dropdown-columns {
         flex-wrap: wrap;
-        /* *** ADJUSTED GAP (ROW) *** */
-        gap: 35px 35px; /* Add sufficient row gap */
+        gap: 30px 25px; /* Adjust gap for wrapped items */
         justify-content: center;
         max-width: 100%;
         padding: 0 20px;
       }
-       /* Keep column width reasonable when wrapping */
-       .category-block { width: 150px; }
+       /* Allow columns to slightly shrink if needed, but keep base width */
+       .category-block { width: 160px; }
+       /* Keep min-height on h4 for horizontal alignment when wrapped */
+       .category-block h4 { min-height: 40px; }
     }
 
     @media (max-width: 1024px) {
@@ -232,9 +233,10 @@
       .menu a, .menu .menu-item > a { font-size: 12px; letter-spacing: 0.6px; }
       .icons { gap: 20px; }
       .icons img { height: 18px; }
-       /* Dropdown columns gap adjust slightly */
-       .dropdown-columns { gap: 30px 30px; padding: 0 15px; } /* Equal row/column gap */
-       .category-block { width: 145px; } /* Adjust width */
+       /* Dropdown columns */
+       .dropdown-columns { gap: 30px 20px; padding: 0 15px; }
+       .category-block { width: 150px; } /* Slightly narrower */
+       .category-block h4 { min-height: 40px; font-size: 12px; } /* Adjust font-size slightly if needed */
        /* Other general adjustments */
        .slide-content { max-width: 50%; left: 5%; }
        .slide-content h1 { font-size: 30px; }
@@ -261,9 +263,10 @@
              flex-wrap: wrap;
              justify-content: center;
              padding: 20px 15px;
-             gap: 25px 25px; /* Adjust gap */
+             gap: 25px 20px;
          }
-       .category-block { width: 140px; } /* Adjust width for this range */
+       .category-block { width: 140px; } /* Adjust width */
+       .category-block h4 { min-height: 40px; } /* Keep min-height */
        /* Other general adjustments */
        .slideshow-container { height: 450px; }
        .slide-content { max-width: 75%; }
@@ -280,25 +283,29 @@
          .dropdown-columns {
              flex-direction: column; /* STACK */
              align-items: center; /* Center stacked blocks */
-             /* *** ADJUSTED GAP (VERTICAL) *** */
-             gap: 25px 0; /* Ensure sufficient vertical gap */
+             gap: 20px 0; /* Vertical gap */
              flex-wrap: nowrap;
              padding: 20px;
          }
          .category-block {
-             width: 90%; /* Make columns wider when stacked */
-             align-items: flex-start;
+             width: 90%; /* Wider when stacked */
+             align-items: flex-start; /* Align content start */
          }
-         /* Keep text left-aligned */
-         .category-block h4,
+         /* *** REMOVE MIN-HEIGHT & RESET H4 DISPLAY *** */
+         .category-block h4 {
+             min-height: auto; /* Remove fixed height */
+             display: block; /* Reset display */
+             text-align: left; /* Keep left align */
+             margin-bottom: 10px;
+             font-size: 12.5px;
+             line-height: 1.4;
+         }
          .category-block a:not(.view-all-link),
          .category-block a.view-all-link {
              text-align: left;
              width: 100%;
          }
-          /* Adjust spacing/size for stacked mobile */
-          .category-block h4 { margin-bottom: 10px; font-size: 12.5px;}
-          .category-block a:not(.view-all-link) { padding: 4px 0; font-size: 13px; }
+          .category-block a:not(.view-all-link) { padding: 5px 0; font-size: 13px; line-height: 1.5; }
           .category-block a.view-all-link { margin-top: 10px; font-size: 13px; }
         /* Other general adjustments */
         section h2 { font-size: 20px; margin: 40px 0 25px; }
@@ -534,7 +541,7 @@
   }
 
   window.showSlideManual = function(index) {
-      showSlide(index, true); // Pass true to indicate manual trigger
+      showSlide(index, true);
   }
 
   function initSlideshow() {

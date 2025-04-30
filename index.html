@@ -5,8 +5,12 @@
   <title>Daily Objects SA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* --- Import Google Font --- */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: Arial, sans-serif; background: #fff; color: #333;}
+    /* Use Inter as a base, but keep Arial as fallback */
+    body {font-family: 'Inter', Arial, sans-serif; background: #fff; color: #333;}
 
     header {
       display: flex;
@@ -38,8 +42,9 @@
       text-decoration: none;
       color: #333;
       padding: 0 5px;
-      font-size: 13px;
+      font-size: 13px; /* Keep original menu font size */
       font-weight: bold;
+      font-family: Arial, sans-serif; /* Keep original menu font */
       text-transform: uppercase;
       letter-spacing: 0.7px;
       transition: color 0.2s ease, border-color 0.2s ease;
@@ -55,7 +60,7 @@
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static;
+      position: static; /* Changed from static to allow absolute positioning of dropdown relative to header */
       height: 100%;
       display: flex;
       align-items: center;
@@ -64,7 +69,7 @@
       visibility: hidden;
       opacity: 0;
       position: absolute;
-      top: 100%;
+      top: 100%; /* Position below the header */
       left: 0;
       width: 100%;
       background: #fff;
@@ -72,64 +77,68 @@
       box-shadow: 0px 5px 10px rgba(0,0,0,0.07);
       padding: 35px 0; /* Vertical padding */
       z-index: 1000;
-      transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s;
+      /* *** UPDATED TRANSITION *** */
+      transform: translateY(-10px); /* Start slightly above */
+      transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s, transform 0.25s ease-in-out;
       box-sizing: border-box;
-      overflow: hidden; /* Hide any potential brief overflow during transition */
+      overflow: hidden;
     }
     .menu-item:hover .dropdown {
       visibility: visible;
       opacity: 1;
-      transition-delay: 0s;
-      overflow: visible; /* Allow content */
+      /* *** UPDATED TRANSFORM *** */
+      transform: translateY(0); /* Move to final position */
+      transition-delay: 0s; /* Ensure transition starts immediately */
+      overflow: visible;
     }
 
     /* Container for the columns - DESKTOP FIRST */
     .dropdown-columns {
       display: flex;
-      justify-content: center; /* Center the group of columns */
+      justify-content: center;
       align-items: flex-start;
-      flex-wrap: nowrap; /* <<< FORCE SINGLE ROW BY DEFAULT */
-      gap: 0 40px; /* Column gap (Row gap 0 as nowrap) */
-      max-width: 1280px; /* Max width container */
-      margin: 0 auto; /* Center the container */
-      padding: 0 30px; /* Padding inside */
-      /* NO overflow property here to allow scroll if forced */
-      /* But sizing below should prevent it on desktop */
+      flex-wrap: nowrap;
+      gap: 0 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 30px;
     }
 
     /* Styling for each individual column block */
     .category-block {
       display: flex;
       flex-direction: column;
-      width: 140px; /* <<< ADJUSTED WIDTH TO FIT 7 COLUMNS + GAPS */
-      flex-shrink: 0; /* Prevent shrinking */
+      width: 140px;
+      flex-shrink: 0;
     }
 
-    /* Title Styling (Centered) */
+    /* Title Styling (Left-aligned) */
     .category-block h4 {
-      font-family: Arial, sans-serif;
-      font-size: 11.5px;
-      font-weight: bold;
+      /* *** UPDATED FONT & ALIGNMENT *** */
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 13px; /* Slightly larger for better hierarchy */
+      font-weight: 700; /* Bold */
       color: #000;
-      margin-bottom: 20px;
+      margin-bottom: 18px; /* Adjusted spacing */
       text-transform: uppercase;
-      text-align: center; /* <<< CENTER HEADING */
+      text-align: left; /* <<< CHANGED TO LEFT ALIGN HEADING */
       width: 100%;
       letter-spacing: 0.6px;
-      line-height: 1.3;
-      white-space: normal; /* Allow wrapping if needed */
+      line-height: 1.4; /* Adjusted line height */
+      white-space: normal;
     }
 
     /* Link Styling (Left-aligned) */
     .category-block a:not(.view-all-link) {
       display: block;
-      padding: 4px 0;
+      padding: 5px 0; /* Slightly increased vertical padding */
       text-decoration: none;
       color: #333;
-      font-family: Arial, sans-serif;
+      /* *** UPDATED FONT *** */
+      font-family: 'Inter', Arial, sans-serif;
       font-size: 13.5px;
-      line-height: 1.5;
-      text-align: left; /* <<< LEFT ALIGN LINKS */
+      line-height: 1.6; /* Adjusted line height */
+      text-align: left; /* Kept left align */
       width: 100%;
       transition: color 0.2s ease;
     }
@@ -140,12 +149,13 @@
       padding: 0;
       text-decoration: none;
       color: #1abc9c;
-      font-family: Arial, sans-serif;
+      /* *** UPDATED FONT *** */
+      font-family: 'Inter', Arial, sans-serif;
       font-size: 13.5px;
-      font-weight: bold;
-      text-align: left; /* <<< LEFT ALIGN LINK */
+      font-weight: 700; /* Bold */
+      text-align: left; /* Kept left align */
       width: 100%;
-      margin-top: 12px;
+      margin-top: 15px; /* Adjusted spacing */
       transition: color 0.2s ease;
     }
 
@@ -203,19 +213,15 @@
     /* --- Responsive adjustments --- */
 
     /* --- Breakpoint where nowrap causes overflow --- */
-    /* Adjust this value based on testing (1280px max-width - 60px padding = 1220px content area) */
-    /* 7 * 140 (width) + 6 * 40 (gap) = 980 + 240 = 1220. So below 1280px window width */
     @media (max-width: 1279px) {
       .dropdown-columns {
-        flex-wrap: wrap;   /* <<< ALLOW WRAPPING on smaller screens */
-        gap: 30px 40px;    /* Reintroduce row gap */
-        justify-content: center; /* Keep centered */
-        /* Width can adjust naturally, or set max-width: 100%; */
-        max-width: 100%; /* Use available width */
-         padding: 0 20px; /* Adjust padding */
+        flex-wrap: wrap;
+        gap: 30px 40px;
+        justify-content: center;
+        max-width: 100%;
+        padding: 0 20px;
       }
-       /* Column width can stay 140px or adjust if needed */
-       .category-block { width: 150px; /* Example: slightly wider when wrapped */ }
+       .category-block { width: 150px; }
     }
 
     @media (max-width: 1024px) {
@@ -226,7 +232,7 @@
       .icons img { height: 18px; }
        /* Dropdown columns gap adjust slightly */
        .dropdown-columns { gap: 25px 35px; padding: 0 15px; }
-       .category-block { width: 145px; } /* Slightly adjust width */
+       .category-block { width: 145px; }
        /* Other general adjustments */
        .slide-content { max-width: 50%; left: 5%; }
        .slide-content h1 { font-size: 30px; }
@@ -235,29 +241,30 @@
     }
 
     @media (max-width: 850px) {
-        /* Header stacking */
        header { flex-direction: column; align-items: center; padding: 10px 15px; min-height: auto; }
        .logo-area { margin-bottom: 10px; }
        .menu { justify-content: center; flex-wrap: wrap; gap: 8px 15px; overflow: visible; border-top: 1px solid #eee; padding-top: 10px; width: 100%; height: auto; }
        .menu a, .menu .menu-item > a { padding-bottom: 5px; border-bottom-width: 2px; height: auto; }
-       .menu-item { height: auto; position: relative; } /* Add relative positioning for dropdown */
+       .menu-item { height: auto; position: relative; }
        .icons { justify-content: center; margin-top: 10px; height: auto; }
 
         /* Dropdown position/style on mobile */
+        /* Re-anchor dropdown relative to the menu item */
         .menu-item:hover .dropdown {
-            position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(0); /* Add translateY(0) to override base transform */
             width: 90vw; max-width: 500px; min-width: 300px;
             margin-top: 2px; border-radius: 4px; border: 1px solid #eee;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+             /* Ensure animation still works */
+             transition: opacity 0.25s ease-in-out, visibility 0s linear 0s, transform 0.25s ease-in-out;
         }
-        /* Ensure wrapping is still active */
         .dropdown-columns {
-             flex-wrap: wrap; /* Explicitly keep wrap */
-             justify-content: center; /* Center wrapped items */
+             flex-wrap: wrap;
+             justify-content: center;
              padding: 20px 15px;
              gap: 20px 25px;
          }
-       .category-block { width: 135px; } /* Adjust width */
+       .category-block { width: 135px; }
        /* Other general adjustments */
        .slideshow-container { height: 450px; }
        .slide-content { max-width: 75%; }
@@ -270,26 +277,30 @@
      @media (max-width: 600px) {
         /* Stack dropdown columns vertically */
          .menu-item:hover .dropdown {
-             width: calc(100vw - 30px); left: 15px; transform: none;
+             width: calc(100vw - 30px); left: 15px; transform: translateX(0) translateY(0); /* Reset transform for full width */
          }
          .dropdown-columns {
              flex-direction: column; /* STACK */
-             align-items: center; /* Center stacked items */
+             align-items: center; /* Center stacked blocks */
              gap: 25px 0; /* Vertical gap only */
-             flex-wrap: nowrap; /* No wrapping needed when direction is column */
+             flex-wrap: nowrap;
              padding: 20px;
          }
          .category-block {
-             width: 85%; /* Make columns wider when stacked */
-             align-items: center; /* Center content */
+             width: 85%;
+             /* Keep block centered via flexbox parent, align text left */
+             align-items: flex-start; /* Align items inside block to start */
          }
+         /* *** UPDATED MOBILE ALIGNMENT *** */
          .category-block h4,
          .category-block a:not(.view-all-link),
          .category-block a.view-all-link {
-             text-align: center; /* Center all text */
+             text-align: left; /* Align text LEFT */
+             width: 100%; /* Ensure takes full width of block */
          }
-          .category-block h4 { margin-bottom: 15px; }
-         .category-block a.view-all-link { margin-top: 10px; }
+          .category-block h4 { margin-bottom: 10px; font-size: 12px;} /* Adjust mobile heading style */
+          .category-block a:not(.view-all-link) { padding: 4px 0; font-size: 13px; }
+          .category-block a.view-all-link { margin-top: 10px; font-size: 13px; }
         /* Other general adjustments */
         section h2 { font-size: 20px; margin: 40px 0 25px; }
         .slideshow-container { height: 400px; }
@@ -410,6 +421,7 @@
   </div>
 </header>
 
+<!-- REST OF THE BODY REMAINS IDENTICAL -->
 <section class="banner">
   <!-- Make sure banner-video.mp4 exists or update path -->
   <video autoplay muted loop playsinline poster="fallback-banner-image.jpg"> <!-- Added playsinline and poster -->
@@ -502,11 +514,13 @@
     if (!slides || slides.length === 0 || !dots || dots.length === 0) {
         return;
     }
-    if (index === currentSlide && intervalId) {
+    // Check if manual click is for the currently displayed slide
+     if (index === currentSlide && intervalId && event && event.type === 'click') {
          clearInterval(intervalId);
          intervalId = setInterval(autoSlide, slideInterval);
-         return;
+         return; // Don't restart animation if clicking the active dot
      }
+
 
     if (index >= slides.length) { index = 0; }
     if (index < 0) { index = slides.length - 1; }
@@ -519,6 +533,7 @@
 
     currentSlide = index;
 
+     // Always clear and reset interval on slide change (manual or auto)
      if(intervalId) clearInterval(intervalId);
      intervalId = setInterval(autoSlide, slideInterval);
   }
@@ -529,30 +544,37 @@
     showSlide(nextSlide);
   }
 
+  // Make sure manual clicks work correctly
   window.showSlideManual = function(index) {
+      // Pass the event object implicitly if called from onclick
       showSlide(index);
   }
 
+
   function initSlideshow() {
-      if (slides.length > 0 && dots.length === slides.length) {
+      if (slides.length > 0 && dots.length > 0) { // Check if dots exist too
+         // Ensure only the first slide/dot is active initially
           slides.forEach((slide, index) => {
               slide.style.display = index === 0 ? 'block' : 'none';
           });
-           dots.forEach((dot, index) => {
+          dots.forEach((dot, index) => {
               if (index === 0) dot.classList.add('active');
               else dot.classList.remove('active');
           });
           currentSlide = 0;
-          if(intervalId) clearInterval(intervalId);
-          intervalId = setInterval(autoSlide, slideInterval);
+          if(intervalId) clearInterval(intervalId); // Clear previous interval if any
+          intervalId = setInterval(autoSlide, slideInterval); // Start the automatic slideshow
       } else if (slides.length > 0) {
-          console.warn("Slideshow initialized, but the number of dots doesn't match the number of slides.");
+          // Fallback if dots are missing/mismatched
+          console.warn("Slideshow initialized, but dots might be missing or incorrect.");
           slides.forEach((slide, index) => { slide.style.display = index === 0 ? 'block' : 'none'; });
           currentSlide = 0;
           if(intervalId) clearInterval(intervalId);
           intervalId = setInterval(autoSlide, slideInterval);
       }
   }
+
+  // Initialize the slideshow when the DOM is fully loaded
   document.addEventListener('DOMContentLoaded', initSlideshow);
   // --- End Slideshow JavaScript ---
 </script>

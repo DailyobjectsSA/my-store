@@ -15,7 +15,7 @@
       padding: 15px 30px;
       background: #fff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
+      position: sticky; /* Position context for the dropdown */
       top: 0;
       z-index: 999;
     }
@@ -34,36 +34,41 @@
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: relative; /* Back to relative for local positioning */
+      position: static; /* Change back to static so dropdown positions relative to header */
     }
     .dropdown {
       display: none;
-      position: absolute;
-      top: 100%; /* Position below the menu item */
-      left: 50%; /* Start from center of parent menu item */
-      transform: translateX(-50%); /* Center the dropdown relative to menu item */
+      position: absolute; /* Position relative to header */
+      top: 100%; /* Position below the header */
+      left: 50%; /* Start at 50% of header width */
+      transform: translateX(-50%); /* Pull back by 50% of dropdown's own width = centering */
+      width: max-content; /* Let the dropdown width be determined by its content */
+      max-width: 90%; /* Prevent it becoming excessively wide on large screens */
       background: #fff;
-      border: 1px solid #ddd; /* Restore border */
+      border: 1px solid #ddd;
+      border-top: none; /* Optional: remove top border if header shadow is enough */
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      padding: 25px 30px; /* Padding around the columns */
+      padding: 25px 30px; /* Padding inside the dropdown */
       z-index: 1000;
-      /* Let width be determined by content */
-      white-space: nowrap; /* Prevent columns breaking unexpectedly */
+      /* Removed white-space: nowrap; */
     }
     .menu-item:hover .dropdown {
       display: block;
     }
 
     .dropdown-columns {
-      display: flex; /* Arrange columns side-by-side */
+      display: flex;
+      justify-content: center; /* Center the columns horizontally within the dropdown */
       gap: 40px; /* Gap between columns */
+      flex-wrap: wrap; /* Allow columns to wrap to the next line */
     }
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center the image/title */
+      align-items: center; /* Center image/title */
       gap: 5px;
       width: 140px; /* Column width */
+      margin-bottom: 20px; /* Add space below blocks when they wrap */
     }
     .category-block img {
       width: 80px;
@@ -88,14 +93,13 @@
       color: #333;
       font-size: 13px;
       font-weight: normal;
-      text-align: left; /* <<< Links aligned left */
-      white-space: normal; /* Allow link text to wrap if needed */
+      text-align: left; /* Links aligned left */
+      white-space: normal; /* Allow link text to wrap */
     }
     .category-block a.view-all-link {
       color: #1abc9c;
       font-weight: bold;
       margin-top: 8px;
-      /* text-align: left; inherited */
     }
     .category-block a:not(.view-all-link):hover {
       color: #007BFF;
@@ -291,13 +295,13 @@
   <div class="logo-area"><img src="logo.png" alt="Logo"></div>
   <nav class="menu">
     <!-- Updated TECH Menu Item -->
-    <div class="menu-item">  <!-- This div is position: relative -->
+    <div class="menu-item"> <!-- position: static -->
       <a href="#">TECH</a>
-      <div class="dropdown"> <!-- This div is position: absolute -->
-         <div class="dropdown-columns">
+      <div class="dropdown"> <!-- position: absolute, centered via left/transform -->
+         <div class="dropdown-columns"> <!-- flex-wrap: wrap, justify-content: center -->
 
              <!-- Column 1: Phone Cases -->
-             <div class="category-block">
+             <div class="category-block"> <!-- margin-bottom added -->
                <img src="tech-dd-img1.jpg" alt="Phone Cases"> {/* <-- REPLACE IMAGE SRC */}
                <h4>PHONE CASES</h4>
                <a href="#">Apple</a>
@@ -306,6 +310,8 @@
                <a href="#">Google</a>
                <a href="#" class="view-all-link">View All +</a>
              </div>
+
+             <!-- Other category blocks remain the same -->
 
              <!-- Column 2: Watch Accessories -->
              <div class="category-block">
@@ -372,6 +378,7 @@
                <a href="#">Pouches</a>
                <a href="#" class="view-all-link">View All +</a>
              </div>
+
 
            </div> <!-- End dropdown-columns -->
       </div> <!-- End dropdown -->

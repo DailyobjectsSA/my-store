@@ -242,10 +242,8 @@
         <a href="phone-cases.html">Phone Cases</a>
         <a href="watch-accessories.html">Watch Accessories</a>
         <a href="charging-solutions.html">Charging Solutions</a>
-        <a href="ipad-cases.html">iPad Cases</a>
-        <a href="laptop-sleeves.html">Laptop Sleeves and Bags</a>
+        <a href="laptop-sleeves.html">Laptop Sleeves</a>
         <a href="organizers.html">Organisers</a>
-        <a href="stands.html">Stands</a>
       </div>
     </div>
     <a href="#">BAGS & WALLETS</a>
@@ -297,37 +295,50 @@
 </section>
 
 <section class="corporate-banner">
-  <img src="corporate-banner.jpg" alt="Corporate Gifting">
+  <img src="cg1.jpg" alt="Corporate Gifting">
   <div class="overlay">
     <h1>CORPORATE GIFTING</h1>
-    <p>Corporate gifting that speaks volumes about your brand</p>
+    <p>It is the season to celebrate and nurture everlasting bonds. Build lasting relationships with our bespoke corporate solutions</p>
+  </div>
+</section>
+
+<section>
+  <h2>TRENDING COLLECTION</h2>
+  <div class="zoom-grid">
+    <div class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>ENVELOPE STYLE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>ACID YELLOW</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>TECH ESSENTIALS</h2>
+  <div class="grid">
+    <div class="card"><img src="te1.jpg"><h3>WIRELESS CHARGERS</h3></div>
+    <div class="card"><img src="te2.jpg"><h3>TECH ORGANISERS</h3></div>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Daily Objects SA. All Rights Reserved.</p>
+  <p>&copy; 2025 DailyObjects SA | All rights reserved.</p>
 </footer>
 
 <script>
   let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
 
   function showSlide(index) {
-    let slides = document.querySelectorAll('.slide');
-    let dots = document.querySelectorAll('.dot');
-    if (index >= slides.length) currentSlide = 0;
-    else if (index < 0) currentSlide = slides.length - 1;
-    else currentSlide = index;
-
-    slides.forEach((slide, i) => {
-      slide.style.display = i === currentSlide ? 'block' : 'none';
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSlide);
-    });
+    slides[currentSlide].style.display = "none";
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (index + slides.length) % slides.length;
+    slides[currentSlide].style.display = "block";
+    dots[currentSlide].classList.add('active');
   }
 
-  showSlide(currentSlide);
   setInterval(() => showSlide(currentSlide + 1), 10000);
+
+  showSlide(currentSlide);
 </script>
 
 </body>

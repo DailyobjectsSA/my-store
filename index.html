@@ -38,8 +38,7 @@
       background: #fff;
       border: 1px solid #ddd;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      min-width: 250px;
-      z-index: 10;
+      min-width: 200px;
     }
     .menu-item {
       position: relative;
@@ -52,9 +51,7 @@
       padding: 10px;
       text-decoration: none;
       color: #333;
-      font-size: 14px;
     }
-    .dropdown a:hover { background-color: #f4f4f4; }
     .icons {
       display: flex;
       gap: 20px;
@@ -242,48 +239,13 @@
     <div class="menu-item">
       <a href="#">TECH</a>
       <div class="dropdown">
-        <a href="phone-cases.html">PHONE CASES</a>
-        <a href="apple.html">Apple</a>
-        <a href="samsung.html">Samsung</a>
-        <a href="oneplus.html">OnePlus</a>
-        <a href="google.html">Google</a>
-        <a href="view-all-phone-cases.html">View All +</a>
-        <a href="watch-accessories.html">WATCH ACCESSORIES</a>
-        <a href="watchbands.html">Watchbands</a>
-        <a href="apple-watch-chargers.html">Apple Watch Chargers</a>
-        <a href="watch-organisers.html">Watch Organisers</a>
-        <a href="apple-watch-cases.html">Apple Watch Cases</a>
-        <a href="view-all-watch-accessories.html">View All +</a>
-        <a href="charging-solutions.html">CHARGING SOLUTIONS</a>
-        <a href="powerbank.html">Powerbank</a>
-        <a href="wireless-chargers.html">Wireless Chargers</a>
-        <a href="charging-cables.html">Charging Cables</a>
-        <a href="chargers-adapters.html">Chargers and Adapters</a>
-        <a href="view-all-charging-solutions.html">View All +</a>
-        <a href="tech-add-ons.html">TECH ADD-ONS</a>
+        <a href="phone-cases.html">Phone Cases</a>
+        <a href="watch-accessories.html">Watch Accessories</a>
+        <a href="charging-solutions.html">Charging Solutions</a>
         <a href="ipad-cases.html">iPad Cases</a>
-        <a href="airpods-cover.html">AirPods Cover</a>
-        <a href="screen-guards.html">Screen Guards</a>
-        <a href="phone-wallets.html">Phone Wallets</a>
-        <a href="view-all-tech-add-ons.html">View All +</a>
-        <a href="laptop-sleeves-and-bags.html">LAPTOP SLEEVES AND BAGS</a>
-        <a href="zippered-sleeves.html">Zippered Sleeves</a>
-        <a href="macbook-hardcases.html">Macbook Hardcases</a>
-        <a href="messenger-bags.html">Messenger Bags</a>
-        <a href="backpacks.html">Backpacks</a>
-        <a href="view-all-laptop-sleeves-and-bags.html">View All +</a>
-        <a href="stands.html">STANDS</a>
-        <a href="mobile-stands.html">Mobile</a>
-        <a href="laptop-stands.html">Laptop</a>
-        <a href="monitor-stands.html">Monitor</a>
-        <a href="ipad-stands.html">iPad</a>
-        <a href="view-all-stands.html">View All +</a>
-        <a href="organisers.html">ORGANISERS</a>
-        <a href="tech-kit.html">Tech Kit</a>
-        <a href="folio.html">Folio</a>
-        <a href="cables.html">Cables</a>
-        <a href="pouches.html">Pouches</a>
-        <a href="view-all-organisers.html">View All +</a>
+        <a href="laptop-sleeves.html">Laptop Sleeves and Bags</a>
+        <a href="organizers.html">Organisers</a>
+        <a href="stands.html">Stands</a>
       </div>
     </div>
     <a href="#">BAGS & WALLETS</a>
@@ -318,35 +280,55 @@
 <section>
   <div class="slideshow-container">
     <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PREMIUM IPHONE CASE</h1><p>Explore new levels of protection for your phone</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>DESK ORGANISERS</h1><p>Premium organisers for your desk</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat4.jpg"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat5.jpg"><div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <div class="slide"><img src="cat6.jpg"><div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
     <div class="dots">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+      <span class="dot" onclick="showSlide(0)"></span>
+      <span class="dot" onclick="showSlide(1)"></span>
+      <span class="dot" onclick="showSlide(2)"></span>
+      <span class="dot" onclick="showSlide(3)"></span>
+      <span class="dot" onclick="showSlide(4)"></span>
+      <span class="dot" onclick="showSlide(5)"></span>
     </div>
   </div>
 </section>
 
 <section class="corporate-banner">
-  <img src="cg1.jpg" alt="Corporate Gifting">
+  <img src="corporate-banner.jpg" alt="Corporate Gifting">
   <div class="overlay">
     <h1>CORPORATE GIFTING</h1>
-    <p>Perfect solutions for corporate gifting and branding. Customised to suit your needs.</p>
-  </div>
-</section>
-
-<section>
-  <h2>SHOP BY COLLECTION</h2>
-  <div class="zoom-grid">
-    <a href="#" class="zoom-card"><img src="collection1.jpg"><div class="overlay-text"><h3>TECH ESSENTIALS</h3><p>Enhance your everyday tech experience</p><a href="#" class="shop-btn">SHOP NOW</a></div></a>
-    <a href="#" class="zoom-card"><img src="collection2.jpg"><div class="overlay-text"><h3>NEW ARRIVALS</h3><p>Explore the latest trends in tech</p><a href="#" class="shop-btn">SHOP NOW</a></div></a>
+    <p>Corporate gifting that speaks volumes about your brand</p>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2025 Daily Objects SA. All Rights Reserved.</p>
+  <p>© 2025 Daily Objects SA. All Rights Reserved.</p>
 </footer>
+
+<script>
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    let slides = document.querySelectorAll('.slide');
+    let dots = document.querySelectorAll('.dot');
+    if (index >= slides.length) currentSlide = 0;
+    else if (index < 0) currentSlide = slides.length - 1;
+    else currentSlide = index;
+
+    slides.forEach((slide, i) => {
+      slide.style.display = i === currentSlide ? 'block' : 'none';
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  showSlide(currentSlide);
+  setInterval(() => showSlide(currentSlide + 1), 10000);
+</script>
 
 </body>
 </html>

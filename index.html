@@ -43,15 +43,15 @@
       opacity: 0; /* Initially transparent */
       position: absolute; /* Position relative to header */
       top: 100%; /* Position below the header */
-      left: 50%; /* Start at 50% of header width */
-      transform: translateX(-50%); /* Pull back by 50% of dropdown's own width = centering */
-      width: max-content; /* Let the dropdown width be determined by its content */
-      max-width: 90%; /* Prevent it becoming excessively wide on large screens */
+      left: 0; /* Align dropdown to the left edge of the header */
+      width: 100%; /* Make dropdown full width */
+      /* transform: translateX(-50%); Removed centering transform */
+      max-width: 100%; /* Allow full width */
       background: #fff;
       border: 1px solid #ddd;
       border-top: none;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      padding: 30px 40px; /* Increased padding slightly */
+      padding: 30px 40px; /* Padding inside the dropdown */
       z-index: 1000;
       transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s;
     }
@@ -63,46 +63,65 @@
 
     .dropdown-columns {
       display: flex;
-      justify-content: center; /* Center the columns horizontally within the dropdown */
-      gap: 50px; /* Increased gap between columns */
-      flex-wrap: wrap; /* Allow columns to wrap to the next line */
+      justify-content: center; /* Center the columns container */
+      gap: 30px; /* Gap between columns */
+      flex-wrap: wrap; /* Allow columns to wrap */
+      max-width: 1200px; /* Optional: constrain max width of columns area */
+      margin: 0 auto; /* Center columns area if max-width is applied */
     }
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center the H4 initially */
-      width: 150px; /* Set a fixed width for consistent columns */
-      margin-bottom: 20px;
+      align-items: flex-start; /* Align items to the start (left) */
+      width: 160px; /* Adjust width as needed */
+      margin-bottom: 25px; /* Space below blocks */
     }
-    /* Removed .category-block img rule */
 
     .category-block h4 {
-      font-size: 12px; /* Adjusted font size */
+      font-size: 11px; /* Smaller font size for heading */
       font-weight: bold;
       color: #000;
-      margin-bottom: 15px; /* Increased space below heading */
+      margin-bottom: 10px; /* Space below heading */
       text-transform: uppercase;
-      text-align: center; /* Center the heading text */
-      width: 100%; /* Ensure h4 takes full width for centering */
+      text-align: left; /* Align heading left */
+      width: 100%; /* Ensure h4 takes full width */
+      letter-spacing: 0.5px; /* Slight letter spacing */
     }
-    .category-block a {
-      display: block;
-      width: 100%; /* Take full width of parent */
-      padding: 4px 0; /* Vertical padding, no horizontal */
+
+    /* Style for the container of the flowing links */
+    .category-links {
+       text-align: left; /* Ensure links inside align left */
+       width: 100%;
+       margin-bottom: 8px; /* Space before View All */
+    }
+
+    .category-block a:not(.view-all-link) {
+      /* display: block; Changed to inline */
+      display: inline; /* Allow links to flow */
+      padding: 0; /* Remove padding */
+      margin-right: 5px; /* Add space between links on the same line */
+      margin-bottom: 2px; /* Small space below links */
       text-decoration: none;
-      color: #333;
-      font-size: 14px; /* Slightly larger font for links */
+      color: #555; /* Slightly lighter grey */
+      font-size: 13px; /* Adjust link font size */
       font-weight: normal;
-      text-align: left; /* Align link text left */
-      white-space: normal;
+      line-height: 1.6; /* Adjust line height for wrapped text */
+      white-space: normal; /* Allow wrapping (default) */
     }
+
     .category-block a.view-all-link {
-      color: #1abc9c; /* Teal color like screenshot */
-      font-weight: bold; /* Keep bold */
-      margin-top: 8px; /* Space above View All */
+      display: block; /* Keep block for new line */
+      width: 100%;
+      padding: 4px 0; /* Reset padding */
+      text-decoration: none;
+      color: #1abc9c; /* Teal color */
+      font-size: 13px; /* Match other links or adjust */
+      font-weight: bold;
+      text-align: left;
+      margin-top: 5px; /* Adjust space above View All */
     }
     .category-block a:not(.view-all-link):hover {
-      color: #007BFF; /* Keep hover effect */
+      color: #007BFF;
     }
     .category-block a.view-all-link:hover {
       color: #16a085; /* Darker teal on hover */
@@ -300,73 +319,87 @@
       <div class="dropdown">
          <div class="dropdown-columns">
 
-             <!-- Column 1: Phone Cases (No Image, Styled Text) -->
+             <!-- Column 1: Phone Cases (Flowing Text) -->
              <div class="category-block">
                <h4>PHONE CASES</h4>
-               <a href="phone-cases.html">Apple</a>
-               <a href="#">Samsung</a>
-               <a href="#">OnePlus</a>
-               <a href="#">Google</a>
+               <div class="category-links"> <!-- Added wrapper div -->
+                 <a href="phone-cases.html">Apple</a>
+                 <a href="#">Samsung</a>
+                 <a href="#">OnePlus</a>
+                 <a href="#">Google</a>
+               </div>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 2: Watch Accessories (No Image, Styled Text) -->
+             <!-- Column 2: Watch Accessories (Flowing Text) -->
              <div class="category-block">
                <h4>WATCH ACCESSORIES</h4>
-               <a href="#">Watchbands</a>
-               <a href="#">Apple Watch Chargers</a>
-               <a href="#">Watch Organisers</a>
-               <a href="#">Apple Watch Cases</a>
+                <div class="category-links"> <!-- Added wrapper div -->
+                   <a href="#">Watchbands</a>
+                   <a href="#">Apple Watch Chargers</a>
+                   <a href="#">Watch Organisers</a>
+                   <a href="#">Apple Watch Cases</a>
+               </div>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 3: Charging Solutions (No Image, Styled Text) -->
+             <!-- Column 3: Charging Solutions (Flowing Text) -->
              <div class="category-block">
                <h4>CHARGING SOLUTIONS</h4>
-               <a href="#">Powerbank</a>
-               <a href="#">Wireless Chargers</a>
-               <a href="#">Charging Cables</a>
-               <a href="#">Chargers and Adapters</a>
+                <div class="category-links"> <!-- Added wrapper div -->
+                   <a href="#">Powerbank</a>
+                   <a href="#">Wireless Chargers</a>
+                   <a href="#">Charging Cables</a>
+                   <a href="#">Chargers and Adapters</a>
+                </div>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 4: Tech Add-ons (No Image, Styled Text) -->
+             <!-- Column 4: Tech Add-ons (Flowing Text) -->
              <div class="category-block">
                <h4>TECH ADD-ONS</h4>
-               <a href="#">iPad Cases</a>
-               <a href="#">AirPods Cover</a>
-               <a href="#">Screen Guards</a>
-               <a href="#">Phone Wallets</a>
+                <div class="category-links"> <!-- Added wrapper div -->
+                   <a href="#">iPad Cases</a>
+                   <a href="#">AirPods Cover</a>
+                   <a href="#">Screen Guards</a>
+                   <a href="#">Phone Wallets</a>
+               </div>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 5: Laptop Sleeves (No Image, Styled Text) -->
+             <!-- Column 5: Laptop Sleeves (Flowing Text) -->
              <div class="category-block">
                <h4>LAPTOP SLEEVES AND BAGS</h4>
-               <a href="#">Zippered Sleeves</a>
-               <a href="#">Macbook Hardcases</a>
-               <a href="#">Messenger Bags</a>
-               <a href="#">Backpacks</a>
+                <div class="category-links"> <!-- Added wrapper div -->
+                   <a href="#">Zippered Sleeves</a>
+                   <a href="#">Macbook Hardcases</a>
+                   <a href="#">Messenger Bags</a>
+                   <a href="#">Backpacks</a>
+               </div>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 6: Stands (No Image, Styled Text) -->
+             <!-- Column 6: Stands (Flowing Text) -->
              <div class="category-block">
                <h4>STANDS</h4>
-               <a href="#">Mobile</a>
-               <a href="#">Laptop</a>
-               <a href="#">Monitor</a>
-               <a href="#">iPad</a>
+                <div class="category-links"> <!-- Added wrapper div -->
+                   <a href="#">Mobile</a>
+                   <a href="#">Laptop</a>
+                   <a href="#">Monitor</a>
+                   <a href="#">iPad</a>
+               </div>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 7: Organisers (No Image, Styled Text) -->
+             <!-- Column 7: Organisers (Flowing Text) -->
              <div class="category-block">
                <h4>ORGANISERS</h4>
-               <a href="#">Tech Kit</a>
-               <a href="#">Folio</a>
-               <a href="#">Cables</a>
-               <a href="#">Pouches</a>
+                <div class="category-links"> <!-- Added wrapper div -->
+                   <a href="#">Tech Kit</a>
+                   <a href="#">Folio</a>
+                   <a href="#">Cables</a>
+                   <a href="#">Pouches</a>
+                </div>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
@@ -503,7 +536,6 @@
   }
 
 </script>
-
 
 </body>
 </html>

@@ -18,57 +18,59 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      /* Ensure header itself doesn't contribute to unwanted wrapping */
       flex-wrap: nowrap;
     }
-    .logo-area img { height: 60px; width: auto; flex-shrink: 0; }
-    /* Ensure menu items stay in one line */
+    .logo-area img { height: 40px; /* Adjusted logo height */ width: auto; flex-shrink: 0; }
+
     .menu {
       display: flex;
-      gap: 25px;
-      flex-wrap: nowrap; /* Prevent menu items wrapping */
-      overflow: hidden; /* Hide overflow if it somehow occurs */
-      align-items: center; /* Vertically align menu items */
+      gap: 35px; /* Increased gap */
+      flex-wrap: nowrap;
+      overflow: hidden;
+      align-items: center;
     }
+    /* Main menu link styling */
     .menu a, .menu .menu-item > a {
       text-decoration: none;
-      color: #222;
-      padding-bottom: 15px; /* Keep this for hover effect alignment */
-      margin-bottom: -15px; /* Keep this for hover effect alignment */
-      font-size: 13px;
-      font-weight: bold;
+      color: #333; /* Slightly darker default color */
+      padding-bottom: 5px; /* Add small padding for spacing */
+      font-size: 14px; /* Slightly larger font */
+      font-weight: bold; /* Bold like screenshot */
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: color 0.2s ease;
-      white-space: nowrap; /* Prevent individual link text wrapping */
+      letter-spacing: 0.8px; /* Increased spacing */
+      transition: color 0.2s ease, border-color 0.2s ease; /* Added border transition */
+      white-space: nowrap;
+      border-bottom: 3px solid transparent; /* Prepare for hover effect */
+      line-height: 1.4; /* Adjust line height */
     }
      .menu .menu-item > a {
-        flex-shrink: 0; /* Prevent link from shrinking */
+        flex-shrink: 0;
      }
-     .menu .menu-item:hover > a {
-       color: #1abc9c;
+     /* Hover effect - underline matching screenshot's highlight */
+     .menu .menu-item:hover > a,
+     .menu a:hover {
+       color: #1abc9c; /* Highlight color */
+       border-bottom-color: #1abc9c; /* Underline on hover */
      }
 
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static; /* Changed from relative for full-width dropdown */
+      position: static; /* Needed for full-width absolute dropdown */
     }
     .dropdown {
       visibility: hidden;
       opacity: 0;
       position: absolute;
-      top: 100%; /* Position below the header */
+      top: calc(100% + 0px); /* Position directly below header */
       left: 0;
       width: 100%;
       background: #fff;
-      border: 1px solid #eee;
-      border-top: none;
-      box-shadow: 0px 8px 15px rgba(0,0,0,0.1); /* Slightly softer shadow */
-      padding: 30px 0; /* Adjusted vertical padding */
+      border-top: 1px solid #eee; /* Top border */
+      box-shadow: 0px 8px 15px rgba(0,0,0,0.08); /* Softer shadow */
+      padding: 40px 0; /* Vertical padding */
       z-index: 1000;
       transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s;
-      /* Ensure the dropdown itself doesn't get pushed by content */
       box-sizing: border-box;
     }
     .menu-item:hover .dropdown {
@@ -77,41 +79,38 @@
       transition-delay: 0s;
     }
 
-    /* Container for the columns */
+    /* Container for the columns - Centered, Allows Wrapping */
     .dropdown-columns {
       display: flex;
-      justify-content: flex-start; /* Align columns to the left */
+      justify-content: center; /* Center the columns horizontally */
       align-items: flex-start; /* Align tops of columns */
-      gap: 0 60px; /* Row gap (irrelevant now), Column gap increased */
-      flex-wrap: nowrap; /* Force columns onto one line */
-      overflow-x: auto; /* Allow horizontal scrolling if needed */
-      max-width: 100%; /* Allow container to use full width if needed */
-      width: max-content; /* Make container width fit its content */
-      min-width: 100%; /* Ensure it stretches at least full width if content is less */
-      margin: 0 auto; /* Center the scrollable container if screen is wider */
-      padding: 0 50px; /* Horizontal padding inside the scroll container */
-      box-sizing: border-box; /* Include padding in width calculation */
+      gap: 20px 45px; /* Row gap (for wrapping), Column gap */
+      flex-wrap: wrap; /* Allow columns to wrap */
+      max-width: 1300px; /* Max width before centering takes effect */
+      margin: 0 auto; /* Center the container */
+      padding: 0 30px; /* Padding inside the container */
+      /* Ensure no scrollbars are forced */
+      overflow: hidden; /* Hide any accidental overflow */
     }
 
     /* Styling for each individual column block (No Image) */
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: flex-start; /* Align heading and links to the left */
-      width: 180px; /* Slightly increased width for better spacing */
-      flex-shrink: 0; /* Prevent columns from shrinking */
-      margin-bottom: 10px; /* Adjust vertical space when wrapped - less important now */
+      width: 170px; /* Adjust width as needed */
+      margin-bottom: 30px; /* Vertical space when wrapped */
+      flex-shrink: 0; /* Prevent shrinking before wrapping */
     }
 
-    /* Title Styling (Bold, Uppercase, Left-Aligned) */
+    /* Title Styling (Bold, Uppercase, Centered) */
     .category-block h4 {
       font-family: Arial, sans-serif;
-      font-size: 13px; /* Slightly larger than before */
+      font-size: 12px; /* Matching screenshot font size */
       font-weight: bold;
-      color: #000;
-      margin-bottom: 20px; /* Increased space below heading */
+      color: #000; /* Black color */
+      margin-bottom: 25px; /* Increased space below heading */
       text-transform: uppercase;
-      text-align: left; /* Align heading text left */
+      text-align: center; /* Center heading text */
       width: 100%;
       letter-spacing: 0.5px;
       white-space: nowrap;
@@ -122,136 +121,212 @@
     /* Link Styling (Vertical List, Left-Aligned Text) */
     .category-block a:not(.view-all-link) {
       display: block;
-      padding: 6px 0; /* Increased vertical padding for more space */
+      padding: 5px 0; /* Vertical padding between links */
       text-decoration: none;
-      color: #333;
+      color: #333; /* Standard link color */
       font-family: Arial, sans-serif;
-      font-size: 13px;
-      line-height: 1.5; /* Adjusted line-height */
+      font-size: 14px; /* Matching screenshot font size */
+      line-height: 1.6;
       text-align: left; /* Align link text left */
       width: 100%;
-      transition: color 0.2s ease; /* Add smooth hover transition */
+      transition: color 0.2s ease;
     }
 
     /* "View All" Link Styling (Left-Aligned Text, Special Color) */
     .category-block a.view-all-link {
       display: block;
-      padding: 0;
+      padding: 0; /* No extra padding */
       text-decoration: none;
-      color: #1abc9c;
+      color: #1abc9c; /* Specific green/teal color */
       font-family: Arial, sans-serif;
-      font-size: 13px;
-      font-weight: bold;
+      font-size: 14px; /* Matching screenshot font size */
+      font-weight: bold; /* Bold */
       text-align: left; /* Align link text left */
       width: 100%;
-      margin-top: 15px; /* Increased space above "View All" */
-       transition: color 0.2s ease; /* Add smooth hover transition */
+      margin-top: 15px; /* Space above "View All" */
+      transition: color 0.2s ease;
     }
 
+    /* Link Hover Effects */
     .category-block a:not(.view-all-link):hover {
-      color: #1abc9c; /* Match hover color with View All */
+      color: #1abc9c; /* Hover color matches View All */
     }
     .category-block a.view-all-link:hover {
-      color: #16a085;
+      color: #16a085; /* Slightly darker shade on hover */
     }
     /* --- End Dropdown Styles --- */
 
 
     .icons {
       display: flex;
-      gap: 20px;
-      align-items: center; /* Align icons vertically */
-      flex-shrink: 0; /* Prevent icons area from shrinking */
+      gap: 25px; /* Increased gap */
+      align-items: center;
+      flex-shrink: 0;
     }
     .icons img {
-      height: 24px;
+      height: 22px; /* Adjusted icon size */
       cursor: pointer;
+      opacity: 0.7; /* Slightly faded icons like screenshot */
+      transition: opacity 0.2s ease;
+    }
+    .icons img:hover {
+        opacity: 1; /* Full opacity on hover */
     }
 
-    /* Rest of the CSS remains the same */
-    section h2 { font-size: 24px; font-weight: bold; text-align: center; margin: 40px 0 30px; }
-    .grid, .zoom-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0; margin-bottom: 40px; }
-    .card, .zoom-card { flex: 1 1 33%; text-align: center; background: #f9f9f9; border: 1px solid #eee; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: transform 0.3s ease; }
-    /* Basic responsive adjustment for cards on smaller screens */
-    @media (max-width: 768px) {
-      .card, .zoom-card { flex: 1 1 48%; } /* 2 columns */
+    /* Rest of the CSS */
+    section { width: 100%; } /* Ensure sections take full width */
+    section h2 { font-size: 24px; font-weight: bold; text-align: center; margin: 50px 0 35px; color: #333; }
+    .grid, .zoom-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1px; /* Minimal gap creates border effect */ margin-bottom: 40px; background-color: #eee; /* Background for grid lines */ border: 1px solid #eee; /* Outer border */ }
+    .card, .zoom-card { flex: 1 1 33%; text-align: center; background: #fff; /* White background */ text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+
+    @media (max-width: 992px) { /* Adjust breakpoint */
+        .card, .zoom-card { flex-basis: calc(50% - 1px); } /* 2 columns */
     }
-    @media (max-width: 480px) {
-      .card, .zoom-card { flex: 1 1 100%; } /* 1 column */
+    @media (max-width: 600px) { /* Adjust breakpoint */
+        .card, .zoom-card { flex-basis: calc(100% - 1px); } /* 1 column */
     }
+
     .card img, .zoom-card img { width: 100%; height: auto; display: block; object-fit: cover; transition: transform 0.4s ease; }
-    .card:hover img, .zoom-card:hover img { transform: scale(1.05); }
-    .card h3 { padding: 15px; font-size: 18px; color: #333; }
-    .banner video { width: 100%; height: 450px; object-fit: cover; display: block; }
-    .slideshow-container { position: relative; width: 100%; height: 500px; overflow: hidden; }
-    .slide { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
-    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .slide-content { position: absolute; top: 20%; left: 5%; color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); max-width: 45%; }
-    .slide-content h1 { font-size: 32px; margin-bottom: 10px; }
-    .slide-content p { font-size: 16px; margin-bottom: 20px; }
-    .slide-content .shop-btn { display: inline-block; padding: 8px 16px; font-size: 14px; font-weight: bold; color: black; background: white; border-radius: 5px; text-decoration: none; /* Removed float: right; */ }
-    .dots { position: absolute; bottom: 20px; left: 20px; display: flex; gap: 10px; z-index: 5; }
-    .dot { width: 12px; height: 12px; background-color: #ccc; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }
-    .dot.active { width: 60px; border-radius: 6px; background-color: #444; }
-    .overlay-text { position: absolute; bottom: 20px; left: 20px; color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); }
-    .overlay-text h3 { font-size: 20px; margin-bottom: 8px; }
-    .overlay-text .shop-btn { background: white; color: black; font-size: 14px; font-weight: bold; padding: 6px 12px; border-radius: 4px; text-decoration: none; }
-    .corporate-banner { position: relative; height: 400px; overflow: hidden; }
-    .corporate-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .corporate-banner .overlay { position: absolute; top: 20%; left: 5%; color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); max-width: 600px; }
-    .corporate-banner .overlay h1 { font-size: 32px; margin-bottom: 10px; }
-    .corporate-banner .overlay p { font-size: 16px; }
-    footer { background: #222; color: #fff; text-align: center; padding: 20px; font-size: 14px; }
+    .card:hover, .zoom-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); z-index: 10; } /* Add hover effect */
+    .card:hover img, .zoom-card:hover img { transform: scale(1.03); } /* Subtle zoom */
+    .card h3 { padding: 20px 15px; font-size: 16px; color: #333; font-weight: normal; text-transform: uppercase; letter-spacing: 0.5px;}
 
-    /* Responsive adjustments for header */
+    .banner video { width: 100%; height: auto; max-height: 70vh; /* Limit video height */ object-fit: cover; display: block; }
+
+    .slideshow-container { position: relative; width: 100%; height: 550px; /* Adjusted height */ overflow: hidden; background: #f0f0f0; }
+    .slide { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; animation: fadeEffect 1.5s; }
+    @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
+    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .slide-content { position: absolute; top: 50%; /* Center vertically */ left: 8%; transform: translateY(-50%); color: white; text-shadow: 1px 1px 8px rgba(0,0,0,0.7); max-width: 40%; }
+    .slide-content h1 { font-size: 36px; margin-bottom: 15px; font-weight: bold; line-height: 1.2; }
+    .slide-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
+    .slide-content .shop-btn { display: inline-block; padding: 10px 25px; font-size: 14px; font-weight: bold; color: #fff; background: #1abc9c; border: none; border-radius: 4px; text-decoration: none; transition: background-color 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;}
+    .slide-content .shop-btn:hover { background-color: #16a085; }
+
+    .dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 5; }
+    .dot { width: 10px; height: 10px; background-color: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.4s ease; }
+    .dot.active { background-color: #fff; transform: scale(1.2); } /* Make active dot white and slightly larger */
+
+    .overlay-text { position: absolute; bottom: 0; left: 0; width: 100%; padding: 25px 20px; color: white; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); text-align: left; }
+    .overlay-text h3 { font-size: 22px; margin-bottom: 10px; font-weight: bold; }
+    .overlay-text .shop-btn { background: #fff; color: #1abc9c; font-size: 13px; font-weight: bold; padding: 8px 15px; border-radius: 4px; text-decoration: none; transition: background-color 0.3s ease, color 0.3s ease; text-transform: uppercase; }
+    .overlay-text .shop-btn:hover { background-color: #eee; color: #16a085; }
+
+    .corporate-banner { position: relative; height: 450px; /* Adjusted height */ overflow: hidden; }
+    .corporate-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .corporate-banner .overlay { position: absolute; top: 50%; left: 8%; transform: translateY(-50%); color: white; text-shadow: 1px 1px 8px rgba(0,0,0,0.7); max-width: 550px; }
+    .corporate-banner .overlay h1 { font-size: 36px; margin-bottom: 15px; font-weight: bold; }
+    .corporate-banner .overlay p { font-size: 16px; line-height: 1.6; }
+
+    footer { background: #222; color: #aaa; text-align: center; padding: 25px 20px; font-size: 13px; }
+
+    /* --- Responsive adjustments --- */
+    @media (max-width: 1200px) {
+        .dropdown-columns { max-width: 95%; gap: 20px 35px; }
+    }
+
     @media (max-width: 1024px) {
-      .menu { gap: 15px; } /* Reduce gap between main menu items */
-      .menu a, .menu .menu-item > a { font-size: 12px; }
-      .dropdown-columns { padding: 0 30px; gap: 0 40px; } /* Adjust dropdown padding/gap */
-      .category-block { width: 160px; } /* Slightly smaller columns */
+      .menu { gap: 20px; }
+      .menu a, .menu .menu-item > a { font-size: 13px; letter-spacing: 0.6px; }
+      .icons { gap: 20px; }
+      .icons img { height: 20px; }
+      .dropdown-columns { padding: 0 20px; }
+      .category-block { width: 160px; }
+      .slide-content { max-width: 50%; left: 5%;}
+      .slide-content h1 { font-size: 30px; }
+       .corporate-banner .overlay { max-width: 70%; left: 5%; }
+       .corporate-banner .overlay h1 { font-size: 30px; }
     }
 
     @media (max-width: 850px) {
-       header { flex-direction: column; align-items: stretch; padding: 10px; }
-       .logo-area { text-align: center; margin-bottom: 10px; }
-       .logo-area img { height: 50px; }
-       .menu { justify-content: center; flex-wrap: wrap; gap: 10px 20px; /* Allow wrapping */ overflow: visible; } /* Allow wrap */
-       .menu a, .menu .menu-item > a { padding-bottom: 5px; margin-bottom: 0; } /* Adjust padding for wrapped items */
-       .icons { justify-content: center; margin-top: 10px; }
-       .menu-item { position: relative; } /* Need relative for dropdown positioning again */
-       .dropdown { top: calc(100% + 5px); /* Adjust top position */ box-shadow: 0px 6px 10px rgba(0,0,0,0.1); width: 95%; left: 2.5%; } /* Make dropdown slightly less wide */
-       .dropdown-columns { padding: 0 20px; gap: 0 30px; }
-       .slide-content { max-width: 70%; top: 15%; }
-       .slide-content h1 { font-size: 24px; }
-       .slide-content p { font-size: 14px; }
-       .corporate-banner .overlay { max-width: 80%; top: 15%;}
+       header { flex-direction: column; align-items: center; /* Center items when stacked */ padding: 15px; }
+       .logo-area { margin-bottom: 15px; }
+       .menu { justify-content: center; flex-wrap: wrap; gap: 10px 20px; overflow: visible; border-top: 1px solid #eee; padding-top: 15px; width: 100%; }
+       .menu a, .menu .menu-item > a { padding-bottom: 8px; border-bottom-width: 2px; }
+       .icons { justify-content: center; margin-top: 15px; }
+       .menu-item { position: relative; }
+       /* Adjust dropdown position/style for stacked header */
+       .menu-item:hover .dropdown {
+           position: absolute; /* Keep absolute */
+           top: 100%; /* Position below the menu item */
+           left: 50%;
+           transform: translateX(-50%);
+           width: auto; /* Let content determine width */
+           min-width: 90vw; /* Make it wide on mobile */
+           max-width: 600px; /* But not excessively wide */
+           box-shadow: 0px 6px 10px rgba(0,0,0,0.1);
+           border-radius: 4px;
+           margin-top: 5px;
+           border-top: 1px solid #eee; /* Ensure border */
+       }
+        .dropdown-columns {
+            justify-content: flex-start; /* Align left when wrapped */
+            padding: 20px;
+            max-width: 100%; /* Use available width */
+        }
+       .category-block { width: 150px; } /* Adjust width */
+       .slideshow-container { height: 450px; }
+       .slide-content { max-width: 75%; }
+       .slide-content h1 { font-size: 26px; }
+       .corporate-banner { height: 400px; }
+       .corporate-banner .overlay { max-width: 85%; }
        .corporate-banner .overlay h1 { font-size: 26px; }
     }
-     @media (max-width: 480px) {
-       .slideshow-container { height: 350px; }
-       .slide-content { max-width: 85%; top: 10%; left: 7.5%; }
-        .slide-content h1 { font-size: 20px; }
-        .slide-content p { font-size: 13px; margin-bottom: 15px;}
-        .slide-content .shop-btn { padding: 6px 12px; font-size: 12px; }
-       .dots { bottom: 10px; left: 10px; }
-       .dot { width: 10px; height: 10px; }
-       .dot.active { width: 40px; }
-        section h2 { font-size: 20px; margin: 30px 0 20px; }
-        .corporate-banner { height: 300px; }
-         .corporate-banner .overlay h1 { font-size: 22px; }
-         .corporate-banner .overlay p { font-size: 14px; }
-        footer { padding: 15px; font-size: 12px;}
+
+     @media (max-width: 600px) {
+        section h2 { font-size: 20px; margin: 40px 0 25px; }
+        .slideshow-container { height: 400px; }
+        .slide-content { max-width: 85%; left: 7.5%; transform: translateY(-50%); }
+        .slide-content h1 { font-size: 22px; }
+        .slide-content p { font-size: 14px; margin-bottom: 20px;}
+        .slide-content .shop-btn { padding: 8px 18px; font-size: 13px; }
+        .dots { bottom: 20px; gap: 10px; }
+        .corporate-banner { height: 350px; }
+        .corporate-banner .overlay h1 { font-size: 22px; }
+        .corporate-banner .overlay p { font-size: 14px; }
+        .overlay-text h3 { font-size: 18px;}
+        .overlay-text .shop-btn { padding: 6px 12px; font-size: 12px; }
+        footer { padding: 20px 15px; font-size: 12px;}
+         /* Stack dropdown columns vertically on very small screens */
+         .menu-item:hover .dropdown {
+             min-width: calc(100vw - 40px); /* Adjust width on very small screens */
+             left: 20px; /* Align closer to edge */
+             transform: none; /* Reset transform */
+         }
+         .dropdown-columns {
+             flex-direction: column;
+             align-items: center; /* Center the stacked columns */
+             gap: 30px 0;
+             padding: 25px 15px; /* Adjust padding */
+         }
+         .category-block {
+             width: 90%; /* Make columns wider when stacked */
+             align-items: center; /* Center content within column */
+             margin-bottom: 15px; /* Reduce bottom margin */
+         }
+         .category-block h4 {
+             text-align: center; /* Center heading */
+             margin-bottom: 15px; /* Reduce space */
+         }
+         .category-block a:not(.view-all-link),
+         .category-block a.view-all-link {
+             text-align: center; /* Center all text */
+         }
+         .category-block a.view-all-link {
+            margin-top: 10px; /* Adjust space */
+         }
      }
-
-
+    /* --- End Responsive adjustments --- */
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-area"><img src="logo.png" alt="Logo"></div>
+  <div class="logo-area">
+    <!-- Make sure logo.png exists or update path -->
+    <img src="logo.png" alt="Daily Objects Logo">
+  </div>
   <nav class="menu">
-    <!-- Updated TECH Menu Item -->
     <div class="menu-item">
       <a href="#">TECH</a>
       <div class="dropdown">
@@ -330,8 +405,7 @@
            </div> <!-- End dropdown-columns -->
       </div> <!-- End dropdown -->
     </div>
-    <!-- End Updated TECH Menu Item -->
-
+    <!-- Other main menu items -->
     <a href="#">BAGS & WALLETS</a>
     <a href="#">WORK ESSENTIALS</a>
     <a href="#">GIFTING</a>
@@ -340,15 +414,16 @@
     <a href="#">NEW ARRIVALS</a>
   </nav>
   <div class="icons">
+    <!-- Make sure cart.png, user.png, search.png exist or update paths -->
     <img src="cart.png" alt="Cart">
-    <img src="user.png" alt="User">
+    <img src="user.png" alt="User Account">
     <img src="search.png" alt="Search">
   </div>
 </header>
 
 <section class="banner">
-  <!-- Make sure you have a video file named 'banner-video.mp4' in the same folder or provide the correct path -->
-  <video autoplay muted loop>
+  <!-- Make sure banner-video.mp4 exists or update path -->
+  <video autoplay muted loop playsinline poster="fallback-banner-image.jpg"> <!-- Added playsinline and poster -->
     <source src="banner-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -357,7 +432,7 @@
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
-    <!-- Make sure you have image files named 'tech1.jpg', 'bags1.jpg', 'work1.jpg' or provide the correct paths -->
+    <!-- Make sure image paths are correct -->
     <a href="tech.html" class="card"><img src="tech1.jpg" alt="Tech Accessories"><h3>TECH ACCESSORIES</h3></a>
     <a href="bags.html" class="card"><img src="bags1.jpg" alt="Bags & Wallets"><h3>BAGS & WALLETS</h3></a>
     <a href="work.html" class="card"><img src="work1.jpg" alt="Work Essentials"><h3>WORK ESSENTIALS</h3></a>
@@ -366,16 +441,34 @@
 
 <section>
   <div class="slideshow-container">
-    <!-- Make sure you have image files named 'cat1.jpg' through 'cat6.jpg' or provide the correct paths -->
-    <div class="slide"><img src="cat1.jpg" alt="Loop Power Banks"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat2.jpg" alt="Phone Cases"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat3.jpg" alt="RFID Magsafe Card Wallet"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat4.jpg" alt="March Crossbody Bag"><div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat5.jpg" alt="Wrapped Elegance"><div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="slide"><img src="cat6.jpg" alt="Watch Bands"><div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+    <!-- Make sure image paths are correct -->
+    <div class="slide" style="display: block;"> <!-- Show first slide by default -->
+        <img src="cat1.jpg" alt="Loop Power Banks">
+        <div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">Shop Now</a></div>
+    </div>
+    <div class="slide">
+        <img src="cat2.jpg" alt="Phone Cases">
+        <div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">Shop Now</a></div>
+    </div>
+    <div class="slide">
+        <img src="cat3.jpg" alt="RFID Magsafe Card Wallet">
+        <div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">Shop Now</a></div>
+    </div>
+    <div class="slide">
+        <img src="cat4.jpg" alt="March Crossbody Bag">
+        <div class="slide-content"><h1>MARCH CROSSBODY</h1><p>Complimenting your style</p><a href="#" class="shop-btn">Shop Now</a></div>
+    </div>
+    <div class="slide">
+        <img src="cat5.jpg" alt="Wrapped Elegance">
+        <div class="slide-content"><h1>WRAPPED ELEGANCE</h1><p>Chic and stylish tech accessories</p><a href="#" class="shop-btn">Shop Now</a></div>
+    </div>
+    <div class="slide">
+        <img src="cat6.jpg" alt="Watch Bands">
+        <div class="slide-content"><h1>WATCH BAND</h1><p>Upgrade your watch</p><a href="#" class="shop-btn">Shop Now</a></div>
+    </div>
     <div class="dots">
-      <!-- Javascript will add 'active' class here -->
-      <span class="dot" onclick="showSlideManual(0)"></span>
+      <!-- Dots will be handled by JS -->
+      <span class="dot active" onclick="showSlideManual(0)"></span>
       <span class="dot" onclick="showSlideManual(1)"></span>
       <span class="dot" onclick="showSlideManual(2)"></span>
       <span class="dot" onclick="showSlideManual(3)"></span>
@@ -386,7 +479,7 @@
 </section>
 
 <section class="corporate-banner">
-  <!-- Make sure you have an image file named 'cg1.jpg' or provide the correct path -->
+  <!-- Make sure image path is correct -->
   <img src="cg1.jpg" alt="Corporate Gifting Banner">
   <div class="overlay">
     <h1>CORPORATE GIFTING</h1>
@@ -397,10 +490,10 @@
 <section>
   <h2>TRENDING COLLECTION</h2>
   <div class="zoom-grid">
-     <!-- Make sure you have image files named 'sbc1.jpg', 'sbc2.jpg', 'sbc3.jpg' or provide the correct paths -->
-    <div class="zoom-card"><img src="sbc1.jpg" alt="Reflective Collection"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc2.jpg" alt="Canvas Collection"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
-    <div class="zoom-card"><img src="sbc3.jpg" alt="Timeless Collection"><div class="overlay-text"><h3>TIMELESS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
+     <!-- Make sure image paths are correct -->
+    <div class="zoom-card"><img src="sbc1.jpg" alt="Reflective Collection"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">Shop Now</a></div></div>
+    <div class="zoom-card"><img src="sbc2.jpg" alt="Canvas Collection"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">Shop Now</a></div></div>
+    <div class="zoom-card"><img src="sbc3.jpg" alt="Timeless Collection"><div class="overlay-text"><h3>TIMELESS</h3><a href="#" class="shop-btn">Shop Now</a></div></div>
   </div>
 </section>
 
@@ -410,26 +503,41 @@
 
 <script>
   let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
+  const slides = document.querySelectorAll('.slideshow-container .slide');
+  const dots = document.querySelectorAll('.slideshow-container .dot');
   let intervalId = null;
-  const slideInterval = 10000; // 10 seconds
+  const slideInterval = 5000; // Slide duration (5 seconds)
 
   function showSlide(index) {
-    if (!slides || slides.length === 0 || !dots || dots.length === 0) return; // Basic check
+    // Basic validation
+    if (!slides || slides.length === 0 || !dots || dots.length === 0) {
+        // console.error("Slideshow elements missing.");
+        return;
+    }
+     // If clicking the current slide's dot, do nothing extra but ensure timer resets
+    if (index === currentSlide && intervalId) {
+         clearInterval(intervalId);
+         intervalId = setInterval(autoSlide, slideInterval);
+         return;
+     }
 
-    // Ensure index is within bounds
+    // Clamp index
     if (index >= slides.length) { index = 0; }
     if (index < 0) { index = slides.length - 1; }
 
-    // Hide current slide and deactivate dot
-    if (slides[currentSlide]) slides[currentSlide].style.display = 'none';
+    // Update dots safely
     if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+    if (dots[index]) dots[index].classList.add('active');
 
-    // Show new slide and activate dot
+    // Hide current slide, show next slide safely
+    if (slides[currentSlide]) slides[currentSlide].style.display = 'none';
+    if (slides[index]) slides[index].style.display = 'block';
+
     currentSlide = index;
-    if (slides[currentSlide]) slides[currentSlide].style.display = 'block';
-    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+
+     // Clear existing timer and start a new one
+     if(intervalId) clearInterval(intervalId);
+     intervalId = setInterval(autoSlide, slideInterval);
   }
 
   function autoSlide() {
@@ -438,37 +546,43 @@
     showSlide(nextSlide);
   }
 
-  // Function called by manual dot clicks
-  function showSlideManual(index) {
-      if(intervalId) {
-          clearInterval(intervalId); // Stop auto sliding
-      }
-      showSlide(index);
-      // Optional: Restart auto-slide after manual click
-      // intervalId = setInterval(autoSlide, slideInterval);
+  // Make this function globally accessible for the onclick handlers
+  window.showSlideManual = function(index) {
+      showSlide(index); // showSlide now handles timer reset
   }
 
-
-  // Initialize slideshow only if slides exist
-  if (slides.length > 0 && dots.length === slides.length) {
-      showSlide(currentSlide); // Show the first slide initially
-      intervalId = setInterval(autoSlide, slideInterval); // Start auto sliding
-
-      // Add event listeners to dots (already handled by onclick in HTML, but this is an alternative)
-      /*
-      dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            showSlideManual(index);
+  // Initialize slideshow
+  function initSlideshow() {
+      if (slides.length > 0 && dots.length === slides.length) {
+          // Ensure only the first slide is visible initially
+          slides.forEach((slide, index) => {
+              slide.style.display = index === 0 ? 'block' : 'none';
           });
-      });
-      */
-  } else if (slides.length > 0) {
-      console.warn("Slideshow initialized, but the number of dots doesn't match the number of slides.");
-       showSlide(currentSlide); // Show the first slide anyway
-       intervalId = setInterval(autoSlide, slideInterval);
-  } else {
-      console.warn("Slideshow could not be initialized: No slides found.");
+           // Ensure only the first dot is active initially
+           dots.forEach((dot, index) => {
+              if (index === 0) dot.classList.add('active');
+              else dot.classList.remove('active');
+          });
+
+          currentSlide = 0; // Reset index
+          if(intervalId) clearInterval(intervalId); // Clear any previous interval
+          intervalId = setInterval(autoSlide, slideInterval); // Start auto sliding
+      } else if (slides.length > 0) {
+          console.warn("Slideshow initialized, but the number of dots doesn't match the number of slides. Check HTML.");
+          // Attempt to run anyway
+          slides.forEach((slide, index) => {
+              slide.style.display = index === 0 ? 'block' : 'none';
+          });
+          currentSlide = 0;
+          if(intervalId) clearInterval(intervalId);
+          intervalId = setInterval(autoSlide, slideInterval);
+      } else {
+          // console.warn("Slideshow could not be initialized: No slides found.");
+      }
   }
+
+  // Wait for the DOM to be fully loaded before initializing
+  document.addEventListener('DOMContentLoaded', initSlideshow);
 
 </script>
 

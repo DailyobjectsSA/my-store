@@ -47,7 +47,6 @@
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
       padding: 25px 30px; /* Padding around the columns */
       z-index: 1000;
-      /* Removed width: 100%, left: 0, border-top */
       /* Let width be determined by content */
       white-space: nowrap; /* Prevent columns breaking unexpectedly */
     }
@@ -55,13 +54,9 @@
       display: block;
     }
 
-    /* Removed .dropdown-content-wrapper styles */
-
     .dropdown-columns {
       display: flex; /* Arrange columns side-by-side */
       gap: 40px; /* Gap between columns */
-      /* Removed justify-content: center; - centering handled by dropdown positioning */
-       /* flex-wrap: wrap; might not be needed if white-space: nowrap is used */
     }
     .category-block {
       display: flex;
@@ -69,7 +64,6 @@
       align-items: center; /* Center the image/title */
       gap: 5px;
       width: 140px; /* Column width */
-       /* Removed margin-bottom needed for wrapping */
     }
     .category-block img {
       width: 80px;
@@ -297,13 +291,12 @@
   <div class="logo-area"><img src="logo.png" alt="Logo"></div>
   <nav class="menu">
     <!-- Updated TECH Menu Item -->
-    <div class="menu-item"> {/* Back to position: relative */}
+    <div class="menu-item">  <!-- This div is position: relative -->
       <a href="#">TECH</a>
-      <div class="dropdown"> {/* Position absolute, centered under menu-item */}
-         {/* Removed dropdown-content-wrapper */}
+      <div class="dropdown"> <!-- This div is position: absolute -->
          <div class="dropdown-columns">
 
-             {/* Column 1: Phone Cases */}
+             <!-- Column 1: Phone Cases -->
              <div class="category-block">
                <img src="tech-dd-img1.jpg" alt="Phone Cases"> {/* <-- REPLACE IMAGE SRC */}
                <h4>PHONE CASES</h4>
@@ -314,7 +307,7 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             {/* Column 2: Watch Accessories */}
+             <!-- Column 2: Watch Accessories -->
              <div class="category-block">
                 <img src="tech-dd-img2.jpg" alt="Watch Accessories"> {/* <-- REPLACE IMAGE SRC */}
                <h4>WATCH ACCESSORIES</h4>
@@ -325,7 +318,7 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             {/* Column 3: Charging Solutions */}
+             <!-- Column 3: Charging Solutions -->
              <div class="category-block">
                 <img src="tech-dd-img3.jpg" alt="Charging Solutions"> {/* <-- REPLACE IMAGE SRC */}
                <h4>CHARGING SOLUTIONS</h4>
@@ -336,7 +329,7 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             {/* Column 4: Tech Add-ons */}
+             <!-- Column 4: Tech Add-ons -->
              <div class="category-block">
                 <img src="tech-dd-img4.jpg" alt="Tech Add-ons"> {/* <-- REPLACE IMAGE SRC */}
                <h4>TECH ADD-ONS</h4>
@@ -347,7 +340,7 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             {/* Column 5: Laptop Sleeves */}
+             <!-- Column 5: Laptop Sleeves -->
              <div class="category-block">
                 <img src="tech-dd-img5.jpg" alt="Laptop Sleeves and Bags"> {/* <-- REPLACE IMAGE SRC */}
                <h4>LAPTOP SLEEVES AND BAGS</h4>
@@ -358,7 +351,7 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             {/* Column 6: Stands */}
+             <!-- Column 6: Stands -->
              <div class="category-block">
                 <img src="tech-dd-img6.jpg" alt="Stands"> {/* <-- REPLACE IMAGE SRC */}
                <h4>STANDS</h4>
@@ -369,7 +362,7 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             {/* Column 7: Organisers */}
+             <!-- Column 7: Organisers -->
              <div class="category-block">
                 <img src="tech-dd-img7.jpg" alt="Organisers"> {/* <-- REPLACE IMAGE SRC */}
                <h4>ORGANISERS</h4>
@@ -380,8 +373,8 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-           </div> {/* End dropdown-columns */}
-      </div> {/* End dropdown */}
+           </div> <!-- End dropdown-columns -->
+      </div> <!-- End dropdown -->
     </div>
     <!-- End Updated TECH Menu Item -->
 

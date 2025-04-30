@@ -15,7 +15,7 @@
       padding: 15px 30px;
       background: #fff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
+      position: sticky; /* Acts as positioning context */
       top: 0;
       z-index: 999;
     }
@@ -25,6 +25,8 @@
       gap: 25px;
       font-weight: bold;
       font-size: 16px;
+      /* Ensure menu itself doesn't interfere with dropdown positioning */
+      position: static;
     }
     .menu a {
       text-decoration: none;
@@ -34,35 +36,49 @@
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: relative;
+      position: static; /* Change from relative to static */
+      /* This prevents the dropdown from being constrained by the menu item's width/position */
     }
+
     .dropdown {
       display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
+      position: absolute; /* Position relative to the nearest positioned ancestor (the header) */
+      top: 100%; /* Position it right below the header */
+      left: 0; /* Align to the left edge of the header */
+      width: 100%; /* Make it full width of the header */
       background: #fff;
-      border: 1px solid #ddd;
+      border-top: 1px solid #eee; /* Add a subtle top border */
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      padding: 25px 30px; /* Increased horizontal padding */
+      padding: 30px 0; /* Vertical padding, zero horizontal (handled by inner container) */
       z-index: 1000;
-       /* Removed white-space: nowrap; to allow wrapping if absolutely necessary */
+      /* Removed transform */
     }
+
     .menu-item:hover .dropdown {
-      display: block;
+      display: block; /* Show on hover */
     }
+
+    /* Inner container to center the columns */
+    .dropdown-content-wrapper {
+        max-width: 1200px; /* Max width of the content area */
+        margin: 0 auto; /* Center the wrapper */
+        padding: 0 30px; /* Add padding inside the wrapper */
+    }
+
     .dropdown-columns {
       display: flex;
-      gap: 40px; /* Increased gap between columns */
+      justify-content: center; /* Center the columns within the wrapper */
+      gap: 45px; /* Adjust gap between columns as needed */
+      flex-wrap: wrap; /* Allow wrapping on smaller screens if needed */
     }
+
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center the image horizontally */
-      /* Removed text-align: center from here */
+      align-items: center; /* Center image/title */
       gap: 5px;
-      width: 140px; /* Increased width slightly */
+      width: 140px; /* Keep column width */
+      margin-bottom: 20px; /* Add space below blocks if they wrap */
     }
     .category-block img {
       width: 80px;
@@ -74,28 +90,26 @@
       font-size: 12px;
       font-weight: bold;
       color: #000;
-      margin-bottom: 12px; /* Slightly more space */
+      margin-bottom: 12px;
       text-transform: uppercase;
-      text-align: center; /* Center the heading text */
-      width: 100%; /* Ensure it takes full width for centering */
+      text-align: center;
+      width: 100%;
     }
-    /* Target all links within the block for left alignment */
     .category-block a {
-      display: block; /* Ensures it takes width */
-      width: 100%; /* Take full width of the block */
-      padding: 4px 0 4px 5px; /* Add small left padding for alignment */
+      display: block;
+      width: 100%;
+      padding: 4px 0 4px 5px;
       text-decoration: none;
       color: #333;
       font-size: 13px;
       font-weight: normal;
-      text-align: left; /* <<< ALIGN LINKS LEFT */
-      white-space: normal; /* Allow link text to wrap if needed */
+      text-align: left; /* Keep links left-aligned */
+      white-space: normal;
     }
     .category-block a.view-all-link {
       color: #1abc9c;
       font-weight: bold;
       margin-top: 8px;
-      /* text-align: left; is inherited from the rule above */
     }
     .category-block a:not(.view-all-link):hover {
       color: #007BFF;
@@ -104,6 +118,7 @@
       color: #16a085;
     }
     /* --- End Dropdown Styles --- */
+
 
     .icons {
       display: flex;
@@ -290,90 +305,92 @@
   <div class="logo-area"><img src="logo.png" alt="Logo"></div>
   <nav class="menu">
     <!-- Updated TECH Menu Item -->
-    <div class="menu-item">
+    <div class="menu-item"> {/* Position static */}
       <a href="#">TECH</a>
-      <div class="dropdown">
-        <div class="dropdown-columns">
+      <div class="dropdown"> {/* Position absolute, left 0, width 100% */}
+        <div class="dropdown-content-wrapper"> {/* Centered wrapper */}
+           <div class="dropdown-columns"> {/* Centered flex container */}
 
-          <!-- Column 1: Phone Cases -->
-          <div class="category-block">
-            <img src="tech-dd-img1.jpg" alt="Phone Cases"> {/* <-- REPLACE IMAGE SRC */}
-            <h4>PHONE CASES</h4>
-            <a href="#">Apple</a>
-            <a href="#">Samsung</a>
-            <a href="#">OnePlus</a>
-            <a href="#">Google</a>
-            <a href="#" class="view-all-link">View All +</a>
-          </div>
+             {/* Column 1: Phone Cases */}
+             <div class="category-block">
+               <img src="tech-dd-img1.jpg" alt="Phone Cases"> {/* <-- REPLACE IMAGE SRC */}
+               <h4>PHONE CASES</h4>
+               <a href="#">Apple</a>
+               <a href="#">Samsung</a>
+               <a href="#">OnePlus</a>
+               <a href="#">Google</a>
+               <a href="#" class="view-all-link">View All +</a>
+             </div>
 
-          <!-- Column 2: Watch Accessories -->
-          <div class="category-block">
-             <img src="tech-dd-img2.jpg" alt="Watch Accessories"> {/* <-- REPLACE IMAGE SRC */}
-            <h4>WATCH ACCESSORIES</h4>
-            <a href="#">Watchbands</a>
-            <a href="#">Apple Watch Chargers</a>
-            <a href="#">Watch Organisers</a>
-            <a href="#">Apple Watch Cases</a>
-            <a href="#" class="view-all-link">View All +</a>
-          </div>
+             {/* Column 2: Watch Accessories */}
+             <div class="category-block">
+                <img src="tech-dd-img2.jpg" alt="Watch Accessories"> {/* <-- REPLACE IMAGE SRC */}
+               <h4>WATCH ACCESSORIES</h4>
+               <a href="#">Watchbands</a>
+               <a href="#">Apple Watch Chargers</a>
+               <a href="#">Watch Organisers</a>
+               <a href="#">Apple Watch Cases</a>
+               <a href="#" class="view-all-link">View All +</a>
+             </div>
 
-          <!-- Column 3: Charging Solutions -->
-          <div class="category-block">
-             <img src="tech-dd-img3.jpg" alt="Charging Solutions"> {/* <-- REPLACE IMAGE SRC */}
-            <h4>CHARGING SOLUTIONS</h4>
-            <a href="#">Powerbank</a>
-            <a href="#">Wireless Chargers</a>
-            <a href="#">Charging Cables</a>
-            <a href="#">Chargers and Adapters</a>
-            <a href="#" class="view-all-link">View All +</a>
-          </div>
+             {/* Column 3: Charging Solutions */}
+             <div class="category-block">
+                <img src="tech-dd-img3.jpg" alt="Charging Solutions"> {/* <-- REPLACE IMAGE SRC */}
+               <h4>CHARGING SOLUTIONS</h4>
+               <a href="#">Powerbank</a>
+               <a href="#">Wireless Chargers</a>
+               <a href="#">Charging Cables</a>
+               <a href="#">Chargers and Adapters</a>
+               <a href="#" class="view-all-link">View All +</a>
+             </div>
 
-          <!-- Column 4: Tech Add-ons -->
-          <div class="category-block">
-             <img src="tech-dd-img4.jpg" alt="Tech Add-ons"> {/* <-- REPLACE IMAGE SRC */}
-            <h4>TECH ADD-ONS</h4>
-            <a href="#">iPad Cases</a>
-            <a href="#">AirPods Cover</a>
-            <a href="#">Screen Guards</a>
-            <a href="#">Phone Wallets</a>
-            <a href="#" class="view-all-link">View All +</a>
-          </div>
+             {/* Column 4: Tech Add-ons */}
+             <div class="category-block">
+                <img src="tech-dd-img4.jpg" alt="Tech Add-ons"> {/* <-- REPLACE IMAGE SRC */}
+               <h4>TECH ADD-ONS</h4>
+               <a href="#">iPad Cases</a>
+               <a href="#">AirPods Cover</a>
+               <a href="#">Screen Guards</a>
+               <a href="#">Phone Wallets</a>
+               <a href="#" class="view-all-link">View All +</a>
+             </div>
 
-          <!-- Column 5: Laptop Sleeves -->
-          <div class="category-block">
-             <img src="tech-dd-img5.jpg" alt="Laptop Sleeves and Bags"> {/* <-- REPLACE IMAGE SRC */}
-            <h4>LAPTOP SLEEVES AND BAGS</h4>
-            <a href="#">Zippered Sleeves</a>
-            <a href="#">Macbook Hardcases</a>
-            <a href="#">Messenger Bags</a>
-            <a href="#">Backpacks</a>
-            <a href="#" class="view-all-link">View All +</a>
-          </div>
+             {/* Column 5: Laptop Sleeves */}
+             <div class="category-block">
+                <img src="tech-dd-img5.jpg" alt="Laptop Sleeves and Bags"> {/* <-- REPLACE IMAGE SRC */}
+               <h4>LAPTOP SLEEVES AND BAGS</h4>
+               <a href="#">Zippered Sleeves</a>
+               <a href="#">Macbook Hardcases</a>
+               <a href="#">Messenger Bags</a>
+               <a href="#">Backpacks</a>
+               <a href="#" class="view-all-link">View All +</a>
+             </div>
 
-          <!-- Column 6: Stands -->
-          <div class="category-block">
-             <img src="tech-dd-img6.jpg" alt="Stands"> {/* <-- REPLACE IMAGE SRC */}
-            <h4>STANDS</h4>
-            <a href="#">Mobile</a>
-            <a href="#">Laptop</a>
-            <a href="#">Monitor</a>
-            <a href="#">iPad</a>
-            <a href="#" class="view-all-link">View All +</a>
-          </div>
+             {/* Column 6: Stands */}
+             <div class="category-block">
+                <img src="tech-dd-img6.jpg" alt="Stands"> {/* <-- REPLACE IMAGE SRC */}
+               <h4>STANDS</h4>
+               <a href="#">Mobile</a>
+               <a href="#">Laptop</a>
+               <a href="#">Monitor</a>
+               <a href="#">iPad</a>
+               <a href="#" class="view-all-link">View All +</a>
+             </div>
 
-          <!-- Column 7: Organisers -->
-          <div class="category-block">
-             <img src="tech-dd-img7.jpg" alt="Organisers"> {/* <-- REPLACE IMAGE SRC */}
-            <h4>ORGANISERS</h4>
-            <a href="#">Tech Kit</a>
-            <a href="#">Folio</a>
-            <a href="#">Cables</a>
-            <a href="#">Pouches</a>
-            <a href="#" class="view-all-link">View All +</a>
-          </div>
+             {/* Column 7: Organisers */}
+             <div class="category-block">
+                <img src="tech-dd-img7.jpg" alt="Organisers"> {/* <-- REPLACE IMAGE SRC */}
+               <h4>ORGANISERS</h4>
+               <a href="#">Tech Kit</a>
+               <a href="#">Folio</a>
+               <a href="#">Cables</a>
+               <a href="#">Pouches</a>
+               <a href="#" class="view-all-link">View All +</a>
+             </div>
 
-        </div>
-      </div>
+           </div> {/* End dropdown-columns */}
+        </div> {/* End dropdown-content-wrapper */}
+      </div> {/* End dropdown */}
     </div>
     <!-- End Updated TECH Menu Item -->
 
@@ -486,15 +503,17 @@
   }
 
   // Initial setup
+  let intervalId = null; // Keep track of the interval
   if (slides.length > 0) {
       showSlide(currentSlide); // Show the first slide initially
-      const intervalId = setInterval(autoSlide, 10000); // Start auto slide interval
+      intervalId = setInterval(autoSlide, 10000); // Start auto slide interval
 
       // Add event listeners to dots (if they exist)
       dots.forEach((dot, index) => {
           dot.addEventListener('click', () => {
-            clearInterval(intervalId); // Optional: Stop auto-slide on manual click
+            if(intervalId) clearInterval(intervalId); // Stop auto-slide on manual click
             showSlide(index);
+            intervalId = setInterval(autoSlide, 10000); // Restart auto-slide after manual interaction
           });
       });
   }

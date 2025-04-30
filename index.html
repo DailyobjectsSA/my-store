@@ -15,7 +15,7 @@
       padding: 15px 30px;
       background: #fff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky; /* Acts as positioning context */
+      position: sticky;
       top: 0;
       z-index: 999;
     }
@@ -25,8 +25,6 @@
       gap: 25px;
       font-weight: bold;
       font-size: 16px;
-      /* Ensure menu itself doesn't interfere with dropdown positioning */
-      position: static;
     }
     .menu a {
       text-decoration: none;
@@ -36,49 +34,42 @@
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static; /* Change from relative to static */
-      /* This prevents the dropdown from being constrained by the menu item's width/position */
+      position: relative; /* Back to relative for local positioning */
     }
-
     .dropdown {
       display: none;
-      position: absolute; /* Position relative to the nearest positioned ancestor (the header) */
-      top: 100%; /* Position it right below the header */
-      left: 0; /* Align to the left edge of the header */
-      width: 100%; /* Make it full width of the header */
+      position: absolute;
+      top: 100%; /* Position below the menu item */
+      left: 50%; /* Start from center of parent menu item */
+      transform: translateX(-50%); /* Center the dropdown relative to menu item */
       background: #fff;
-      border-top: 1px solid #eee; /* Add a subtle top border */
+      border: 1px solid #ddd; /* Restore border */
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      padding: 30px 0; /* Vertical padding, zero horizontal (handled by inner container) */
+      padding: 25px 30px; /* Padding around the columns */
       z-index: 1000;
-      /* Removed transform */
+      /* Removed width: 100%, left: 0, border-top */
+      /* Let width be determined by content */
+      white-space: nowrap; /* Prevent columns breaking unexpectedly */
     }
-
     .menu-item:hover .dropdown {
-      display: block; /* Show on hover */
+      display: block;
     }
 
-    /* Inner container to center the columns */
-    .dropdown-content-wrapper {
-        max-width: 1200px; /* Max width of the content area */
-        margin: 0 auto; /* Center the wrapper */
-        padding: 0 30px; /* Add padding inside the wrapper */
-    }
+    /* Removed .dropdown-content-wrapper styles */
 
     .dropdown-columns {
-      display: flex;
-      justify-content: center; /* Center the columns within the wrapper */
-      gap: 45px; /* Adjust gap between columns as needed */
-      flex-wrap: wrap; /* Allow wrapping on smaller screens if needed */
+      display: flex; /* Arrange columns side-by-side */
+      gap: 40px; /* Gap between columns */
+      /* Removed justify-content: center; - centering handled by dropdown positioning */
+       /* flex-wrap: wrap; might not be needed if white-space: nowrap is used */
     }
-
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center image/title */
+      align-items: center; /* Center the image/title */
       gap: 5px;
-      width: 140px; /* Keep column width */
-      margin-bottom: 20px; /* Add space below blocks if they wrap */
+      width: 140px; /* Column width */
+       /* Removed margin-bottom needed for wrapping */
     }
     .category-block img {
       width: 80px;
@@ -92,24 +83,25 @@
       color: #000;
       margin-bottom: 12px;
       text-transform: uppercase;
-      text-align: center;
+      text-align: center; /* Center the heading text */
       width: 100%;
     }
     .category-block a {
       display: block;
       width: 100%;
-      padding: 4px 0 4px 5px;
+      padding: 4px 0 4px 5px; /* Padding includes small left indent */
       text-decoration: none;
       color: #333;
       font-size: 13px;
       font-weight: normal;
-      text-align: left; /* Keep links left-aligned */
-      white-space: normal;
+      text-align: left; /* <<< Links aligned left */
+      white-space: normal; /* Allow link text to wrap if needed */
     }
     .category-block a.view-all-link {
       color: #1abc9c;
       font-weight: bold;
       margin-top: 8px;
+      /* text-align: left; inherited */
     }
     .category-block a:not(.view-all-link):hover {
       color: #007BFF;
@@ -305,11 +297,11 @@
   <div class="logo-area"><img src="logo.png" alt="Logo"></div>
   <nav class="menu">
     <!-- Updated TECH Menu Item -->
-    <div class="menu-item"> {/* Position static */}
+    <div class="menu-item"> {/* Back to position: relative */}
       <a href="#">TECH</a>
-      <div class="dropdown"> {/* Position absolute, left 0, width 100% */}
-        <div class="dropdown-content-wrapper"> {/* Centered wrapper */}
-           <div class="dropdown-columns"> {/* Centered flex container */}
+      <div class="dropdown"> {/* Position absolute, centered under menu-item */}
+         {/* Removed dropdown-content-wrapper */}
+         <div class="dropdown-columns">
 
              {/* Column 1: Phone Cases */}
              <div class="category-block">
@@ -389,7 +381,6 @@
              </div>
 
            </div> {/* End dropdown-columns */}
-        </div> {/* End dropdown-content-wrapper */}
       </div> {/* End dropdown */}
     </div>
     <!-- End Updated TECH Menu Item -->
@@ -513,7 +504,7 @@
           dot.addEventListener('click', () => {
             if(intervalId) clearInterval(intervalId); // Stop auto-slide on manual click
             showSlide(index);
-            intervalId = setInterval(autoSlide, 10000); // Restart auto-slide after manual interaction
+            intervalId = setInterval(autoSlide, 10000); // Optional: Restart auto-slide after manual interaction
           });
       });
   }

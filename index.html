@@ -24,43 +24,42 @@
       display: flex;
       gap: 25px;
     }
-    .menu a {
+    /* Styles for top navigation links */
+    .menu a, .menu .menu-item > a {
       text-decoration: none;
       color: #222;
-      padding-bottom: 15px;
-      margin-bottom: -15px;
+      padding-bottom: 15px; /* Helps with hover continuity */
+      margin-bottom: -15px; /* Counteracts padding for layout */
       font-size: 13px;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      transition: color 0.2s ease;
     }
-     .menu .menu-item > a { /* Target only the top-level link in menu-item */
-        color: #222; /* Default color */
-        transition: color 0.2s ease; /* Smooth transition */
-     }
+     /* Hover effect specifically for the TECH link itself */
      .menu .menu-item:hover > a {
-       color: #1abc9c; /* Teal color on hover for parent link */
+       color: #1abc9c; /* Teal color on hover */
      }
 
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static;
+      position: static; /* Context for absolute dropdown */
     }
     .dropdown {
       visibility: hidden;
       opacity: 0;
       position: absolute;
-      top: 100%;
+      top: 100%; /* Position directly below header */
       left: 0;
-      width: 100%;
+      width: 100%; /* Full width background */
       background: #fff;
-      border: 1px solid #eee;
+      border: 1px solid #eee; /* Subtle border */
       border-top: none;
-      box-shadow: 0px 5px 10px rgba(0,0,0,0.08); /* Slightly more pronounced shadow */
-      padding: 40px 0; /* Increased vertical padding, zero horizontal (handled by inner) */
+      box-shadow: 0px 6px 12px rgba(0,0,0,0.1); /* Soft shadow */
+      padding: 40px 0; /* Generous vertical padding, horizontal padding handled by inner container */
       z-index: 1000;
-      transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s;
+      transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s; /* Slightly slower fade */
     }
     .menu-item:hover .dropdown {
       visibility: visible;
@@ -68,66 +67,82 @@
       transition-delay: 0s;
     }
 
+    /* Container for the columns, centered */
     .dropdown-columns {
       display: flex;
-      justify-content: center;
-      gap: 60px; /* Increased gap for better spacing between columns */
-      flex-wrap: wrap;
-      max-width: 1300px; /* Adjust max-width to control overall spread */
-      margin: 0 auto; /* Center the columns container */
-      padding: 0 20px; /* Add some horizontal padding inside the container */
+      justify-content: center; /* Center the columns horizontally */
+      align-items: flex-start; /* Align tops of columns */
+      gap: 45px; /* Horizontal space between columns */
+      flex-wrap: nowrap; /* Prevent wrapping for this specific design if possible */
+      overflow-x: auto; /* Add scroll if it overflows on small screens */
+      max-width: 1400px; /* Max width of the content area */
+      margin: 0 auto; /* Center the container */
+      padding: 0 30px; /* Padding on the sides of the column group */
     }
+
+    /* Styling for each individual column block */
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center heading relative to block width */
-      width: 175px; /* Slightly wider columns */
-      margin-bottom: 30px; /* Increased space below blocks */
+      align-items: center; /* Center image and title */
+      width: 160px; /* Consistent width for each column */
+      flex-shrink: 0; /* Prevent columns from shrinking */
     }
 
+    /* Image Styling */
+    .category-block img {
+      width: 120px; /* Consistent image width */
+      height: 120px; /* Consistent image height */
+      object-fit: contain; /* Fit image while preserving aspect ratio */
+      margin-bottom: 20px; /* Space between image and title */
+    }
+
+    /* Title Styling (Bold, Uppercase, Centered) */
     .category-block h4 {
       font-family: Arial, sans-serif;
       font-size: 11px;
       font-weight: bold;
       color: #000;
-      margin-bottom: 18px; /* Increased space below heading */
+      margin-bottom: 15px; /* Space between title and list */
       text-transform: uppercase;
-      text-align: center; /* Ensure heading text is centered */
-      width: 100%; /* Takes full width of parent for centering */
+      text-align: center;
+      width: 100%;
       letter-spacing: 0.5px;
     }
 
-    /* Links styled as a vertical list, aligned left within centered block */
+    /* Link Styling (Vertical List, Left-aligned) */
     .category-block a:not(.view-all-link) {
-      display: block;
-      padding: 3px 0; /* Vertical padding for list item spacing */
+      display: block; /* Each link on its own line */
+      padding: 3px 0; /* Vertical spacing for list items */
       text-decoration: none;
-      color: #333;
+      color: #333; /* Standard text color */
       font-family: Arial, sans-serif;
       font-size: 13px;
-      font-weight: normal;
-      line-height: 1.6; /* Line height for readability */
-      text-align: left; /* Align text left */
-      width: 100%; /* Ensure it takes full width for left alignment */
+      line-height: 1.6;
+      text-align: left; /* CRITICAL: Left align text */
+      width: 100%; /* CRITICAL: Use full width for alignment */
     }
 
+    /* "View All" Link Styling (Left-aligned, Special Color) */
     .category-block a.view-all-link {
       display: block;
       padding: 0;
       text-decoration: none;
-      color: #1abc9c;
+      color: #1abc9c; /* Teal color */
       font-family: Arial, sans-serif;
       font-size: 13px;
       font-weight: bold;
-      text-align: left; /* Align text left */
-      width: 100%; /* Ensure it takes full width */
-      margin-top: 10px; /* Space above View All */
+      text-align: left; /* CRITICAL: Left align text */
+      width: 100%; /* CRITICAL: Use full width for alignment */
+      margin-top: 10px; /* Space above View All link */
     }
+
+    /* Hover effects for links */
     .category-block a:not(.view-all-link):hover {
-      color: #007BFF;
+      color: #007BFF; /* Example hover color */
     }
     .category-block a.view-all-link:hover {
-      color: #16a085;
+      color: #16a085; /* Darker teal on hover */
     }
     /* --- End Dropdown Styles --- */
 
@@ -324,8 +339,9 @@
 
              <!-- Column 1: Phone Cases -->
              <div class="category-block">
+               <img src="images/tech-dd-phone-cases.jpg" alt="Phone Cases"> <!-- REPLACE IMAGE SRC -->
                <h4>PHONE CASES</h4>
-               <a href="phone-cases.html">Apple</a>
+               <a href="phone-cases.html">Apple</a> <!-- REPLACE LINK HREF -->
                <a href="#">Samsung</a>
                <a href="#">OnePlus</a>
                <a href="#">Google</a>
@@ -334,6 +350,7 @@
 
              <!-- Column 2: Watch Accessories -->
              <div class="category-block">
+                <img src="images/tech-dd-watch-accessories.jpg" alt="Watch Accessories"> <!-- REPLACE IMAGE SRC -->
                <h4>WATCH ACCESSORIES</h4>
                <a href="#">Watchbands</a>
                <a href="#">Apple Watch Chargers</a>
@@ -344,6 +361,7 @@
 
              <!-- Column 3: Charging Solutions -->
              <div class="category-block">
+                <img src="images/tech-dd-charging-solutions.jpg" alt="Charging Solutions"> <!-- REPLACE IMAGE SRC -->
                <h4>CHARGING SOLUTIONS</h4>
                <a href="#">Powerbank</a>
                <a href="#">Wireless Chargers</a>
@@ -354,6 +372,7 @@
 
              <!-- Column 4: Tech Add-ons -->
              <div class="category-block">
+                <img src="images/tech-dd-tech-addons.jpg" alt="Tech Add-ons"> <!-- REPLACE IMAGE SRC -->
                <h4>TECH ADD-ONS</h4>
                <a href="#">iPad Cases</a>
                <a href="#">AirPods Cover</a>
@@ -364,6 +383,7 @@
 
              <!-- Column 5: Laptop Sleeves -->
              <div class="category-block">
+                <img src="images/tech-dd-laptop-sleeves.jpg" alt="Laptop Sleeves and Bags"> <!-- REPLACE IMAGE SRC -->
                <h4>LAPTOP SLEEVES AND BAGS</h4>
                <a href="#">Zippered Sleeves</a>
                <a href="#">Macbook Hardcases</a>
@@ -374,6 +394,7 @@
 
              <!-- Column 6: Stands -->
              <div class="category-block">
+                <img src="images/tech-dd-stands.jpg" alt="Stands"> <!-- REPLACE IMAGE SRC -->
                <h4>STANDS</h4>
                <a href="#">Mobile</a>
                <a href="#">Laptop</a>
@@ -384,6 +405,7 @@
 
              <!-- Column 7: Organisers -->
              <div class="category-block">
+                <img src="images/tech-dd-organisers.jpg" alt="Organisers"> <!-- REPLACE IMAGE SRC -->
                <h4>ORGANISERS</h4>
                <a href="#">Tech Kit</a>
                <a href="#">Folio</a>
@@ -411,7 +433,7 @@
   </div>
 </header>
 
-<!-- ... (Rest of the HTML body remains unchanged) ... -->
+<!-- ... (Rest of the HTML body remains unchanged - MAKE SURE ALL IMAGE/VIDEO PATHS ARE CORRECT) ... -->
 <section class="banner">
   <video autoplay muted loop>
     <source src="banner-video.mp4" type="video/mp4"> <!-- Ensure path is correct -->
@@ -470,60 +492,40 @@
 </footer>
 
 <script>
+  // Javascript for slideshow (remains the same)
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
 
   function showSlide(index) {
-    // Ensure index is within bounds
-    if (!slides || slides.length === 0) return; // Exit if no slides
+    if (!slides || slides.length === 0) return;
     if (index >= slides.length) { index = 0; }
     if (index < 0) { index = slides.length - 1; }
-
-    // Hide current slide and deactivate dot (if they exist)
-    if (slides[currentSlide]) {
-        slides[currentSlide].style.display = 'none';
-    }
-     if (dots[currentSlide]) {
-       dots[currentSlide].classList.remove('active');
-     }
-
-
-    // Update currentSlide index
+    if (slides[currentSlide]) slides[currentSlide].style.display = 'none';
+    if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
     currentSlide = index;
-
-    // Show new slide and activate dot (if they exist)
-     if (slides[currentSlide]) {
-       slides[currentSlide].style.display = 'block';
-     }
-    if (dots[currentSlide]) {
-       dots[currentSlide].classList.add('active');
-    }
+    if (slides[currentSlide]) slides[currentSlide].style.display = 'block';
+    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
   }
 
   function autoSlide() {
-    if (!slides || slides.length === 0) return; // Exit if no slides
+    if (!slides || slides.length === 0) return;
     let nextSlide = (currentSlide + 1) % slides.length;
     showSlide(nextSlide);
   }
 
-  // Initial setup
-  let intervalId = null; // Keep track of the interval
+  let intervalId = null;
   if (slides.length > 0) {
-      showSlide(currentSlide); // Show the first slide initially
-      intervalId = setInterval(autoSlide, 10000); // Start auto slide interval
-
-      // Add event listeners to dots (if they exist)
+      showSlide(currentSlide);
+      intervalId = setInterval(autoSlide, 10000);
       dots.forEach((dot, index) => {
           dot.addEventListener('click', () => {
-            if(intervalId) clearInterval(intervalId); // Stop auto-slide on manual click
+            if(intervalId) clearInterval(intervalId);
             showSlide(index);
-            // Optional: Restart auto-slide after manual interaction
-            // intervalId = setInterval(autoSlide, 10000);
+            // intervalId = setInterval(autoSlide, 10000); // Optional: Restart auto-slide
           });
       });
   }
-
 </script>
 
 </body>

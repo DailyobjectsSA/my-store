@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     /* --- Import Google Font --- */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap'); /* Added 800 weight */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {font-family: 'Inter', Arial, sans-serif; background: #fff; color: #333;}
@@ -15,20 +15,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 30px;
+      padding: 10px 30px; /* 10px top/bottom padding */
       background: #fff;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
       position: sticky;
       top: 0;
       z-index: 999;
       flex-wrap: nowrap;
-      min-height: 70px; /* Ensures space for larger logo */
+      min-height: 70px; /* Ensures space for logo */
     }
     .logo-area img {
-        /* *** UPDATED LOGO HEIGHT *** */
-        height: 45px;
+        /* *** MAXIMIZED LOGO HEIGHT *** */
+        height: 50px; /* Fill available vertical space in header */
         width: auto;
         flex-shrink: 0;
+        display: block; /* Ensure it behaves like a block element */
     }
 
     .menu {
@@ -100,8 +101,8 @@
       justify-content: center;
       align-items: flex-start;
       flex-wrap: nowrap;
-      /* *** ADJUSTED GAP FOR SEPARATION *** */
-      gap: 0 40px; /* Increased gap */
+      /* *** MAXIMIZED GAP *** */
+      gap: 0 50px; /* Further Increased gap */
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 30px;
@@ -111,15 +112,16 @@
     .category-block {
       display: flex;
       flex-direction: column;
-      /* *** ADJUSTED WIDTH *** */
-      width: 140px; /* Decreased width to allow for more gap */
+      /* *** NARROWER WIDTH *** */
+      width: 130px; /* Further Decreased width */
       flex-shrink: 0;
     }
 
     /* Title Styling (Left-aligned) - ENHANCED HIERARCHY */
     .category-block h4 {
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 12px;
+      /* *** ADJUSTED FONT SIZE *** */
+      font-size: 11.5px;
       font-weight: 800;
       color: #111;
       letter-spacing: 0.8px;
@@ -128,7 +130,8 @@
       width: 100%;
       line-height: 1.4;
       white-space: normal;
-      min-height: 38px;
+      /* *** ADJUSTED MIN-HEIGHT *** */
+      min-height: 36px;
       margin-bottom: 18px;
       display: flex;
       align-items: flex-start;
@@ -219,9 +222,8 @@
 
     /* --- Responsive adjustments --- */
 
-    /* Exact breakpoint: (7 * 140) + (6*40) + (2*30 padding) = 980 + 240 + 60 = 1280 */
-    /* Apply wrap just below 1280px */
-    @media (max-width: 1279px) {
+    /* Breakpoint based on new calculation: (7*130) + (6*50) + 60 = 910 + 300 + 60 = 1270 */
+    @media (max-width: 1269px) { /* Apply wrap just below 1270px */
       .dropdown-columns {
         flex-wrap: wrap;
         gap: 35px 30px; /* Adjust gap for wrapped items */
@@ -229,9 +231,8 @@
         max-width: 100%;
         padding: 0 20px;
       }
-       /* Adjust column width when wrapping */
-       .category-block { width: 150px; } /* Can be wider when wrapped */
-       .category-block h4 { min-height: 38px; } /* Keep min-height */
+       .category-block { width: 140px; } /* Allow wider when wrapped */
+       .category-block h4 { min-height: 36px; } /* Keep min-height */
     }
 
     @media (max-width: 1024px) {
@@ -242,8 +243,8 @@
       .icons img { height: 18px; }
        /* Dropdown columns */
        .dropdown-columns { gap: 30px 25px; padding: 0 15px; }
-       .category-block { width: 145px; } /* Adjust width */
-       .category-block h4 { min-height: 38px; font-size: 12px; }
+       .category-block { width: 150px; } /* Adjust width */
+       .category-block h4 { min-height: 36px; font-size: 11.5px; }
        /* Other general adjustments */
        .slide-content { max-width: 50%; left: 5%; }
        .slide-content h1 { font-size: 30px; }
@@ -254,8 +255,7 @@
     @media (max-width: 850px) {
        header { flex-direction: column; align-items: center; padding: 10px 15px; min-height: auto; }
        .logo-area { margin-bottom: 10px; }
-       /* Adjust logo size slightly for stacked header */
-       .logo-area img { height: 40px; }
+       .logo-area img { height: 45px; } /* Adjust logo size for stacked header */
        .menu { justify-content: center; flex-wrap: wrap; gap: 8px 15px; overflow: visible; border-top: 1px solid #eee; padding-top: 10px; width: 100%; height: auto; }
        .menu a, .menu .menu-item > a { padding-bottom: 5px; border-bottom-width: 2px; height: auto; }
        .menu-item { height: auto; position: relative; }
@@ -275,7 +275,7 @@
              gap: 30px 20px; /* Adjust gap */
          }
        .category-block { width: 140px; } /* Adjust width */
-       .category-block h4 { min-height: 38px; } /* Keep min-height */
+       .category-block h4 { min-height: 36px; } /* Keep min-height */
        /* Other general adjustments */
        .slideshow-container { height: 450px; }
        .slide-content { max-width: 75%; }
@@ -306,7 +306,7 @@
              display: block; /* Reset display */
              text-align: left;
              margin-bottom: 12px; /* Adjust margin */
-             font-size: 12.5px; /* Adjust size if needed */
+             font-size: 12px; /* Adjust size if needed */
              line-height: 1.4;
              font-weight: 800; /* Keep bold */
              letter-spacing: 0.8px; /* Keep spacing */
@@ -340,7 +340,7 @@
 
 <header>
   <div class="logo-area">
-    <!-- Make sure logo.png exists or update path -->
+    <!-- Make sure logo.png exists and is at least 50px tall -->
     <img src="logo.png" alt="Daily Objects Logo">
   </div>
   <nav class="menu">

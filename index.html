@@ -15,21 +15,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 30px; /* 10px top/bottom padding */
+      padding: 10px 30px;
       background: #fff;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
       position: sticky;
       top: 0;
       z-index: 999;
       flex-wrap: nowrap;
-      min-height: 70px; /* Ensures space for logo */
+      min-height: 70px;
     }
     .logo-area img {
-        /* *** MAXIMIZED LOGO HEIGHT *** */
-        height: 50px; /* Fill available vertical space in header */
+        height: 50px; /* Keep maximized height */
         width: auto;
         flex-shrink: 0;
-        display: block; /* Ensure it behaves like a block element */
+        display: block;
+        /* *** DIAGNOSTIC STYLES *** */
+        border: 1px solid red;      /* Is the element box visible? */
+        background-color: lightblue; /* Is the image transparent? */
     }
 
     .menu {
@@ -102,7 +104,7 @@
       align-items: flex-start;
       flex-wrap: nowrap;
       /* *** MAXIMIZED GAP *** */
-      gap: 0 50px; /* Further Increased gap */
+      gap: 0 50px; /* Max gap */
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 30px;
@@ -112,26 +114,26 @@
     .category-block {
       display: flex;
       flex-direction: column;
-      /* *** NARROWER WIDTH *** */
-      width: 130px; /* Further Decreased width */
+      /* *** NARROWEST WIDTH *** */
+      width: 120px; /* Narrowest practical width */
       flex-shrink: 0;
     }
 
     /* Title Styling (Left-aligned) - ENHANCED HIERARCHY */
     .category-block h4 {
       font-family: 'Inter', Arial, sans-serif;
-      /* *** ADJUSTED FONT SIZE *** */
-      font-size: 11.5px;
+      /* *** MINIMIZED FONT SIZE *** */
+      font-size: 11px;
       font-weight: 800;
       color: #111;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.7px; /* Adjusted spacing */
       text-transform: uppercase;
       text-align: left;
       width: 100%;
       line-height: 1.4;
       white-space: normal;
       /* *** ADJUSTED MIN-HEIGHT *** */
-      min-height: 36px;
+      min-height: 34px;
       margin-bottom: 18px;
       display: flex;
       align-items: flex-start;
@@ -222,17 +224,17 @@
 
     /* --- Responsive adjustments --- */
 
-    /* Breakpoint based on new calculation: (7*130) + (6*50) + 60 = 910 + 300 + 60 = 1270 */
-    @media (max-width: 1269px) { /* Apply wrap just below 1270px */
+    /* Breakpoint based on new calculation: (7*120) + (6*50) + 60 = 840 + 300 + 60 = 1200 */
+    @media (max-width: 1199px) { /* Apply wrap just below 1200px */
       .dropdown-columns {
         flex-wrap: wrap;
-        gap: 35px 30px; /* Adjust gap for wrapped items */
+        gap: 35px 30px; /* Adjust gap */
         justify-content: center;
         max-width: 100%;
         padding: 0 20px;
       }
-       .category-block { width: 140px; } /* Allow wider when wrapped */
-       .category-block h4 { min-height: 36px; } /* Keep min-height */
+       .category-block { width: 130px; } /* Can maybe go wider */
+       .category-block h4 { min-height: 34px; } /* Keep min-height */
     }
 
     @media (max-width: 1024px) {
@@ -243,8 +245,8 @@
       .icons img { height: 18px; }
        /* Dropdown columns */
        .dropdown-columns { gap: 30px 25px; padding: 0 15px; }
-       .category-block { width: 150px; } /* Adjust width */
-       .category-block h4 { min-height: 36px; font-size: 11.5px; }
+       .category-block { width: 140px; } /* Adjust width */
+       .category-block h4 { min-height: 34px; font-size: 11px; }
        /* Other general adjustments */
        .slide-content { max-width: 50%; left: 5%; }
        .slide-content h1 { font-size: 30px; }
@@ -255,7 +257,7 @@
     @media (max-width: 850px) {
        header { flex-direction: column; align-items: center; padding: 10px 15px; min-height: auto; }
        .logo-area { margin-bottom: 10px; }
-       .logo-area img { height: 45px; } /* Adjust logo size for stacked header */
+       .logo-area img { height: 45px; }
        .menu { justify-content: center; flex-wrap: wrap; gap: 8px 15px; overflow: visible; border-top: 1px solid #eee; padding-top: 10px; width: 100%; height: auto; }
        .menu a, .menu .menu-item > a { padding-bottom: 5px; border-bottom-width: 2px; height: auto; }
        .menu-item { height: auto; position: relative; }
@@ -272,10 +274,10 @@
              flex-wrap: wrap;
              justify-content: center;
              padding: 20px 15px;
-             gap: 30px 20px; /* Adjust gap */
+             gap: 30px 20px;
          }
-       .category-block { width: 140px; } /* Adjust width */
-       .category-block h4 { min-height: 36px; } /* Keep min-height */
+       .category-block { width: 135px; } /* Adjust width */
+       .category-block h4 { min-height: 34px; } /* Keep min-height */
        /* Other general adjustments */
        .slideshow-container { height: 450px; }
        .slide-content { max-width: 75%; }
@@ -290,26 +292,25 @@
              width: calc(100vw - 30px); left: 15px; transform: translateX(0) translateY(0);
          }
          .dropdown-columns {
-             flex-direction: column; /* STACK */
-             align-items: center; /* Center stacked blocks */
-             gap: 25px 0; /* Vertical gap */
+             flex-direction: column;
+             align-items: center;
+             gap: 25px 0;
              flex-wrap: nowrap;
              padding: 20px;
          }
          .category-block {
-             width: 90%; /* Wider when stacked */
-             align-items: flex-start; /* Align content start */
+             width: 90%;
+             align-items: flex-start;
          }
-         /* Reset H4 styles for stacking */
          .category-block h4 {
-             min-height: auto; /* Remove fixed height */
-             display: block; /* Reset display */
+             min-height: auto;
+             display: block;
              text-align: left;
-             margin-bottom: 12px; /* Adjust margin */
-             font-size: 12px; /* Adjust size if needed */
+             margin-bottom: 12px;
+             font-size: 11.5px; /* Adjust size */
              line-height: 1.4;
-             font-weight: 800; /* Keep bold */
-             letter-spacing: 0.8px; /* Keep spacing */
+             font-weight: 800;
+             letter-spacing: 0.7px;
          }
          .category-block a:not(.view-all-link),
          .category-block a.view-all-link {
@@ -340,7 +341,7 @@
 
 <header>
   <div class="logo-area">
-    <!-- Make sure logo.png exists and is at least 50px tall -->
+    <!-- Make sure logo.png exists and is the correct path! -->
     <img src="logo.png" alt="Daily Objects Logo">
   </div>
   <nav class="menu">

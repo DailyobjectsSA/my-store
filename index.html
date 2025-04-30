@@ -22,9 +22,14 @@
       top: 0;
       z-index: 999;
       flex-wrap: nowrap;
-      min-height: 70px;
+      min-height: 70px; /* Ensures space for larger logo */
     }
-    .logo-area img { height: 35px; width: auto; flex-shrink: 0; }
+    .logo-area img {
+        /* *** UPDATED LOGO HEIGHT *** */
+        height: 45px;
+        width: auto;
+        flex-shrink: 0;
+    }
 
     .menu {
       display: flex;
@@ -96,7 +101,7 @@
       align-items: flex-start;
       flex-wrap: nowrap;
       /* *** ADJUSTED GAP FOR SEPARATION *** */
-      gap: 0 35px; /* Increased gap */
+      gap: 0 40px; /* Increased gap */
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 30px;
@@ -107,26 +112,24 @@
       display: flex;
       flex-direction: column;
       /* *** ADJUSTED WIDTH *** */
-      width: 145px; /* Slightly reduced width to allow for more gap */
+      width: 140px; /* Decreased width to allow for more gap */
       flex-shrink: 0;
     }
 
     /* Title Styling (Left-aligned) - ENHANCED HIERARCHY */
     .category-block h4 {
       font-family: 'Inter', Arial, sans-serif;
-      /* *** STYLE CHANGES *** */
-      font-size: 12px;      /* Slightly smaller for uppercase */
-      font-weight: 800;     /* Bolder */
-      color: #111;         /* Darker color */
-      letter-spacing: 0.8px;/* Increased spacing */
-      /* --- End Style Changes ---*/
+      font-size: 12px;
+      font-weight: 800;
+      color: #111;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
       text-align: left;
       width: 100%;
       line-height: 1.4;
       white-space: normal;
-      min-height: 38px; /* Keep min height (adjust if needed based on font changes) */
-      margin-bottom: 18px; /* Increased bottom margin */
+      min-height: 38px;
+      margin-bottom: 18px;
       display: flex;
       align-items: flex-start;
     }
@@ -136,13 +139,11 @@
       display: block;
       padding: 6px 0;
       text-decoration: none;
-      /* *** STYLE CHANGES *** */
-      color: #555;           /* Standard text color */
+      color: #555;
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13px;      /* Clear link size */
-      font-weight: 400;     /* Normal weight */
-      letter-spacing: 0.2px;/* Subtle spacing */
-      /* --- End Style Changes ---*/
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.2px;
       line-height: 1.5;
       text-align: left;
       width: 100%;
@@ -156,13 +157,13 @@
       text-decoration: none;
       color: #1abc9c;
       font-family: 'Inter', Arial, sans-serif;
-      font-size: 13px; /* Match link size */
-      font-weight: 700; /* Keep bold */
+      font-size: 13px;
+      font-weight: 700;
       text-align: left;
       width: 100%;
       margin-top: 12px;
       transition: color 0.2s ease;
-      letter-spacing: 0.3px; /* Slight spacing */
+      letter-spacing: 0.3px;
     }
 
     /* Link Hover Effects */
@@ -218,7 +219,8 @@
 
     /* --- Responsive adjustments --- */
 
-    /* Adjustments for when wrapping starts */
+    /* Exact breakpoint: (7 * 140) + (6*40) + (2*30 padding) = 980 + 240 + 60 = 1280 */
+    /* Apply wrap just below 1280px */
     @media (max-width: 1279px) {
       .dropdown-columns {
         flex-wrap: wrap;
@@ -227,7 +229,8 @@
         max-width: 100%;
         padding: 0 20px;
       }
-       .category-block { width: 145px; } /* Keep width consistent */
+       /* Adjust column width when wrapping */
+       .category-block { width: 150px; } /* Can be wider when wrapped */
        .category-block h4 { min-height: 38px; } /* Keep min-height */
     }
 
@@ -239,7 +242,7 @@
       .icons img { height: 18px; }
        /* Dropdown columns */
        .dropdown-columns { gap: 30px 25px; padding: 0 15px; }
-       .category-block { width: 150px; } /* Allow slightly wider */
+       .category-block { width: 145px; } /* Adjust width */
        .category-block h4 { min-height: 38px; font-size: 12px; }
        /* Other general adjustments */
        .slide-content { max-width: 50%; left: 5%; }
@@ -251,6 +254,8 @@
     @media (max-width: 850px) {
        header { flex-direction: column; align-items: center; padding: 10px 15px; min-height: auto; }
        .logo-area { margin-bottom: 10px; }
+       /* Adjust logo size slightly for stacked header */
+       .logo-area img { height: 40px; }
        .menu { justify-content: center; flex-wrap: wrap; gap: 8px 15px; overflow: visible; border-top: 1px solid #eee; padding-top: 10px; width: 100%; height: auto; }
        .menu a, .menu .menu-item > a { padding-bottom: 5px; border-bottom-width: 2px; height: auto; }
        .menu-item { height: auto; position: relative; }

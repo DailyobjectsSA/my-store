@@ -34,7 +34,7 @@
 
     /* --- Dropdown Styles --- */
     .menu-item {
-      position: static; /* Change back to static so dropdown positions relative to header */
+      position: static; /* Dropdown positions relative to header */
     }
     .dropdown {
       display: none;
@@ -50,7 +50,6 @@
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
       padding: 25px 30px; /* Padding inside the dropdown */
       z-index: 1000;
-      /* Removed white-space: nowrap; */
     }
     .menu-item:hover .dropdown {
       display: block;
@@ -295,27 +294,25 @@
   <div class="logo-area"><img src="logo.png" alt="Logo"></div>
   <nav class="menu">
     <!-- Updated TECH Menu Item -->
-    <div class="menu-item"> <!-- position: static -->
+    <div class="menu-item">
       <a href="#">TECH</a>
-      <div class="dropdown"> <!-- position: absolute, centered via left/transform -->
-         <div class="dropdown-columns"> <!-- flex-wrap: wrap, justify-content: center -->
+      <div class="dropdown">
+         <div class="dropdown-columns">
 
              <!-- Column 1: Phone Cases -->
-             <div class="category-block"> <!-- margin-bottom added -->
-               <img src="tech-dd-img1.jpg" alt="Phone Cases"> {/* <-- REPLACE IMAGE SRC */}
+             <div class="category-block">
+               <img src="images/tech-dd-phone-cases.jpg" alt="Phone Cases"> <!-- Example: REPLACE IMAGE SRC -->
                <h4>PHONE CASES</h4>
-               <a href="#">Apple</a>
+               <a href="phone-cases.html">Apple</a> <!-- Example: Replace # with actual URL -->
                <a href="#">Samsung</a>
                <a href="#">OnePlus</a>
                <a href="#">Google</a>
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Other category blocks remain the same -->
-
              <!-- Column 2: Watch Accessories -->
              <div class="category-block">
-                <img src="tech-dd-img2.jpg" alt="Watch Accessories"> {/* <-- REPLACE IMAGE SRC */}
+                <img src="images/tech-dd-watch-accessories.jpg" alt="Watch Accessories"> <!-- Example: REPLACE IMAGE SRC -->
                <h4>WATCH ACCESSORIES</h4>
                <a href="#">Watchbands</a>
                <a href="#">Apple Watch Chargers</a>
@@ -326,7 +323,7 @@
 
              <!-- Column 3: Charging Solutions -->
              <div class="category-block">
-                <img src="tech-dd-img3.jpg" alt="Charging Solutions"> {/* <-- REPLACE IMAGE SRC */}
+                <img src="images/tech-dd-charging-solutions.jpg" alt="Charging Solutions"> <!-- Example: REPLACE IMAGE SRC -->
                <h4>CHARGING SOLUTIONS</h4>
                <a href="#">Powerbank</a>
                <a href="#">Wireless Chargers</a>
@@ -337,7 +334,7 @@
 
              <!-- Column 4: Tech Add-ons -->
              <div class="category-block">
-                <img src="tech-dd-img4.jpg" alt="Tech Add-ons"> {/* <-- REPLACE IMAGE SRC */}
+                <img src="images/tech-dd-tech-addons.jpg" alt="Tech Add-ons"> <!-- Example: REPLACE IMAGE SRC -->
                <h4>TECH ADD-ONS</h4>
                <a href="#">iPad Cases</a>
                <a href="#">AirPods Cover</a>
@@ -348,7 +345,7 @@
 
              <!-- Column 5: Laptop Sleeves -->
              <div class="category-block">
-                <img src="tech-dd-img5.jpg" alt="Laptop Sleeves and Bags"> {/* <-- REPLACE IMAGE SRC */}
+                <img src="images/tech-dd-laptop-sleeves.jpg" alt="Laptop Sleeves and Bags"> <!-- Example: REPLACE IMAGE SRC -->
                <h4>LAPTOP SLEEVES AND BAGS</h4>
                <a href="#">Zippered Sleeves</a>
                <a href="#">Macbook Hardcases</a>
@@ -359,7 +356,7 @@
 
              <!-- Column 6: Stands -->
              <div class="category-block">
-                <img src="tech-dd-img6.jpg" alt="Stands"> {/* <-- REPLACE IMAGE SRC */}
+                <img src="images/tech-dd-stands.jpg" alt="Stands"> <!-- Example: REPLACE IMAGE SRC -->
                <h4>STANDS</h4>
                <a href="#">Mobile</a>
                <a href="#">Laptop</a>
@@ -370,7 +367,7 @@
 
              <!-- Column 7: Organisers -->
              <div class="category-block">
-                <img src="tech-dd-img7.jpg" alt="Organisers"> {/* <-- REPLACE IMAGE SRC */}
+                <img src="images/tech-dd-organisers.jpg" alt="Organisers"> <!-- Example: REPLACE IMAGE SRC -->
                <h4>ORGANISERS</h4>
                <a href="#">Tech Kit</a>
                <a href="#">Folio</a>
@@ -378,7 +375,6 @@
                <a href="#">Pouches</a>
                <a href="#" class="view-all-link">View All +</a>
              </div>
-
 
            </div> <!-- End dropdown-columns -->
       </div> <!-- End dropdown -->
@@ -504,7 +500,8 @@
           dot.addEventListener('click', () => {
             if(intervalId) clearInterval(intervalId); // Stop auto-slide on manual click
             showSlide(index);
-            intervalId = setInterval(autoSlide, 10000); // Optional: Restart auto-slide after manual interaction
+            // Optional: Restart auto-slide after manual interaction
+            // intervalId = setInterval(autoSlide, 10000);
           });
       });
   }

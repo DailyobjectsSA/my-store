@@ -29,6 +29,8 @@
     .menu a {
       text-decoration: none;
       color: #222;
+      padding-bottom: 15px; /* Added padding to help hover state */
+      margin-bottom: -15px; /* Counteract padding for layout */
     }
     .menu a:hover { color: #007BFF; }
 
@@ -37,7 +39,9 @@
       position: static; /* Dropdown positions relative to header */
     }
     .dropdown {
-      display: none;
+      /* display: none; Replaced by visibility/opacity */
+      visibility: hidden; /* Initially hidden */
+      opacity: 0; /* Initially transparent */
       position: absolute; /* Position relative to header */
       top: 100%; /* Position below the header */
       left: 50%; /* Start at 50% of header width */
@@ -50,9 +54,14 @@
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
       padding: 25px 30px; /* Padding inside the dropdown */
       z-index: 1000;
+      transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s; /* Fade out, hide slightly later */
+      /* Note: The visibility transition delay prevents instant hiding */
     }
     .menu-item:hover .dropdown {
-      display: block;
+      /* display: block; Replaced by visibility/opacity */
+      visibility: visible; /* Make visible on hover */
+      opacity: 1; /* Make opaque on hover */
+      transition-delay: 0s; /* Remove delay when showing */
     }
 
     .dropdown-columns {
@@ -64,30 +73,35 @@
     .category-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center image/title */
-      gap: 5px;
-      width: 140px; /* Column width */
+      /* align-items: center; Changed alignment as image removed */
+      align-items: flex-start; /* Align items to the start (left) */
+      gap: 8px; /* Adjusted gap after image removal */
+      min-width: 150px; /* Adjusted width slightly */
       margin-bottom: 20px; /* Add space below blocks when they wrap */
     }
+    /* Removed .category-block img rule as images are gone */
+    /*
     .category-block img {
       width: 80px;
       height: 80px;
       object-fit: contain;
       margin-bottom: 15px;
     }
+    */
     .category-block h4 {
       font-size: 12px;
       font-weight: bold;
       color: #000;
-      margin-bottom: 12px;
+      margin-bottom: 8px; /* Adjusted margin */
       text-transform: uppercase;
-      text-align: center; /* Center the heading text */
+      /* text-align: center; Changed alignment */
+      text-align: left; /* Align heading text left */
       width: 100%;
     }
     .category-block a {
       display: block;
       width: 100%;
-      padding: 4px 0 4px 5px; /* Padding includes small left indent */
+      padding: 4px 0 4px 0; /* Adjusted padding (removed left indent) */
       text-decoration: none;
       color: #333;
       font-size: 13px;
@@ -299,9 +313,9 @@
       <div class="dropdown">
          <div class="dropdown-columns">
 
-             <!-- Column 1: Phone Cases -->
+             <!-- Column 1: Phone Cases (Image Removed) -->
              <div class="category-block">
-               <img src="images/tech-dd-phone-cases.jpg" alt="Phone Cases"> <!-- Example: REPLACE IMAGE SRC -->
+               <!-- <img src="images/tech-dd-phone-cases.jpg" alt="Phone Cases"> REMOVED -->
                <h4>PHONE CASES</h4>
                <a href="phone-cases.html">Apple</a> <!-- Example: Replace # with actual URL -->
                <a href="#">Samsung</a>
@@ -310,9 +324,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 2: Watch Accessories -->
+             <!-- Column 2: Watch Accessories (Image Removed) -->
              <div class="category-block">
-                <img src="images/tech-dd-watch-accessories.jpg" alt="Watch Accessories"> <!-- Example: REPLACE IMAGE SRC -->
+                <!-- <img src="images/tech-dd-watch-accessories.jpg" alt="Watch Accessories"> REMOVED -->
                <h4>WATCH ACCESSORIES</h4>
                <a href="#">Watchbands</a>
                <a href="#">Apple Watch Chargers</a>
@@ -321,9 +335,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 3: Charging Solutions -->
+             <!-- Column 3: Charging Solutions (Image Removed) -->
              <div class="category-block">
-                <img src="images/tech-dd-charging-solutions.jpg" alt="Charging Solutions"> <!-- Example: REPLACE IMAGE SRC -->
+                <!-- <img src="images/tech-dd-charging-solutions.jpg" alt="Charging Solutions"> REMOVED -->
                <h4>CHARGING SOLUTIONS</h4>
                <a href="#">Powerbank</a>
                <a href="#">Wireless Chargers</a>
@@ -332,9 +346,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 4: Tech Add-ons -->
+             <!-- Column 4: Tech Add-ons (Image Removed) -->
              <div class="category-block">
-                <img src="images/tech-dd-tech-addons.jpg" alt="Tech Add-ons"> <!-- Example: REPLACE IMAGE SRC -->
+                <!-- <img src="images/tech-dd-tech-addons.jpg" alt="Tech Add-ons"> REMOVED -->
                <h4>TECH ADD-ONS</h4>
                <a href="#">iPad Cases</a>
                <a href="#">AirPods Cover</a>
@@ -343,9 +357,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 5: Laptop Sleeves -->
+             <!-- Column 5: Laptop Sleeves (Image Removed) -->
              <div class="category-block">
-                <img src="images/tech-dd-laptop-sleeves.jpg" alt="Laptop Sleeves and Bags"> <!-- Example: REPLACE IMAGE SRC -->
+                <!-- <img src="images/tech-dd-laptop-sleeves.jpg" alt="Laptop Sleeves and Bags"> REMOVED -->
                <h4>LAPTOP SLEEVES AND BAGS</h4>
                <a href="#">Zippered Sleeves</a>
                <a href="#">Macbook Hardcases</a>
@@ -354,9 +368,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 6: Stands -->
+             <!-- Column 6: Stands (Image Removed) -->
              <div class="category-block">
-                <img src="images/tech-dd-stands.jpg" alt="Stands"> <!-- Example: REPLACE IMAGE SRC -->
+                <!-- <img src="images/tech-dd-stands.jpg" alt="Stands"> REMOVED -->
                <h4>STANDS</h4>
                <a href="#">Mobile</a>
                <a href="#">Laptop</a>
@@ -365,9 +379,9 @@
                <a href="#" class="view-all-link">View All +</a>
              </div>
 
-             <!-- Column 7: Organisers -->
+             <!-- Column 7: Organisers (Image Removed) -->
              <div class="category-block">
-                <img src="images/tech-dd-organisers.jpg" alt="Organisers"> <!-- Example: REPLACE IMAGE SRC -->
+                <!-- <img src="images/tech-dd-organisers.jpg" alt="Organisers"> REMOVED -->
                <h4>ORGANISERS</h4>
                <a href="#">Tech Kit</a>
                <a href="#">Folio</a>
@@ -395,24 +409,25 @@
   </div>
 </header>
 
-<!-- ... (rest of the HTML body remains the same) ... -->
+<!-- ... (rest of the HTML body remains the same - ensure image paths/video paths are correct) ... -->
 <section class="banner">
   <video autoplay muted loop>
-    <source src="banner-video.mp4" type="video/mp4">
+    <source src="banner-video.mp4" type="video/mp4"> <!-- Ensure path is correct -->
   </video>
 </section>
 
 <section>
   <h2>SHOP BY CATEGORY</h2>
   <div class="grid">
-    <a href="tech.html" class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></a>
-    <a href="bags.html" class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></a>
-    <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a>
+    <a href="tech.html" class="card"><img src="tech1.jpg"><h3>TECH ACCESSORIES</h3></a> <!-- Ensure path is correct -->
+    <a href="bags.html" class="card"><img src="bags1.jpg"><h3>BAGS & WALLETS</h3></a> <!-- Ensure path is correct -->
+    <a href="work.html" class="card"><img src="work1.jpg"><h3>WORK ESSENTIALS</h3></a> <!-- Ensure path is correct -->
   </div>
 </section>
 
 <section>
   <div class="slideshow-container">
+    <!-- Ensure image paths are correct -->
     <div class="slide"><img src="cat1.jpg"><div class="slide-content"><h1>LOOP POWER BANKS</h1><p>Qi2-Certified, Next-Gen Fast Wireless charging</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
     <div class="slide"><img src="cat2.jpg"><div class="slide-content"><h1>PHONE CASES</h1><p>Phone in ultimate style and safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
     <div class="slide"><img src="cat3.jpg"><div class="slide-content"><h1>RFID MAGSAFE CARD WALLET</h1><p>Snap on unparalleled convenience & safety</p><a href="#" class="shop-btn">SHOP NOW</a></div></div>
@@ -431,7 +446,7 @@
 </section>
 
 <section class="corporate-banner">
-  <img src="cg1.jpg" alt="Corporate Gifting">
+  <img src="cg1.jpg" alt="Corporate Gifting"> <!-- Ensure path is correct -->
   <div class="overlay">
     <h1>CORPORATE GIFTING</h1>
     <p>It is the season to celebrate and nurture everlasting bonds. Build lasting relationships with our bespoke corporate solutions</p>
@@ -441,6 +456,7 @@
 <section>
   <h2>TRENDING COLLECTION</h2>
   <div class="zoom-grid">
+     <!-- Ensure image paths are correct -->
     <div class="zoom-card"><img src="sbc1.jpg"><div class="overlay-text"><h3>REFLECTIVE</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
     <div class="zoom-card"><img src="sbc2.jpg"><div class="overlay-text"><h3>CANVAS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
     <div class="zoom-card"><img src="sbc3.jpg"><div class="overlay-text"><h3>TIMELESS</h3><a href="#" class="shop-btn">SHOP NOW</a></div></div>
